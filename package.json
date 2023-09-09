@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build"
   },
   "dependencies": {
     "@types/node": "20.5.7",
@@ -36,6 +38,7 @@
   "devDependencies": {
     "@types/aos": "^3.0.4",
     "@types/lodash": "^4.14.198",
-    "@types/react-transition-group": "^4.4.6"
+    "@types/react-transition-group": "^4.4.6",
+    "gh-pages": "^6.0.0"
   }
 }
