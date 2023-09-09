@@ -1,0 +1,52 @@
+@import url("../assets/fonts/index.css");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+* {
+  @apply box-border;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply p-0 m-0 font-futura-pt text-white;
+}
+
+@layer components {
+  a {
+    @apply no-underline;
+  }
+
+  a:hover {
+    @apply underline underline-offset-2;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    @apply focus:outline-none bg-transparent;
+  }
+
+  .text-linear {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  [role="button"],
+  button {
+    @apply select-none;
+  }
+}
+
+/* 
+ Mobile Responsiveness
+*/
+@media screen and (max-width: 1040px) {
+}
+@media screen and (max-width: 600px) {
+}

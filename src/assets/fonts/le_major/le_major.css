@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Le Major";
+  src: url("./LeMajor-Regular.woff") format("woff"),
+    url("./LeMajor-Regular.otf") format("opentype"),
+    url("./LeMajor-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
