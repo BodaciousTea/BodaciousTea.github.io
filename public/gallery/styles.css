@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #000a00;
+    line-height: 1.5;
+    font-family: 'FuturaPTBook', sans-serif;
+}
+
+@font-face {
+    font-family: 'FuturaPTBook';
+    src: url('FuturaPTBook.otf') format('opentype');
+}
+
+#photos {
+    line-height: 0;
+    width: 100%;
+    max-width: 1400px;
+    column-gap: 0px;
+    column-count: 2;
+}
+
+#photos img {
+    width: 100% !important;
+    height: auto !important;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.gallery {
+    padding-top: 35px; 
+}
+
+.gallery .gallery-filter {
+    padding: 0 15px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.gallery .gallery-filter .filter-item {
+    color: #ffffff;
+    font-size: 17px;
+    border: 1px solid white;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 5px 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 4px 12px;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+}
+
+.gallery .gallery-filter .filter-item.active {
+    color: white;
+    border-color: #ffffff;
+    transform: scale(1.1);
+    font-size: larger;
+}
+
+.gallery .gallery-item.show {
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.gallery .gallery-item.hide {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    #photos {
+        column-count: 1;
+    }
+}
