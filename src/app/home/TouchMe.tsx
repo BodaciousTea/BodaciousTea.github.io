@@ -14,10 +14,10 @@ function TouchMe() {
             GET IN TOUCH
           </h2>
           <a
-            className="text-sm font-helvetica underline inline-block"
-            href="mailto:tedkoller@tedkoller.com"
+            className="text-sm font-helvetica inline-block"
+            href="mailto:me@tedkoller.com"
           >
-            tedkoller@tedkoller.com
+            me@tedkoller.com
           </a>
         </div>
         <div className="flex flex-col justify-center px-[10vw]">
