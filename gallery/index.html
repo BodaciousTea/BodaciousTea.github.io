@@ -9,6 +9,12 @@
 </head>
 
 <body>
+    <div id="loading-screen" class="fullscreen">
+        <div class="loading-message">
+            <p>Hang tight, images are loading...</p>
+            <div class="spinner"></div>
+        </div>
+    </div>
     <section class="gallery">
         <div class="container">
             <div class="row">
@@ -18,7 +24,8 @@
                     <span class="filter-item" data-filter="products">Products</span>
                     <span class="filter-item" data-filter="design">Design</span>
                     <span class="filter-item" data-filter="wildlife">Wildlife</span>
-                </div>
+                    <img class="info-button" src="subtract.png" alt="Information">
+                    <span class="info-tooltip">Images are optimized for web viewing and may display compression artifacts.</span>                </div>
             </div>
 
             <div id="photos" class="row">
@@ -245,9 +252,6 @@
 					<img src="gallery-assets-compressed/noelle-6.jpg" alt="people" loading="lazy">>
 				</div>
 				<div class="gallery-item people">
-					<img src="gallery-assets-compressed/noelle-6.jpg" alt="people" loading="lazy">>
-				</div>
-				<div class="gallery-item people">
 					<img src="gallery-assets-compressed/travis-scott-tour-23.jpg" alt="people" loading="lazy">>
 				</div>
 				<div class="gallery-item wildlife">
@@ -260,27 +264,31 @@
             </div>
         </div>
     </section>
-	<script>
-        const filterContainer = document.querySelector(".gallery-filter"),
-            galleryItems = document.querySelectorAll(".gallery-item");
-
-        filterContainer.addEventListener("click", (event) => {
-            if (event.target.classList.contains("filter-item")) {
-                filterContainer.querySelector(".active").classList.remove("active");
-                event.target.classList.add("active");
-                const filterValue = event.target.getAttribute("data-filter");
-                galleryItems.forEach((item) => {
-                    if (item.classList.contains(filterValue) || filterValue === 'all') {
-                        item.classList.remove("hide");
-                        item.classList.add("show");
-                    } else {
-                        item.classList.remove("show");
-                        item.classList.add("hide");
-                    }
-                });
-            }
+    <script>
+        const filterContainer = document.querySelector('.gallery-filter'),
+              galleryItems = document.querySelectorAll('.gallery-item');
+      
+        filterContainer.addEventListener('click', (event) => {
+          if (event.target.classList.contains('filter-item')) {
+            filterContainer.querySelector('.active').classList.remove('active');
+            event.target.classList.add('active');
+            const filterValue = event.target.getAttribute('data-filter');
+            galleryItems.forEach((item) => {
+              if (item.classList.contains(filterValue) || filterValue === 'all') {
+                item.classList.remove('hide');
+                item.classList.add('show');
+              } else {
+                item.classList.remove('show');
+                item.classList.add('hide');
+              }
+            });
+          }
         });
-    </script>
+      
+        window.addEventListener('load', () => {
+          document.getElementById('loading-screen').style.display = 'none';
+        });
+      </script>
 </body>
 
 </html>
