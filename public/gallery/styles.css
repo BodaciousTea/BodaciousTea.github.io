@@ -3,9 +3,20 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    background-color: #000a00;
+    background: linear-gradient(-90deg, #001100, #000000);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
     line-height: 1.5;
     font-family: 'FuturaPTBook', sans-serif;
+}
+
+@keyframes gradient {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 @font-face {
