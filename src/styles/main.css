@@ -50,3 +50,152 @@ body {
 }
 @media screen and (max-width: 600px) {
 }
+
+.welcome-section {
+  background-image: url('/images/Section Top 1.jpg');
+  background-size: cover;
+  background-position: bottom;
+  height: 100vh; 
+}
+.about-section {
+  position: relative;
+  background-image: url('/images/Section Middle 1.jpg');
+  background-size: cover;
+  background-position: top;
+  min-height: 100vh; /* Adjust as needed */
+}
+
+/* Cloud Animation */
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+/* Welcome Page Cloud Sroll */
+.move-up {
+  transform: translateY(-100%); /* Adjust this value as needed */
+  transition: transform 0.5s ease-in-out; /* Smooth transition */
+}
+
+.text-masthead {
+  font-size: 14vw; 
+  white-space: nowrap;
+  z-index: 10;
+}
+.mountain-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/Section Middle Mask.png');
+  background-size: cover;
+  background-position: top;
+  z-index: 15; /* Ensure it's above the background but below other content */
+}
+/* Banner style */
+.cloud-banner-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.cloud {
+  position: absolute;
+  bottom: 0; /* Adjust as needed to control overflow */
+}
+
+.cloud1 {
+  animation: fadeOut 1800ms ease-out forwards;
+  position: absolute;
+  transform: scale(2);
+  width: 100%; 
+  height: 100%; 
+  top: -10%;
+  left: 0;
+}
+
+@keyframes moveTopLeft {
+  to { transform: translate(-20%, -30%) scale(0.75); }
+}
+
+.cloud2 {
+  animation: moveTopLeft 1800ms 150ms ease-out forwards;
+  position: absolute;
+  transform: scale(0.75);
+  top: -10%; 
+  left: -20%;
+  z-index: 20;
+}
+
+@keyframes moveBottomLeft {
+  to { transform: translate(-35%, 20%); }
+}
+
+.cloud3 {
+  animation: moveBottomLeft 1800ms 150ms ease-out forwards;
+  position: absolute;
+  top: 30%; 
+  left: -30%;
+  z-index: 20;
+}
+
+@keyframes moveBottomRight {
+  to { transform: translate(20%, 10%); }
+}
+
+.cloud4 {
+  animation: moveBottomRight 1800ms 150ms ease-out forwards;
+  position: absolute;
+  top: 50%; 
+  left: 60%;
+  z-index: 20;
+}
+
+@keyframes moveTopRight {
+  to { transform: translate(20%, -30%); }
+}
+
+.cloud5 {
+  animation: moveTopRight 1800ms 150ms ease-out forwards;
+  position: absolute;
+  top: -20%; 
+  left: 40%;
+  z-index: 20;
+}
+
+/* Banner style */
+.cloud-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 100;
+  transition: opacity 1800ms ease-out;
+  transition-delay: 750ms;
+}
+
+.button-style {
+  transition: all 0.3s ease; 
+  text-decoration: none; 
+  border: solid white; 
+  padding: 0.20vw 0.60vw;
+}
+
+.button-style:hover {
+  padding: 0.41vw 0.82vw; /* Slightly larger padding on hover */
+  text-decoration: none; /* Removes underline on hover */
+}
+
+.phone-hover img {
+  transition: transform 0.3s ease;
+}
+
+.phone-hover:hover img {
+  transform: scale(1.1); /* Adjust scale as needed */
+}
