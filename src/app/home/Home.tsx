@@ -11,7 +11,6 @@ import TouchMe from "./TouchMe";
 import VideoProduction from "./watch/VideoProduction";
 import Watch from "./watch/Watch";
 import Visualization from "./watch/Visualization";
-import Album from "./photography/Album";
 import Rebranding from "./nacreous/Rebranding";
 import Logos from "./nacreous/Logos";
 import AsideScrollbar from "./AsideScrollbar";
@@ -50,74 +49,18 @@ function HomePage() {
           sections={[WatchHere, VideoProduction, Visualization]}
         />
 
-        <Watch
-          sections={[
-            Banner,
-            [
-              Album,
-              {
-                offset: "py-[1.5vw]",
-                thumbs: [
-                  "/images/SNY05489 (1) 2.jpg",
-                  "/images/Quinn Senior 1.jpg",
-                  "/images/26 1.jpg",
-                ],
-              },
-            ],
-            [
-              Album,
-              {
-                offset: "py-[1.5vw]",
-                thumbs: [
-                  "/images/NorthRelays (SNY)-11 1.jpg",
-                  "/images/8 1.jpg",
-                  "/images/NorthRelays (SNY)-01 1.jpg",
-                ],
-              },
-            ],
-            [
-              Album,
-              {
-                offset: "py-[1.5vw]",
-                thumbs: [
-                  "/images/25 1.jpg",
-                  "/images/31 1.jpg",
-                  "/images/Wyoming-84 1.jpg",
-                ],
-              },
-            ],
-          ]}
-        />
-        <Watch
-          sections={[
-            NacreousCoffee,
-            Rebranding,
-            Logos,
-            [
-              Album,
-              {
-                offset: "py-[3vw]",
-                baseTone: "bg-900",
-                thumbs: [
-                  "/images/3398 1.jpg",
-                  "/images/24 1.jpg",
-                  "/images/SNY09178 1.jpg",
-                ],
-              },
-            ],
-            [
-              Album,
-              {
-                offset: "py-[1.5vw]",
-                baseTone: "bg-900",
-                thumbs: [
-                  "/images/CC Graphic Design 1.jpg",
-                  "/images/SNY09182 1.jpg",
-                ],
-              },
-            ],
-          ]}
-        />
+<Watch
+  sections={[
+    Banner,
+  ]}
+/>
+<Watch
+  sections={[
+    NacreousCoffee,
+    Rebranding,
+    Logos
+  ]}
+/>
         <div>
           <TouchMe />
         </div>
