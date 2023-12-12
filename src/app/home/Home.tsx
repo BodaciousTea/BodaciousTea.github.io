@@ -8,9 +8,7 @@ import WatchHere from "./watch/WatchHere";
 import Banner from "./photography/Banner";
 import NacreousCoffee from "./nacreous/NacreousCoffee";
 import TouchMe from "./TouchMe";
-import VideoProduction from "./watch/VideoProduction";
 import Watch from "./watch/Watch";
-import Visualization from "./watch/Visualization";
 import Rebranding from "./nacreous/Rebranding";
 import Logos from "./nacreous/Logos";
 import AsideScrollbar from "./AsideScrollbar";
@@ -38,15 +36,15 @@ function HomePage() {
       </span>
       <AsideScrollbar scroll={scroll} />
       <ReactPageScroller
-        customPageNumber={scroll}
-        transitionTimingFunction="cubic-bezier(0.77, 0, 0.175, 1)"
-        pageOnChange={handleScroll}
+      customPageNumber={scroll}
+     transitionTimingFunction="cubic-bezier(0.77, 0, 0.175, 1)"
+      pageOnChange={handleScroll}
       >
         <Welcome />
         <About />
         <Watch
           skipFirstPaginate
-          sections={[WatchHere, VideoProduction, Visualization]}
+          sections={[WatchHere]}
         />
 
 <Watch
