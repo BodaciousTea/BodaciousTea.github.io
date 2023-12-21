@@ -1,16 +1,29 @@
+import React from "react";
+import Head from 'next/head';
 import "../styles/main.css";
 import "animate.css";
-import type {Metadata} from "next";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "TED KOLLER",
-  description: "The Photographer | Videographer | Web Designer | Drone Pilot",
+  description: "Ted Koller, Multimedia Professional | Photographer | Web Designer | Videographer | Drone Pilot and more...",
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
+const Layout = ({ children }: LayoutProps) => {
   return (
-    <html lang="en">
+    <>
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <link rel="icon" href="/images/favicon.png" type="image/png" />
+      </Head>
+      {/* The rest of your layout */}
       <body>{children}</body>
-    </html>
+    </>
   );
-}
+};
+
+export default Layout;

@@ -5,8 +5,8 @@ import TextReveal from "@/components/common/text_reveal/TextReveal";
 function WatchHere() {
   return (
     <div className="relative mx-auto w-[56vw]">
-      <div className="absolute top-0 left-0 translate-x-[-20%] translate-y-[-70%] z-10">
-        <h2 className="leading-none uppercase font-light" style={{ fontSize: '3rem', color: 'white' }}> {/* Inline style for white color */}
+      <div className="absolute top-0 left-0 translate-x-[-30%] translate-y-[-50%] z-10">
+        <h2 className="leading-none uppercase font-light" style={{ fontSize: '2.7rem', color: 'white' }}> {/* Inline style for white color */}
           <TextReveal>
             <span>
               2023 First Place<br />BPA National Winner
