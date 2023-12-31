@@ -24,6 +24,8 @@ const config: Config = {
       base: ["7.695vw", {}],
       lg: ["1.015vw", {}],
       xl: ["6.054vw", {lineHeight: "0.89em"}],
+      custom: ['2.2rem', { lineHeight: '2.5rem' }], // Custom font size
+      masthead: ['16rem', { lineHeight: '2.5rem' }], // Custom font size
     },
     fontFamily: {
       "futura-pt": ["'Futura PT'", ...fontFamily.sans],

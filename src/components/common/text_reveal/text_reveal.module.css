@@ -31,7 +31,7 @@
 
 @keyframes revealInUp {
   0% {
-    transform: translate(0, 100%);
+    transform: translate(0, 150%);
   }
   100% {
     transform: translate(0, 0);

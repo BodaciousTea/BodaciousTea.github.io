@@ -4,7 +4,7 @@ import type {Metadata} from "next";
 
 export const metadata: Metadata = {
   title: "TED KOLLER",
-  description: "The Photographer | Videographer | Web Designer | Drone Pilot",
+  description: "Ted Koller, Multimedia Professional | Photographer | Web Designer | Videographer | Drone Pilot and more...",
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
