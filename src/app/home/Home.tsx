@@ -17,7 +17,7 @@ function HomePage() {
   useEffect(() => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
-      window.location.href = "https://tedkoller.com/mobile";
+      window.location.href = "https://tedkoller.com/Mobile/";
     }
   }, []);
 
