@@ -1,7 +1,7 @@
-import "../styles/main.css";
-import "animate.css";
-import Head from 'next/head';
 import React from 'react';
+import Head from 'next/head';
+import '../styles/main.css';
+import 'animate.css';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -11,11 +11,11 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children, pageTitle, pageDescription }: RootLayoutProps) {
   const ogImagePath = '/images/open-graph-image.jpg';
-  const title = pageTitle || "Home | Ted Koller Portfolio";
-  const description = pageDescription || "Explore Ted Koller's professional portfolio, showcasing skills in photography, web development, videography, design, and more.";
+  const title = pageTitle || 'Home | Ted Koller Portfolio';
+  const description = pageDescription || "Ted Koller's professional portfolio | Includes projects in photography, web development, videography, design, compositing, and more...";
 
   return (
-    <html lang="en">
+    <>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -34,6 +34,6 @@ export default function RootLayout({ children, pageTitle, pageDescription }: Roo
         <meta property="twitter:description" content={description} />
       </Head>
       <body>{children}</body>
-    </html>
+    </>
   );
 }
