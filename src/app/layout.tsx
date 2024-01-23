@@ -1,6 +1,5 @@
-import "../styles/main.css";
-import "animate.css";
 import Head from 'next/head';
+import React from 'react';
 
 // Define an interface for the props
 interface RootLayoutProps {
@@ -16,11 +15,11 @@ export default function RootLayout({ children, pageTitle, pageDescription }: Roo
   const description = pageDescription || "Ted Koller's professional portfolio | Includes projects in photography, web development, videography, design, compositing, and more...";
 
   return (
-    <html lang="en">
+    <>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta name="keywords" content="Photography, Web Design, Videography, " />
+        <meta name="keywords" content="Photography, Web Design, Videography" />
         <meta name="author" content="Ted Koller" />
         <link rel="icon" sizes="32x32" href="/images/favicon%2032x32.png" type="image/png" />
         <link rel="icon" sizes="192x192" href="/images/favicon%20192x192.png" type="image/png" />
@@ -35,9 +34,8 @@ export default function RootLayout({ children, pageTitle, pageDescription }: Roo
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
-
       </Head>
-      <body>{children}</body>
-    </html>
+      <main>{children}</main>
+    </>
   );
 }
