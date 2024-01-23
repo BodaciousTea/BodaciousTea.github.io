@@ -1,36 +1,24 @@
 import "../styles/main.css";
-import Head from 'next/head';
+import "animate.css";
+import type {Metadata} from "next";
+
+export const metadata: Metadata = {
+  title: "Home | Ted Koller Portfolio",
+  description: "Ted Koller's professional portfolio | Includes projects in photography, web development, videography, design, compositing, and more...",
+};
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
-  const title = "Home | Ted Koller Portfolio";
-  const description = "Ted Koller, Multimedia Professional | Photographer | Web Designer | Videographer | Drone Pilot and more...";
-  const ogImagePath = '/images/open-graph-image.jpg';
-
   return (
     <html lang="en">
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="keywords" content="Photography, Web Design, Videography, Drone Piloting, Multimedia" />
-        <meta name="author" content="Ted Koller" />
-        <link rel="icon" sizes="32x32" href="/images/favicon%2032x32.png" type="image/png" />
-        <link rel="icon" sizes="192x192" href="/images/favicon%20192x192.png" type="image/png" />
-
-        {/* Open Graph tags */}
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={ogImagePath} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:type" content="website" />
-
-        {/* Twitter Card tags */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={ogImagePath} />
-      </Head>
+      <link rel="icon" href="/images/icon.png" sizes="any" />
       <body>{children}</body>
+      <meta property="og:title" content="Ted Koller's Portfolio" />
+      <meta property="og:description" content="Ted Koller's professional portfolio | Includes projects in photography, web development, videography, design, compositing, and more..." />
+      <meta property="og:image" content="/images/open-graph-image.jpg" />
+      <meta name="description" content="A brief description of the page content." />
+      <meta name="description" content="Ted Koller, Multimedia Professional | Photographer | Web Designer | Videographer | Drone Pilot and more..." />
+      <meta name="keywords" content="Photography, Web Design, Videography, Kansas City, KC, Ted Koller" />
+      <meta name="author" content="Ted Koller" />
     </html>
   );
 }
