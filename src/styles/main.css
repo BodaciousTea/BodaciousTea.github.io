@@ -82,7 +82,7 @@ input, select, textarea, button {
 
 /* Keyframe Animations */
 @keyframes fadeOut {
-  to { opacity: 0; transform: scale(0.9); }
+  to { opacity: 0; transform: scale(1.5); }
 }
 
 @keyframes moveTopLeft {
@@ -142,6 +142,7 @@ input, select, textarea, button {
 
 .cloud1 {
   animation: fadeOut 1800ms ease-out forwards;
+  animation-delay: 0.3s;
   position: absolute;
   transform: scale(2);
   width: 100%;
@@ -152,6 +153,7 @@ input, select, textarea, button {
 
 .cloud2 {
   animation: moveTopLeft 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
   position: absolute;
   transform: scale(0.75);
   top: -10%;
@@ -161,6 +163,7 @@ input, select, textarea, button {
 
 .cloud3 {
   animation: moveBottomLeft 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
   position: absolute;
   top: 30%;
   left: -30%;
@@ -169,6 +172,7 @@ input, select, textarea, button {
 
 .cloud4 {
   animation: moveBottomRight 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
   position: absolute;
   top: 50%;
   left: 60%;
@@ -177,6 +181,7 @@ input, select, textarea, button {
 
 .cloud5 {
   animation: moveTopRight 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
   position: absolute;
   top: -20%;
   left: 40%;
