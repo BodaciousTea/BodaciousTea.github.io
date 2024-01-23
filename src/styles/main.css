@@ -82,7 +82,7 @@ input, select, textarea, button {
 
 /* Keyframe Animations */
 @keyframes fadeOut {
-  to { opacity: 0; transform: scale(1.5); }
+  to { opacity: 0; transform: scale(2); }
 }
 
 @keyframes moveTopLeft {
