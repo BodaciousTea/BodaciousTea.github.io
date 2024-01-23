@@ -3,12 +3,12 @@ import "animate.css";
 import Head from 'next/head';
 
 interface RootLayoutProps {
-  children: React.ReactNode; // For the children prop
-  pageTitle?: string;        // Optional string for pageTitle
-  pageDescription?: string;  // Optional string for pageDescription
+  children: React.ReactNode;
+  pageTitle?: string;
+  pageDescription?: string;
 }
 
-export default function RootLayout({ children, pageTitle, pageDescription }) {
+export default function RootLayout({ children, pageTitle, pageDescription }: RootLayoutProps) {
   const ogImagePath = '/images/open-graph-image.jpg';
 
   const title = pageTitle || "Home | Ted Koller Portfolio";
