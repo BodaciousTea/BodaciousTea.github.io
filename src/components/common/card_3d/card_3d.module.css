@@ -17,9 +17,9 @@
   bottom: 0;
 }
 
-/* Slight parallax effect on hover */
+/* Reduced parallax effect on hover */
 .card:hover .content {
-  transform: translateZ(12px);
+  transform: translateZ(6px);
 }
 
 .content {

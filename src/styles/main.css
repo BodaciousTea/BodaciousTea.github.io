@@ -4,19 +4,21 @@
 @import "tailwindcss/utilities";
 
 /* Global Styles */
+body {
+  overflow: hidden; /* Disables scrolling */
+  padding: 0;
+  margin: 0;
+  font-family: 'Futura PT', sans-serif;
+  color: white;
+  box-sizing: border-box;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-body {
-  padding: 0;
-  margin: 0;
-  font-family: 'Futura PT', sans-serif;
-  color: white;
 }
 
 /* Link Styles */
@@ -46,15 +48,6 @@ input, select, textarea, button {
   user-select: none;
 }
 
-/* Responsiveness for Mobile Devices */
-@media screen and (max-width: 1040px) {
-  /* Adjustments for medium screens */
-}
-
-@media screen and (max-width: 600px) {
-  /* Adjustments for small screens */
-}
-
 /* Welcome Section */
 .welcome-section {
   background-image: url('/images/Section Top 1.jpg');
@@ -82,23 +75,23 @@ input, select, textarea, button {
 
 /* Keyframe Animations */
 @keyframes fadeOut {
-  to { opacity: 0; transform: scale(0.9); }
+  to { opacity: 0; transform: scale(1.5); } /* Only cloud1 scales */
 }
 
 @keyframes moveTopLeft {
-  to { transform: translate(-20%, -30%) scale(0.75); }
+  to { transform: translate(-70%, -130%) scale(1.8); } 
 }
 
 @keyframes moveBottomLeft {
-  to { transform: translate(-35%, 20%); }
+  to { transform: translate(-70%, 10%) scale(2.5); } 
 }
 
 @keyframes moveBottomRight {
-  to { transform: translate(20%, 10%); }
+  to { opacity: 0;transform: translate(28%, 60%) scale(3); } 
 }
 
 @keyframes moveTopRight {
-  to { transform: translate(20%, -30%); }
+  to { transform: translate(20%, -30%); } 
 }
 
 /* Welcome Page Cloud Scroll */
@@ -107,11 +100,19 @@ input, select, textarea, button {
   transition: transform 0.5s ease-in-out;
 }
 
-.text-masthead {
-  font-size: 14vw;
-  white-space: nowrap;
-  z-index: 10;
+.text-center {
+  top: 4%; 
 }
+
+.about-text {
+  font-size: 80px; 
+  margin-bottom: -30px;
+}
+
+.ted-text {
+  font-size: 162px; 
+  margin-top: 0;
+} 
 
 .mountain-mask {
   position: absolute;
@@ -142,51 +143,60 @@ input, select, textarea, button {
 
 .cloud1 {
   animation: fadeOut 1800ms ease-out forwards;
+  animation-delay: 0.3s;
   position: absolute;
-  transform: scale(2);
-  width: 100%;
-  height: 100%;
-  top: -10%;
-  left: 0;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -80%) scale(7);
+  max-width: 50vw;   /* Adjust the width as needed */
+  max-height: 50vh;  /* Adjust the height as needed */
+  object-fit: contain; /* This will ensure aspect ratio is maintained */
 }
 
 .cloud2 {
   animation: moveTopLeft 1800ms 150ms ease-out forwards;
+  animation-delay: 0.5s;
   position: absolute;
-  transform: scale(0.75);
-  top: -10%;
-  left: -20%;
+  transform: scale(2) translate(-50%, -50%);
+  top: 20%;
+  left: 50%;
   z-index: 20;
 }
 
 .cloud3 {
   animation: moveBottomLeft 1800ms 150ms ease-out forwards;
+  animation-delay: 0.5s;
   position: absolute;
-  top: 30%;
-  left: -30%;
+  transform: translate(-50%, -50%) scale(2.5);
+  top: 75%;
+  left: 5%;
   z-index: 20;
 }
 
 .cloud4 {
   animation: moveBottomRight 1800ms 150ms ease-out forwards;
+  animation-delay: 0.5s;
   position: absolute;
-  top: 50%;
-  left: 60%;
+  transform: translate(-50%, -50%) scale(5);
+  top: 33%;
+  left: 50%;
   z-index: 20;
 }
 
 .cloud5 {
   animation: moveTopRight 1800ms 150ms ease-out forwards;
+  animation-delay: 0.5s;
   position: absolute;
-  top: -20%;
-  left: 40%;
+  transform: translate(-50%, -50%) scale(2);
+  top: 10%;
+  left: 20%;
   z-index: 20;
 }
 
 /* Banner style */
 .cloud-banner {
   position: absolute;
-  top: 50%;
+  top: 43%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 100;
@@ -194,16 +204,19 @@ input, select, textarea, button {
   transition-delay: 750ms;
 }
 
+.resume-button,
 .button-style {
-  transition: all 0.3s ease;
+  font-size: 20px; /* Larger font size */
+  padding: 8px 16px; /* Larger padding */
+  border: 1px solid white; /* Adjust the thickness here */
   text-decoration: none;
-  border: solid white;
-  padding: 0.20vw 0.60vw;
 }
 
-.button-style:hover {
-  padding: 0.41vw 0.82vw;
-  text-decoration: none;
+.watch-here-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10vw; /* Adjust as needed */
 }
 
 .phone-hover img {
@@ -285,8 +298,8 @@ input, select, textarea, button {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  transform: translateY(160px);
+  height: 10vh;
+  transform: translateY(50px); /* Adjusted to move higher */
 }
 
 .carousel-item {
@@ -305,18 +318,6 @@ input, select, textarea, button {
   max-height: 60vh;
   object-fit: contain;
   margin: auto;
-}
-
-@media (max-width: 600px) {
-  .carousel-item img {
-    max-height: 50vh;
-  }
-}
-
-@media (min-width: 1024px) {
-  .carousel-item img {
-    max-height: 70vh;
-  }
 }
 
 .card-container {
@@ -373,13 +374,13 @@ input, select, textarea, button {
 
 .nav.left {
   left: 5%;
-  transform: translateY(-50%) rotate(-90deg);
+  transform: translateY(-90%) rotate(-90deg);
   z-index: 30;
 }
 
 .nav.right {
   right: 5%;
-  transform: translateY(-50%) rotate(-90deg);
+  transform: translateY(-90%) rotate(-90deg);
 }
 
 .nav-button {
