@@ -9,7 +9,7 @@ function WatchHere() {
         <h2 className="leading-none uppercase font-light" style={{ fontSize: '2.7rem', color: 'white' }}> {/* Inline style for white color */}
           <TextReveal>
             <span>
-              2023 First Place<br />BPA National Winner
+              2023 First Place BPA National Winner
             </span>
           </TextReveal>
         </h2>
@@ -17,13 +17,14 @@ function WatchHere() {
       <Card3D>
         <img className="w-full" src="/images/featured-tile.jpg" alt="" />
         <a
-          href="https://www.youtube.com/watch?v=pQLBevvG9u4"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="uppercase text-md leading-none font-normal border-[0.117vw] button-style absolute bottom-[5.2vw] left-0 -translate-x-1/2 cursor-pointer"
-        >
-          WATCH HERE
-        </a>
+  href="https://www.youtube.com/watch?v=pQLBevvG9u4"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="button-style uppercase text-md leading-none font-normal border-[0.117vw] absolute left-1/2 -translate-x-1/2 cursor-pointer"
+  style={{ bottom: '-15vh', whiteSpace: 'nowrap', width: 'auto' }} // Adjust the bottom, whiteSpace, and width as needed
+>
+  WATCH HERE
+</a>
       </Card3D>
     </div>
   );

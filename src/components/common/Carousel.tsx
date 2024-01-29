@@ -2,47 +2,34 @@ import React, { useState } from 'react';
 import Card3D from "@/components/common/card_3d/Card3D";
 
 interface CarouselItemProps {
-  title: string;
   imageUrl: string;
   onButtonClick: () => void;
   titleStyle: React.CSSProperties;
   isActive: boolean;
 }
 
-const CarouselItem: React.FC<CarouselItemProps> = ({ title, imageUrl, onButtonClick, titleStyle, isActive }) => (
+const CarouselItem: React.FC<CarouselItemProps> = ({ imageUrl, onButtonClick, titleStyle, isActive }) => (
   <Card3D>
     <div className='carousel-item'>
-      <img className="carousel-image" src={imageUrl} alt={title} />
+      <img className="carousel-image" src={imageUrl} alt="Carousel Image" />
       {isActive && (
-        <>
-          <h2 className="carousel-title" style={{
-              ...titleStyle,
-              position: 'absolute',
-              top: '-10%',
-              left: '5%',
-              fontSize: '7vw',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              color: 'transparent',
-              zIndex: 5
-            }}>
-            {title}
-          </h2>
-          <button onClick={onButtonClick} className="button-style view-all-button" style={{
-              fontSize: '1.8vw',
-              padding: '.3vw 1.3vw',
-              position: 'absolute',
-              bottom: '8%',
-              left: '80%',
-            }}>
-            VIEW ALL
-          </button>
-        </>
+        <button 
+          onClick={onButtonClick} 
+          className="button-style resume-button uppercase text-sm leading-none font-normal lg:text-xs lg:px-2 lg:py-1" 
+          style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            bottom: '-18%'
+          }}
+        >
+          VIEW ALL
+        </button>
       )}
     </div>
   </Card3D>
 );
+
 
 const LeftArrow = () => (
   <div className='nav left'>
@@ -65,7 +52,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
   const count = items.length;
 
   return (
-    <div className='carousel-wrapper'>
+    <div className='carousel-wrapper' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
       <div className='carousel'>
         <button className={`nav-button left ${active <= 0 ? 'opacity-40' : ''}`} 
                 onClick={() => active > 0 && setActive(active - 1)}

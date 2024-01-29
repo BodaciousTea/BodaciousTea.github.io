@@ -13,14 +13,6 @@ import AsideScrollbar from "./AsideScrollbar";
 import TextReveal from "@/components/common/text_reveal/TextReveal";
 
 function HomePage() {
-  // Mobile redirection logic with replace state
-  useEffect(() => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobile) {
-      window.location.replace("https://tedkoller.com/mobile/");
-    }
-  }, []);
-
   const [scroll, setScroll] = useState(0);
 
   const pageHandling = () => {
