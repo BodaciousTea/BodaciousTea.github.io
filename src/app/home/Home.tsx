@@ -7,21 +7,26 @@ import About from "./About";
 import WatchHere from "./watch/WatchHere";
 import Banner from "./photography/Banner";
 import NacreousCoffee from "./nacreous/NacreousCoffee";
-import TouchMe from "./TouchMe";
+import TickleMe from "./TouchMe";
 import Watch from "./watch/Watch";
 import AsideScrollbar from "./AsideScrollbar";
 import TextReveal from "@/components/common/text_reveal/TextReveal";
 
 function HomePage() {
-  // Mobile redirection logic with replace state
-  useEffect(() => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobile) {
-      window.location.replace("https://tedkoller.com/mobile/");
-    }
-  }, []);
-
+  const [isMobile, setIsMobile] = useState(false);
   const [scroll, setScroll] = useState(0);
+
+   useEffect(() => {
+     const checkIfMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      setIsMobile(checkIfMobile);
+
+      if (checkIfMobile) {
+        import('../../styles/main.mobile.css');
+      } else {
+        import('../../styles/main.css');
+      }
+    }, []);
+
 
   const pageHandling = () => {
     setScroll((v) => (v === 5 ? 0 : v + 1));
@@ -29,7 +34,6 @@ function HomePage() {
 
   return (
     <div className="bg-slate-950">
-      {/* About Button */}
       <span
         onClick={() => setScroll(1)}
         className={`text-lg [writing-mode:vertical-lr] rotate-180 absolute top-1/2 left-[2.3vw] -translate-y-1/2 font-medium z-10 duration-150 cursor-pointer ${
@@ -52,7 +56,7 @@ function HomePage() {
           <WatchHere />
         </div>
         <Watch sections={[NacreousCoffee]} />
-        <TouchMe />
+        <TickleMe />
       </ReactPageScroller>
 
       <div
@@ -68,3 +72,4 @@ function HomePage() {
 }
 
 export default HomePage;
+

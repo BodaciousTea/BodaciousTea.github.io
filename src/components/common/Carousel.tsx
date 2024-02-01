@@ -1,49 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card3D from "@/components/common/card_3d/Card3D";
 
+// Device detection
+const checkIfMobile = () => /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+// CarouselItem component for both desktop and mobile
 interface CarouselItemProps {
-  title: string;
+  title?: string; // Optional for mobile
   imageUrl: string;
   onButtonClick: () => void;
-  titleStyle: React.CSSProperties;
+  titleStyle?: React.CSSProperties; // Optional for mobile
   isActive: boolean;
 }
 
-const CarouselItem: React.FC<CarouselItemProps> = ({ title, imageUrl, onButtonClick, titleStyle, isActive }) => (
-  <Card3D>
-    <div className='carousel-item'>
-      <img className="carousel-image" src={imageUrl} alt={title} />
-      {isActive && (
-        <>
-          <h2 className="carousel-title" style={{
-              ...titleStyle,
-              position: 'absolute',
-              top: '-10%',
-              left: '5%',
-              fontSize: '7vw',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              color: 'transparent',
-              zIndex: 5
-            }}>
-            {title}
-          </h2>
-          <button onClick={onButtonClick} className="button-style view-all-button" style={{
-              fontSize: '1.8vw',
-              padding: '.3vw 1.3vw',
-              position: 'absolute',
-              bottom: '8%',
-              left: '80%',
-            }}>
-            VIEW ALL
-          </button>
-        </>
-      )}
-    </div>
-  </Card3D>
-);
+const CarouselItem: React.FC<CarouselItemProps> = ({ title, imageUrl, onButtonClick, titleStyle, isActive }) => {
+  const isMobile = checkIfMobile();
 
+  return (
+    <Card3D>
+      <div className='carousel-item'>
+        <img className="carousel-image" src={imageUrl} alt={title || "Carousel Image"} />
+        {isActive && (
+          <>
+            {isMobile ? (
+              <button
+                onClick={onButtonClick}
+                className="button-style resume-button uppercase text-sm leading-none font-normal lg:text-xs lg:px-2 lg:py-1"
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  bottom: '-18%'
+                }}
+              >
+                VIEW ALL
+              </button>
+            ) : (
+              <>
+                <h2 className="carousel-title" style={{
+                    ...titleStyle,
+                    position: 'absolute',
+                    top: '-10%',
+                    left: '5%',
+                    fontSize: '7vw',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    color: 'transparent',
+                    zIndex: 5
+                  }}>
+                  {title}
+                </h2>
+                <button onClick={onButtonClick} className="button-style view-all-button" style={{
+                    fontSize: '1.8vw',
+                    padding: '.3vw 1.3vw',
+                    position: 'absolute',
+                    bottom: '8%',
+                    left: '80%',
+                  }}>
+                  VIEW ALL
+                </button>
+              </>
+            )}
+          </>
+        )}
+      </div>
+    </Card3D>
+  );
+};
+
+// Arrow components
 const LeftArrow = () => (
   <div className='nav left'>
     <img src='/images/Arrow 1.svg' alt='Left' style={{ transform: 'rotate(180deg)' }} />
@@ -56,6 +82,7 @@ const RightArrow = () => (
   </div>
 );
 
+// Main Carousel component
 interface CarouselProps {
   items: CarouselItemProps[];
 }
@@ -63,11 +90,12 @@ interface CarouselProps {
 const Carousel: React.FC<CarouselProps> = ({ items }) => {
   const [active, setActive] = useState(0);
   const count = items.length;
+  const isMobile = checkIfMobile();
 
   return (
-    <div className='carousel-wrapper'>
+    <div className='carousel-wrapper' style={isMobile ? { display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' } : {}}>
       <div className='carousel'>
-        <button className={`nav-button left ${active <= 0 ? 'opacity-40' : ''}`} 
+        <button className={`nav-button left ${active <= 0 ? 'opacity-40' : ''}`}
                 onClick={() => active > 0 && setActive(active - 1)}
                 style={{ opacity: active <= 0 ? 0.4 : 1 }}>
           <LeftArrow />
@@ -88,7 +116,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
             <CarouselItem {...item} isActive={i === active} />
           </div>
         ))}
-        <button className={`nav-button right ${active >= count - 1 ? 'opacity-40' : ''}`} 
+        <button className={`nav-button right ${active >= count - 1 ? 'opacity-40' : ''}`}
                 onClick={() => active < count - 1 && setActive(active + 1)}
                 style={{ opacity: active >= count - 1 ? 0.4 : 1 }}>
           <RightArrow />
@@ -99,3 +127,4 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
 };
 
 export default Carousel;
+

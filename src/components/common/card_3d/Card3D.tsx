@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from "react";
+import React, { useRef, useState, useEffect } from "react";
 import sx from "./card_3d.module.css";
 
 interface Card3DProps {
@@ -6,21 +6,21 @@ interface Card3DProps {
   style?: React.CSSProperties;
 }
 
-const THRESHOLD = 15;
-
-const Card3D: React.FC<Card3DProps> = ({children, style}) => {
+const Card3D: React.FC<Card3DProps> = ({ children, style }) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
-  const [motionPreference, setMotionPreference] = useState(true); // default to reduced motion to prevent SSR issues
+  const [motionPreference, setMotionPreference] = useState(true); // Default to reduced motion
 
   useEffect(() => {
     const motionMatchMedia = window.matchMedia("(prefers-reduced-motion)");
     setMotionPreference(motionMatchMedia.matches);
   }, []);
 
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
   const handleHover = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (cardRef.current) {
-      const {clientX, clientY} = e;
-      const {clientWidth, offsetLeft, offsetTop} = cardRef.current;
+    if (cardRef.current && !isMobile) {
+      const { clientX, clientY } = e;
+      const { clientWidth, offsetLeft, offsetTop } = cardRef.current;
 
       const horizontal = (clientX - offsetLeft) / clientWidth;
       const vertical = (clientY - offsetTop) / clientWidth;
@@ -32,10 +32,12 @@ const Card3D: React.FC<Card3DProps> = ({children, style}) => {
   };
 
   const resetStyles = () => {
-    if (cardRef.current) {
-      cardRef.current.style.transform = `perspective(${cardRef.current.clientWidth}px) rotateX(0deg) rotateY(0deg)`;
+    if (cardRef.current && !isMobile) {
+      cardRef.current.style.transform = `perspective(${cardRef.current.clientWidth}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
     }
   };
+
+  const mobileStyle: React.CSSProperties = isMobile ? { transform: 'translateZ(6px)' } : {};
 
   if (!motionPreference) {
     return (
@@ -46,16 +48,21 @@ const Card3D: React.FC<Card3DProps> = ({children, style}) => {
         ref={cardRef}
         style={style}
       >
-        <div className={sx.content}>{children}</div>
+        <div className={sx.content} style={mobileStyle}>
+          {children}
+        </div>
       </div>
     );
   }
 
   return (
-    <div className={sx.card}>
-      <div className={sx.content}>{children}</div>
+    <div className={sx.card} ref={cardRef} style={style}>
+      <div className={sx.content} style={mobileStyle}>
+        {children}
+      </div>
     </div>
   );
 };
 
 export default Card3D;
+
