@@ -12,7 +12,7 @@ function WatchHere() {
         <h2 className="leading-none uppercase font-light text-[2.7rem] text-white"> {/* Removed inline style for color */}
           <TextReveal>
             <span>
-              2023 First Place<br className={!isMobile ? 'hidden' : ''} /> BPA National Winner {/* Hide <br> on desktop */}
+              2023 First Place<br className={isMobile ? 'hidden' : ''} /> BPA National Winner {/* Hide <br> on desktop */}
             </span>
           </TextReveal>
         </h2>

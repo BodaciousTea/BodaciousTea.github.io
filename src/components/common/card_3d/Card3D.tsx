@@ -16,6 +16,7 @@ const Card3D: React.FC<Card3DProps> = ({ children, style }) => {
   }, []);
 
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const THRESHOLD = isMobile ? 3 : 15; // Reduced threshold for mobile
 
   const handleHover = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (cardRef.current && !isMobile) {
