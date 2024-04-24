@@ -12,21 +12,21 @@ function Banner() {
     {
       title: 'PHOTOGRAPHY',
       desktopImageUrl: '/images/Eva Walker Senior 1.jpg',
-      mobileImageUrl: '/mobile/carouselMobile1.png',
+      mobileImageUrl: '/images/carouselMobile1.png',
       titleStyle: { background: 'linear-gradient(to right, #43e97b 0%, #38f9d7 100%)' },
       onButtonClick: () => window.open('https://www.tedkoller.com/gallery', '_blank')
     },
     {
       title: 'WEB DESIGN',
       desktopImageUrl: '/images/webdesign1.jpg',
-      mobileImageUrl: '/mobile/carouselMobile2.png',
+      mobileImageUrl: '/images/carouselMobile2.png',
       titleStyle: { background: 'linear-gradient(to right, #ff758c 0%, #ff7eb3 100%)' },
       onButtonClick: () => {/* handle click for Web Design */}
     },
     {
       title: 'VIDEO PRODUCTION',
       desktopImageUrl: '/images/videoprod1.jpg',
-      mobileImageUrl: '/mobile/carouselMobile3.png',
+      mobileImageUrl: '/images/carouselMobile3.png',
       titleStyle: { background: 'linear-gradient(to right, #667eea 0%, #764ba2 100%)' },
       onButtonClick: () => {/* handle click for Video Production */}
     }
