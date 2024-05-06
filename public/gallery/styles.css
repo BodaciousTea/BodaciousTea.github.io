@@ -2,14 +2,14 @@
 @font-face {
     font-family: 'FuturaPTBook';
     src: url('FuturaPTBook.otf') format('opentype');
-  }
-  
-  /* Basic Setup */
-  * {
+}
+
+/* Basic Setup */
+* {
     box-sizing: border-box;
-  }
-  
-  html, body {
+}
+
+html, body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -18,29 +18,27 @@
     font-size: 16px;
     scroll-behavior: smooth;
     user-select: none;
-  }
-  
-  /* Gallery Container Configuration */
-  .gallery-container {
+}
+
+/* Gallery Container Configuration */
+.gallery-container {
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: center;
-  }
-  
-  /* Main Image and Sidebar Styles */
-  .main-images, .sidebar {
+}
+
+/* Main Image and Sidebar Styles */
+.main-images, .sidebar {
     overflow-y: auto;
     height: 100%;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  .main-images::-webkit-scrollbar, .sidebar::-webkit-scrollbar {
+}
+
+.main-images::-webkit-scrollbar, .sidebar::-webkit-scrollbar {
     display: none;
-  }
-  
-  .main-images {
+}
+
+.main-images {
     flex: 1;
     max-width: 1200px;
     padding: 20px;
@@ -48,67 +46,75 @@
     flex-direction: column;
     align-items: center;
     padding-top: 80px;
-  }
-  
-  .main-images img {
+}
+
+.main-images img {
     width: 100%;
     max-width: 100%;
     opacity: 1;
     transition: opacity 0.2s ease;
     margin-bottom: 15px;
-  }
-  
-  /* Sidebar Configuration */
-  .sidebar {
+}
+
+/* Sidebar Configuration */
+.sidebar {
     width: 150px;
     background-color: transparent;
     padding-top: 65px;
     display: flex;
     flex-direction: column;
-  }
-  
-  .sidebar img {
-    width: 100%;
-    opacity: 0.7;
-    transform: scale(0.8);
-    border: 2px solid transparent;
-    transition: opacity 0.3s ease, transform 0.1s ease, border-color 0.3s ease;
+    align-items: center;
+    gap: 30px;
+    padding-right: 10px;
+    padding-left: 0;
+    padding-top: 10%;
+    padding-bottom: 10px;
+}
+
+.sidebar img {
+    width: 120px; /* Set the base width of the images */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0.5; /* Set base opacity */
+    border: 2px solid transparent; /* Start with a transparent border */
+    transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease; /* Smooth transition effects */
     cursor: pointer;
-  }
-  
-  .sidebar img:hover {
-    opacity: 1;
-    transform: scale(0.9);
-    border-color: #fff;
-  }
-  
-  /* Responsive Adjustments for Sidebar at Smaller Screens */
-  @media (max-width: 768px) {
+    transform-origin: center; /* Ensures scaling happens evenly from the center */
+}
+
+.sidebar img:hover {
+    opacity: 1; /* Full opacity on hover */
+    transform: scale(1.1); /* Slightly increase size */
+    border: 2px solid white; /* White border on hover */
+}
+
+/* Responsive Adjustments for Sidebar at Smaller Screens */
+@media (max-width: 768px) {
     .main-images {
-      padding-right: 0px;
+        padding-right: 0px;
     }
-  
+
     .sidebar {
-      padding-left: 0px;
+        gap: 2px;
+        padding: 10px 2px;
+        width: 100px;
     }
-  
+
     .sidebar img {
-      transform: scale(0.6);
-      padding-bottom: 10px;
+        width: 80px;
+        transform: scale(0.8);
     }
-  
+
     .sidebar img:hover {
-      transform: scale(0.65);
+        transform: scale(0.9);
     }
-  
-    /* Increase specificity for navbar link styles within media query */
+
     .nav .navlinks li a {
-      font-size: 1.0rem !important; /* Adding !important to ensure override */
+        font-size: 0.9rem !important;
     }
-  }
-  
-  /* Navigation Bar Styling */
-  .nav {
+}
+
+/* Navigation Bar Styling */
+.nav {
     width: 100%;
     height: 65px;
     position: fixed;
@@ -121,35 +127,35 @@
     z-index: 1000;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-  }
-  
-  .nav .navlinks {
+}
+
+.nav .navlinks {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
     align-items: center;
-  }
-  
-  .nav .navlinks li {
-    margin-right: 1rem;
-  }
-  
-  .nav .navlinks li a {
+}
+
+.nav .navlinks li {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.nav .navlinks li a {
     text-decoration: none;
     color: #fff;
     font-size: 1.7rem;
     padding: 4px 12px;
     border: 1px solid #fff;
     transition: padding 0.3s ease;
-  }
-  
-  .nav .navlinks li a:hover {
+}
+
+.nav .navlinks li a:hover {
     padding: 8px 16px;
-  }
-  
-  .nav .navlinks li a.active {
+}
+
+.nav .navlinks li a.active {
     background-color: #ffffff;
     color: #000000;
-  }
-  
+}
