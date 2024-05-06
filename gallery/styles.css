@@ -34,13 +34,20 @@ html, body {
     height: 100%;
 }
 
+/* Hides the scrollbars */
+.main-images, .sidebar {
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer + Edge */
+}
+
 .main-images::-webkit-scrollbar, .sidebar::-webkit-scrollbar {
     display: none;
 }
 
 .main-images {
     flex: 1;
-    max-width: 1200px;
+    max-width: 900px; /* This can remain as is to limit the container width */
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -49,8 +56,8 @@ html, body {
 }
 
 .main-images img {
-    width: 100%;
-    max-width: 100%;
+    width: 100%; /* Each image takes the full width of the container */
+    height: auto; /* Height adjusts automatically to maintain aspect ratio */
     opacity: 1;
     transition: opacity 0.2s ease;
     margin-bottom: 15px;
@@ -67,7 +74,7 @@ html, body {
     gap: 30px;
     padding-right: 10px;
     padding-left: 0;
-    padding-top: 10%;
+    padding-top: 80px;
     padding-bottom: 10px;
 }
 
@@ -97,6 +104,7 @@ html, body {
         gap: 2px;
         padding: 10px 2px;
         width: 100px;
+        padding-top: 70px;
     }
 
     .sidebar img {
