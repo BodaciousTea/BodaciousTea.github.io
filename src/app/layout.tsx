@@ -3,7 +3,7 @@ import "animate.css";
 import type {Metadata} from "next";
 
 export const metadata: Metadata = {
-  title: "Ted Koller's Portfolio",
+  title: "Home | Ted Koller",
   description: "Ted Koller's professional portfolio | Includes projects in photography, web development, videography, design, compositing, and more...",
 };
 
