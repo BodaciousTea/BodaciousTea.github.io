@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function showAllImages() {
         galleryItems.forEach(item => {
             item.style.display = 'block';
-            item.style.opacity = '1';
+            item.style.opacity = ''; // Reset opacity to CSS default
         });
         sidebarImages.forEach(img => {
             img.style.display = 'block';
-            img.style.opacity = '1';
+            img.style.opacity = ''; // Reset opacity to CSS default
         });
     }
 
@@ -56,10 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function fadeInImages() {
         setTimeout(() => {
             galleryItems.forEach(item => {
-                item.style.opacity = '1';
+                item.style.opacity = ''; // Reset opacity to CSS default
             });
             sidebarImages.forEach(img => {
-                img.style.opacity = '1';
+                img.style.opacity = ''; // Reset opacity to CSS default
             });
         }, 100); // Reduced fade-in delay for smoother transition
     }
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.style.display = 'none';
             }
             sidebarImages[index].style.display = item.style.display;
-            sidebarImages[index].style.opacity = item.style.opacity;
+            sidebarImages[index].style.opacity = item.style.display === 'block' ? '' : '0'; // Reset or set opacity based on display
         });
     }
 
