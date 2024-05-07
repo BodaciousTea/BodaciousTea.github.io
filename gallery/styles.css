@@ -167,3 +167,25 @@ html, body {
     background-color: #ffffff;
     color: #000000;
 }
+
+.back-button {
+    position: fixed;
+    left: 30px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(43, 43, 43, 0.329);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.back-button img {
+    width: 20px;
+    height: 20px;
+    transform: rotate(90deg) translateY(2px); 
+}
