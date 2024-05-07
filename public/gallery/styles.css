@@ -182,10 +182,15 @@ html, body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: transform 0.3s ease; 
 }
 
 .back-button img {
     width: 20px;
     height: 20px;
     transform: rotate(90deg) translateY(2px); 
+}
+
+.back-button:hover {
+    transform: scale(1.1); 
 }
