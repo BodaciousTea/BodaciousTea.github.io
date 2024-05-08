@@ -1,4 +1,4 @@
-[![tedkoller.com banner image](/public/images/open-graph-image.jpg)](https://tedkoller.com/)
+[![tedkoller.com banner image](/public/images/cloudsBannerText.png)](https://tedkoller.com/)
 
 # My Personal Web Portfolio
 
