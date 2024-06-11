@@ -39,19 +39,28 @@ function About() {
             style={isMobile ? { fontSize: '22px', lineHeight: '1.2', paddingLeft: '20px', paddingRight: '20px' } : {}}
             className="text-custom font-medium mb-10 mx-auto max-w-[60ch] md:max-w-[40ch] lg:max-w-[50ch]"
           >
-            I am passionate about what I do as I <br />
-            pursue skills in technology, photography, <br />
-            videography, drone operation, web-<br />
-            design, and more.
+            I am a versatile creative with experience in digital photography, medium format film photography, software engineering, UI/UX, drone operation, web design, and video production.
           </p>
-          <a
-            href="/resume2023.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="resume-button uppercase text-sm leading-none font-normal button-style lg:text-xs lg:px-2 lg:py-1"
-          >
-            RÉSUMÉ
-          </a>
+          <div className="flex justify-center space-x-4">
+            <div>
+              <a
+                href="/resume2023.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="resume-button uppercase text-sm leading-none font-normal"
+              >
+                RÉSUMÉ
+              </a>
+            </div>
+            <div>
+              <a
+                href="/index.html"
+                className="resume-button uppercase text-sm leading-none font-normal"
+              >
+                GALLERY
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </div>
