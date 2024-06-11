@@ -54,7 +54,7 @@ function About() {
             </div>
             <div>
               <a
-                href="/index.html"
+                href="./gallery/index.html"
                 className="resume-button uppercase text-sm leading-none font-normal"
               >
                 GALLERY

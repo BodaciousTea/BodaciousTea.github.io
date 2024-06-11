@@ -11,7 +11,7 @@ function TouchMe() {
             GET IN TOUCH
           </h2>
           <a className="text-sm font-helvetica inline-block" href="mailto:me@tedkoller.com">
-            me@tedkoller.com
+            ted@tedkoller.com
           </a>
         </div>
         <div className="relative w-full max-w-[70vw] h-[39] aspect-[9/5] mx-auto bg-1000 flex justify-center items-end">
