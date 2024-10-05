@@ -1,155 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Ted Koller's professional portfolio gallery | Showcasing a variety of images capturing people, nature, products, design, and more...">
-        <meta name="keywords" content="photography, gallery, image gallery, people photography, nature photography, product photography, design photography, portraits, video">
-        <meta name="author" content="Ted Koller">
-        <title>Image Gallery | Ted Koller</title>
-        <link rel="icon" href="../images/icon.png" type="image/png">
-        <link rel="stylesheet" href="styles.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="scripts.js" defer></script>
-      
-        <!-- Open Graph / Facebook -->
-        <meta property="og:title" content="Image Gallery | Ted Koller">
-        <meta property="og:description" content="Ted Koller's professional portfolio gallery | Showcasing a variety of images capturing people, nature, products, design, and more...">
-        <meta property="og:image" content="images/open-graph-image-gallery.jpg">
-        <meta property="og:url" content="https://tedkoller.com/gallery/">
-        <meta property="og:type" content="website">
-      
-      </head>
-<body>
-  <nav class="nav">
-    <ul class="navlinks">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ted Koller's professional portfolio gallery | Showcasing a variety of images capturing people, nature, products, design, and more..."
+    />
+    <meta
+      name="keywords"
+      content="photography, gallery, image gallery, people photography, nature photography, product photography, design photography, portraits, video"
+    />
+    <meta name="author" content="Ted Koller" />
+    <title>Image Gallery | Ted Koller</title>
+    <link rel="icon" href="../images/icon.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="scripts.js" defer></script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Image Gallery | Ted Koller" />
+    <meta
+      property="og:description"
+      content="Ted Koller's professional portfolio gallery | Showcasing a variety of images capturing people, nature, products, design, and more..."
+    />
+    <meta property="og:image" content="images/open-graph-image-gallery.jpg" />
+    <meta property="og:url" content="https://tedkoller.com/gallery/" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <nav class="nav">
+      <ul class="navlinks">
         <li><a href="#" data-filter="people">PEOPLE</a></li>
         <li><a href="#" data-filter="nature">NATURE</a></li>
         <li><a href="#" data-filter="products">PRODUCTS</a></li>
         <li><a href="#" data-filter="design">DESIGN</a></li>
-    </ul>
-  </nav>
+      </ul>
+    </nav>
     <a href="https://tedkoller.com/" class="back-button">
-    <img src="../images/Arrow 1.svg" alt="Back">
+      <img src="../images/Arrow 1.svg" alt="Back" />
     </a>
 
-  <div class="gallery-container">
-    <div class="main-images" id="main-images">
-<div class="gallery-item people" id="item1"><img src="images/tedkoller-photo-assets(1).jpg"></div>
-<div class="gallery-item nature" id="item2"><img src="images/tedkoller-photo-assets(2).jpg"></div>
-<div class="gallery-item people" id="item3"><img src="images/tedkoller-photo-assets(3).jpg"></div>
-<div class="gallery-item nature" id="item4"><img src="images/tedkoller-photo-assets(4).jpg"></div>
-<div class="gallery-item products" id="item5"><img src="images/tedkoller-photo-assets(5).jpg"></div>
-<div class="gallery-item products" id="item6"><img src="images/tedkoller-photo-assets(6).jpg"></div>
-<div class="gallery-item people" id="item7"><img src="images/tedkoller-photo-assets(7).jpg"></div>
-<div class="gallery-item design" id="item16"><img src="images/tedkoller-photo-assets(16).jpg"></div>
-<div class="gallery-item nature" id="item23"><img src="images/tedkoller-photo-assets(23).jpg"></div>
-<div class="gallery-item products" id="item12"><img src="images/tedkoller-photo-assets(12).jpg"></div>
-<div class="gallery-item people" id="item9"><img src="images/tedkoller-photo-assets(9).jpg"></div>
-<div class="gallery-item design" id="item17"><img src="images/tedkoller-photo-assets(17).jpg"></div>
-<div class="gallery-item nature" id="item35"><img src="images/tedkoller-photo-assets(35).jpg"></div>
-<div class="gallery-item people" id="item13"><img src="images/tedkoller-photo-assets(13).jpg"></div>
-<div class="gallery-item design" id="item18"><img src="images/tedkoller-photo-assets(18).jpg"></div>
-<div class="gallery-item people" id="item26"><img src="images/tedkoller-photo-assets(26).jpg"></div>
-<div class="gallery-item products" id="item15"><img src="images/tedkoller-photo-assets(15).jpg"></div>
-<div class="gallery-item design" id="item21"><img src="images/tedkoller-photo-assets(21).jpg"></div>
-<div class="gallery-item people" id="item10"><img src="images/tedkoller-photo-assets(10).jpg"></div>
-<div class="gallery-item nature" id="item36"><img src="images/tedkoller-photo-assets(36).jpg"></div>
-<div class="gallery-item design" id="item20"><img src="images/tedkoller-photo-assets(20).jpg"></div>
-<div class="gallery-item people" id="item11"><img src="images/tedkoller-photo-assets(11).jpg"></div>
-<div class="gallery-item design" id="item19"><img src="images/tedkoller-photo-assets(19).jpg"></div>
-<div class="gallery-item people" id="item22"><img src="images/tedkoller-photo-assets(22).jpg"></div>
-<div class="gallery-item nature" id="item47"><img src="images/tedkoller-photo-assets(47).jpg"></div>
-<div class="gallery-item people" id="item30"><img src="images/tedkoller-photo-assets(30).jpg"></div>
-<div class="gallery-item people" id="item31"><img src="images/tedkoller-photo-assets(31).jpg"></div>
-<div class="gallery-item design" id="item25"><img src="images/tedkoller-photo-assets(25).jpg"></div>
-<div class="gallery-item people" id="item33"><img src="images/tedkoller-photo-assets(33).jpg"></div>
-<div class="gallery-item design" id="item29"><img src="images/tedkoller-photo-assets(29).jpg"></div>
-<div class="gallery-item nature" id="item40"><img src="images/tedkoller-photo-assets(40).jpg"></div>
-<div class="gallery-item people" id="item46"><img src="images/tedkoller-photo-assets(46).jpg"></div>
-<div class="gallery-item nature" id="item66"><img src="images/tedkoller-photo-assets(66).jpg"></div>
-<div class="gallery-item people" id="item60"><img src="images/tedkoller-photo-assets(60).jpg"></div>
-<div class="gallery-item nature" id="item67"><img src="images/tedkoller-photo-assets(67).jpg"></div>
-<div class="gallery-item design" id="item38"><img src="images/tedkoller-photo-assets(38).jpg"></div>
-<div class="gallery-item nature" id="item41"><img src="images/tedkoller-photo-assets(41).jpg"></div>
-<div class="gallery-item people" id="item43"><img src="images/tedkoller-photo-assets(43).jpg"></div>
-<div class="gallery-item nature" id="item49"><img src="images/tedkoller-photo-assets(49).jpg"></div>
-<div class="gallery-item nature" id="item45"><img src="images/tedkoller-photo-assets(45).jpg"></div>
-<div class="gallery-item people" id="item51"><img src="images/tedkoller-photo-assets(51).jpg"></div>
-<div class="gallery-item people" id="item52"><img src="images/tedkoller-photo-assets(52).jpg"></div>
-<div class="gallery-item nature" id="item50"><img src="images/tedkoller-photo-assets(50).jpg"></div>
-<div class="gallery-item people" id="item54"><img src="images/tedkoller-photo-assets(54).jpg"></div>
-<div class="gallery-item nature" id="item37"><img src="images/tedkoller-photo-assets(37).jpg"></div>
-<div class="gallery-item people" id="item55"><img src="images/tedkoller-photo-assets(55).jpg"></div>
-<div class="gallery-item people" id="item57"><img src="images/tedkoller-photo-assets(57).jpg"></div>
-<div class="gallery-item nature" id="item68"><img src="images/tedkoller-photo-assets(68).jpg"></div>
-<div class="gallery-item people" id="item58"><img src="images/tedkoller-photo-assets(58).jpg"></div>
-<div class="gallery-item people" id="item62"><img src="images/tedkoller-photo-assets(62).jpg"></div>
-<div class="gallery-item nature" id="item69"><img src="images/tedkoller-photo-assets(69).jpg"></div>
-<div class="gallery-item people" id="item61"><img src="images/tedkoller-photo-assets(61).jpg"></div>
-<div class="gallery-item people" id="item63"><img src="images/tedkoller-photo-assets(63).jpg"></div>
-<div class="gallery-item people" id="item65"><img src="images/tedkoller-photo-assets(65).jpg"></div>
-<div class="gallery-item nature" id="item70"><img src="images/tedkoller-photo-assets(70).jpg"></div>
-
-    </div>  
-    <div class="sidebar" id="sidebar">
-      <!-- Sidebar thumbnails -->
-      <img src="images/tedkoller-photo-assets(1).jpg" data-target="item1">
-      <img src="images/tedkoller-photo-assets(2).jpg" data-target="item2">
-      <img src="images/tedkoller-photo-assets(3).jpg" data-target="item3">
-      <img src="images/tedkoller-photo-assets(4).jpg" data-target="item4">
-      <img src="images/tedkoller-photo-assets(5).jpg" data-target="item5">
-      <img src="images/tedkoller-photo-assets(6).jpg" data-target="item6">
-      <img src="images/tedkoller-photo-assets(7).jpg" data-target="item7">
-      <img src="images/tedkoller-photo-assets(16).jpg" data-target="item16">
-      <img src="images/tedkoller-photo-assets(23).jpg" data-target="item23">
-      <img src="images/tedkoller-photo-assets(12).jpg" data-target="item12">
-      <img src="images/tedkoller-photo-assets(9).jpg" data-target="item9">
-      <img src="images/tedkoller-photo-assets(17).jpg" data-target="item17">
-      <img src="images/tedkoller-photo-assets(35).jpg" data-target="item35">
-      <img src="images/tedkoller-photo-assets(13).jpg" data-target="item13">
-      <img src="images/tedkoller-photo-assets(18).jpg" data-target="item18">
-      <img src="images/tedkoller-photo-assets(26).jpg" data-target="item26">
-      <img src="images/tedkoller-photo-assets(15).jpg" data-target="item15">
-      <img src="images/tedkoller-photo-assets(21).jpg" data-target="item21">
-      <img src="images/tedkoller-photo-assets(10).jpg" data-target="item10">
-      <img src="images/tedkoller-photo-assets(36).jpg" data-target="item36">
-      <img src="images/tedkoller-photo-assets(20).jpg" data-target="item20">
-      <img src="images/tedkoller-photo-assets(11).jpg" data-target="item11">
-      <img src="images/tedkoller-photo-assets(19).jpg" data-target="item19">
-      <img src="images/tedkoller-photo-assets(22).jpg" data-target="item22">
-      <img src="images/tedkoller-photo-assets(47).jpg" data-target="item47">
-      <img src="images/tedkoller-photo-assets(30).jpg" data-target="item30">
-      <img src="images/tedkoller-photo-assets(31).jpg" data-target="item31">
-      <img src="images/tedkoller-photo-assets(25).jpg" data-target="item25">
-      <img src="images/tedkoller-photo-assets(33).jpg" data-target="item33">
-      <img src="images/tedkoller-photo-assets(29).jpg" data-target="item29">
-      <img src="images/tedkoller-photo-assets(40).jpg" data-target="item40">
-      <img src="images/tedkoller-photo-assets(46).jpg" data-target="item46">
-      <img src="images/tedkoller-photo-assets(66).jpg" data-target="item66">
-      <img src="images/tedkoller-photo-assets(60).jpg" data-target="item60">
-      <img src="images/tedkoller-photo-assets(67).jpg" data-target="item67">
-      <img src="images/tedkoller-photo-assets(38).jpg" data-target="item38">
-      <img src="images/tedkoller-photo-assets(41).jpg" data-target="item41">
-      <img src="images/tedkoller-photo-assets(43).jpg" data-target="item43">
-      <img src="images/tedkoller-photo-assets(49).jpg" data-target="item49">
-      <img src="images/tedkoller-photo-assets(45).jpg" data-target="item45">
-      <img src="images/tedkoller-photo-assets(51).jpg" data-target="item51">
-      <img src="images/tedkoller-photo-assets(52).jpg" data-target="item52">
-      <img src="images/tedkoller-photo-assets(50).jpg" data-target="item50">
-      <img src="images/tedkoller-photo-assets(54).jpg" data-target="item54">
-      <img src="images/tedkoller-photo-assets(37).jpg" data-target="item37">
-      <img src="images/tedkoller-photo-assets(55).jpg" data-target="item55">
-      <img src="images/tedkoller-photo-assets(57).jpg" data-target="item57">
-      <img src="images/tedkoller-photo-assets(68).jpg" data-target="item68">
-      <img src="images/tedkoller-photo-assets(58).jpg" data-target="item58">
-      <img src="images/tedkoller-photo-assets(62).jpg" data-target="item62">
-      <img src="images/tedkoller-photo-assets(69).jpg" data-target="item69">
-      <img src="images/tedkoller-photo-assets(61).jpg" data-target="item61">
-      <img src="images/tedkoller-photo-assets(63).jpg" data-target="item63">
-      <img src="images/tedkoller-photo-assets(65).jpg" data-target="item65">
-      <img src="images/tedkoller-photo-assets(70).jpg" data-target="item70">
+    <div class="gallery-container">
+      <div class="main-images" id="main-images">
+        <div class="gallery-item people" id="item72">
+          <img src="images/future&metroBoomin-8.jpg" />
+        </div>
+        <div class="gallery-item people" id="item1">
+          <img src="images/tedkoller-photo-assets(1).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item2">
+          <img src="images/tedkoller-photo-assets(2).jpg" />
+        </div>
+        <div class="gallery-item people" id="item3">
+          <img src="images/tedkoller-photo-assets(3).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item4">
+          <img src="images/tedkoller-photo-assets(4).jpg" />
+        </div>
+        <div class="gallery-item products" id="item5">
+          <img src="images/tedkoller-photo-assets(5).jpg" />
+        </div>
+        <div class="gallery-item products" id="item6">
+          <img src="images/tedkoller-photo-assets(6).jpg" />
+        </div>
+        <div class="gallery-item people" id="item7">
+          <img src="images/tedkoller-photo-assets(7).jpg" />
+        </div>
+        <div class="gallery-item design" id="item16">
+          <img src="images/tedkoller-photo-assets(16).jpg" />
+        </div>
+        <div class="gallery-item people" id="item73">
+          <img src="images/future&metroBoomin-2.jpg" />
+        </div>
+        <div class="gallery-item nature" id="item23">
+          <img src="images/tedkoller-photo-assets(23).jpg" />
+        </div>
+        <div class="gallery-item products" id="item12">
+          <img src="images/tedkoller-photo-assets(12).jpg" />
+        </div>
+        <div class="gallery-item people" id="item9">
+          <img src="images/tedkoller-photo-assets(9).jpg" />
+        </div>
+        <div class="gallery-item design" id="item17">
+          <img src="images/tedkoller-photo-assets(17).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item35">
+          <img src="images/tedkoller-photo-assets(35).jpg" />
+        </div>
+        <div class="gallery-item people" id="item13">
+          <img src="images/tedkoller-photo-assets(13).jpg" />
+        </div>
+        <div class="gallery-item design" id="item18">
+          <img src="images/tedkoller-photo-assets(18).jpg" />
+        </div>
+        <div class="gallery-item people" id="item26">
+          <img src="images/tedkoller-photo-assets(26).jpg" />
+        </div>
+        <div class="gallery-item products" id="item15">
+          <img src="images/tedkoller-photo-assets(15).jpg" />
+        </div>
+        <div class="gallery-item design" id="item21">
+          <img src="images/tedkoller-photo-assets(21).jpg" />
+        </div>
+        <div class="gallery-item people" id="item10">
+          <img src="images/tedkoller-photo-assets(10).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item36">
+          <img src="images/tedkoller-photo-assets(36).jpg" />
+        </div>
+        <div class="gallery-item design" id="item20">
+          <img src="images/tedkoller-photo-assets(20).jpg" />
+        </div>
+        <div class="gallery-item people" id="item11">
+          <img src="images/tedkoller-photo-assets(11).jpg" />
+        </div>
+        <div class="gallery-item design" id="item19">
+          <img src="images/tedkoller-photo-assets(19).jpg" />
+        </div>
+        <div class="gallery-item people" id="item22">
+          <img src="images/tedkoller-photo-assets(22).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item47">
+          <img src="images/tedkoller-photo-assets(47).jpg" />
+        </div>
+        <div class="gallery-item people" id="item30">
+          <img src="images/tedkoller-photo-assets(30).jpg" />
+        </div>
+        <div class="gallery-item people" id="item71">
+          <img src="images/future&metroBoomin-8.jpg" />
+        </div>
+        <div class="gallery-item people" id="item31">
+          <img src="images/tedkoller-photo-assets(31).jpg" />
+        </div>
+        <div class="gallery-item design" id="item25">
+          <img src="images/tedkoller-photo-assets(25).jpg" />
+        </div>
+        <div class="gallery-item people" id="item33">
+          <img src="images/tedkoller-photo-assets(33).jpg" />
+        </div>
+        <div class="gallery-item design" id="item29">
+          <img src="images/tedkoller-photo-assets(29).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item40">
+          <img src="images/tedkoller-photo-assets(40).jpg" />
+        </div>
+        <div class="gallery-item people" id="item46">
+          <img src="images/tedkoller-photo-assets(46).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item66">
+          <img src="images/tedkoller-photo-assets(66).jpg" />
+        </div>
+        <div class="gallery-item people" id="item60">
+          <img src="images/tedkoller-photo-assets(60).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item67">
+          <img src="images/tedkoller-photo-assets(67).jpg" />
+        </div>
+        <div class="gallery-item design" id="item38">
+          <img src="images/tedkoller-photo-assets(38).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item41">
+          <img src="images/tedkoller-photo-assets(41).jpg" />
+        </div>
+        <div class="gallery-item people" id="item43">
+          <img src="images/tedkoller-photo-assets(43).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item49">
+          <img src="images/tedkoller-photo-assets(49).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item45">
+          <img src="images/tedkoller-photo-assets(45).jpg" />
+        </div>
+        <div class="gallery-item people" id="item51">
+          <img src="images/tedkoller-photo-assets(51).jpg" />
+        </div>
+        <div class="gallery-item people" id="item52">
+          <img src="images/tedkoller-photo-assets(52).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item50">
+          <img src="images/tedkoller-photo-assets(50).jpg" />
+        </div>
+        <div class="gallery-item people" id="item54">
+          <img src="images/tedkoller-photo-assets(54).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item37">
+          <img src="images/tedkoller-photo-assets(37).jpg" />
+        </div>
+        <div class="gallery-item people" id="item55">
+          <img src="images/tedkoller-photo-assets(55).jpg" />
+        </div>
+        <div class="gallery-item people" id="item57">
+          <img src="images/tedkoller-photo-assets(57).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item68">
+          <img src="images/tedkoller-photo-assets(68).jpg" />
+        </div>
+        <div class="gallery-item people" id="item58">
+          <img src="images/tedkoller-photo-assets(58).jpg" />
+        </div>
+        <div class="gallery-item people" id="item62">
+          <img src="images/tedkoller-photo-assets(62).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item69">
+          <img src="images/tedkoller-photo-assets(69).jpg" />
+        </div>
+        <div class="gallery-item people" id="item61">
+          <img src="images/tedkoller-photo-assets(61).jpg" />
+        </div>
+        <div class="gallery-item people" id="item63">
+          <img src="images/tedkoller-photo-assets(63).jpg" />
+        </div>
+        <div class="gallery-item people" id="item65">
+          <img src="images/tedkoller-photo-assets(65).jpg" />
+        </div>
+        <div class="gallery-item nature" id="item70">
+          <img src="images/tedkoller-photo-assets(70).jpg" />
+        </div>
+      </div>
+      <div class="sidebar" id="sidebar">
+        <!-- Sidebar thumbnails -->
+        <img src="images/future&metroBoomin-8.jpg" data-target="item72" />
+        <img src="images/tedkoller-photo-assets(1).jpg" data-target="item1" />
+        <img src="images/tedkoller-photo-assets(2).jpg" data-target="item2" />
+        <img src="images/tedkoller-photo-assets(3).jpg" data-target="item3" />
+        <img src="images/tedkoller-photo-assets(4).jpg" data-target="item4" />
+        <img src="images/tedkoller-photo-assets(5).jpg" data-target="item5" />
+        <img src="images/tedkoller-photo-assets(6).jpg" data-target="item6" />
+        <img src="images/tedkoller-photo-assets(7).jpg" data-target="item7" />
+        <img src="images/tedkoller-photo-assets(16).jpg" data-target="item16" />
+        <img src="images/future&metroBoomin-2.jpg" data-target="item73" />
+        <img src="images/tedkoller-photo-assets(23).jpg" data-target="item23" />
+        <img src="images/tedkoller-photo-assets(12).jpg" data-target="item12" />
+        <img src="images/tedkoller-photo-assets(9).jpg" data-target="item9" />
+        <img src="images/tedkoller-photo-assets(17).jpg" data-target="item17" />
+        <img src="images/tedkoller-photo-assets(35).jpg" data-target="item35" />
+        <img src="images/tedkoller-photo-assets(13).jpg" data-target="item13" />
+        <img src="images/tedkoller-photo-assets(18).jpg" data-target="item18" />
+        <img src="images/tedkoller-photo-assets(26).jpg" data-target="item26" />
+        <img src="images/tedkoller-photo-assets(15).jpg" data-target="item15" />
+        <img src="images/tedkoller-photo-assets(21).jpg" data-target="item21" />
+        <img src="images/tedkoller-photo-assets(10).jpg" data-target="item10" />
+        <img src="images/tedkoller-photo-assets(36).jpg" data-target="item36" />
+        <img src="images/tedkoller-photo-assets(20).jpg" data-target="item20" />
+        <img src="images/tedkoller-photo-assets(11).jpg" data-target="item11" />
+        <img src="images/tedkoller-photo-assets(19).jpg" data-target="item19" />
+        <img src="images/tedkoller-photo-assets(22).jpg" data-target="item22" />
+        <img src="images/tedkoller-photo-assets(47).jpg" data-target="item47" />
+        <img src="images/tedkoller-photo-assets(30).jpg" data-target="item30" />
+        <img src="images/future&metroBoomin-8.jpg" data-target="item71" />
+        <img src="images/tedkoller-photo-assets(31).jpg" data-target="item31" />
+        <img src="images/tedkoller-photo-assets(25).jpg" data-target="item25" />
+        <img src="images/tedkoller-photo-assets(33).jpg" data-target="item33" />
+        <img src="images/tedkoller-photo-assets(29).jpg" data-target="item29" />
+        <img src="images/tedkoller-photo-assets(40).jpg" data-target="item40" />
+        <img src="images/tedkoller-photo-assets(46).jpg" data-target="item46" />
+        <img src="images/tedkoller-photo-assets(66).jpg" data-target="item66" />
+        <img src="images/tedkoller-photo-assets(60).jpg" data-target="item60" />
+        <img src="images/tedkoller-photo-assets(67).jpg" data-target="item67" />
+        <img src="images/tedkoller-photo-assets(38).jpg" data-target="item38" />
+        <img src="images/tedkoller-photo-assets(41).jpg" data-target="item41" />
+        <img src="images/tedkoller-photo-assets(43).jpg" data-target="item43" />
+        <img src="images/tedkoller-photo-assets(49).jpg" data-target="item49" />
+        <img src="images/tedkoller-photo-assets(45).jpg" data-target="item45" />
+        <img src="images/tedkoller-photo-assets(51).jpg" data-target="item51" />
+        <img src="images/tedkoller-photo-assets(52).jpg" data-target="item52" />
+        <img src="images/tedkoller-photo-assets(50).jpg" data-target="item50" />
+        <img src="images/tedkoller-photo-assets(54).jpg" data-target="item54" />
+        <img src="images/tedkoller-photo-assets(37).jpg" data-target="item37" />
+        <img src="images/tedkoller-photo-assets(55).jpg" data-target="item55" />
+        <img src="images/tedkoller-photo-assets(57).jpg" data-target="item57" />
+        <img src="images/tedkoller-photo-assets(68).jpg" data-target="item68" />
+        <img src="images/tedkoller-photo-assets(58).jpg" data-target="item58" />
+        <img src="images/tedkoller-photo-assets(62).jpg" data-target="item62" />
+        <img src="images/tedkoller-photo-assets(69).jpg" data-target="item69" />
+        <img src="images/tedkoller-photo-assets(61).jpg" data-target="item61" />
+        <img src="images/tedkoller-photo-assets(63).jpg" data-target="item63" />
+        <img src="images/tedkoller-photo-assets(65).jpg" data-target="item65" />
+        <img src="images/tedkoller-photo-assets(70).jpg" data-target="item70" />
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
