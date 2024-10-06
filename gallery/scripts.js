@@ -84,3 +84,103 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+
+/* Video Carousel */
+document.addEventListener('DOMContentLoaded', function () {
+    const radios = document.querySelectorAll('input[name="slider"]');
+    const cards = document.querySelectorAll('.cards label');
+    const videos = document.querySelectorAll('.carousel-video');
+    const videoPlayer = document.querySelector('.video-player');
+    const videoPlayerInfo = document.querySelector('.video-info'); // Video info block
+    const videoPlayerTitle = document.querySelector('.video-info .title');
+    const videoPlayerLink = document.querySelector('.youtube-link');
+    const videoPlayerDuration = document.querySelector('.duration');
+
+    let currentIndex = 0;
+
+    // Function to update the video player with the current video info
+    function updateVideoPlayer() {
+        const currentVideoCard = cards[currentIndex];
+        const videoTitle = currentVideoCard.getAttribute('data-title');
+        const videoLink = currentVideoCard.getAttribute('data-link');
+        const videoDuration = currentVideoCard.getAttribute('data-duration');
+
+        // Fade out the video-info text with slide-down effect
+        videoPlayerInfo.classList.remove('visible');
+        videoPlayerInfo.classList.add('hidden');
+
+        // Wait for the fade-out animation to complete, then update the content
+        setTimeout(() => {
+            // Update the video player details
+            videoPlayerTitle.innerText = videoTitle;
+            videoPlayerLink.setAttribute('onclick', `window.open('${videoLink}', '_blank')`);
+            videoPlayerDuration.innerText = videoDuration;
+
+            // Fade back in with slide-up effect
+            videoPlayerInfo.classList.remove('hidden');
+            videoPlayerInfo.classList.add('visible');
+        }, 500); // Delay matches the transition duration (0.5s)
+    }
+
+    // Function to update the carousel view
+    function updateCarousel() {
+        // Hide all cards initially and pause all videos
+        cards.forEach((card, index) => {
+            card.classList.remove('active-card', 'left-card', 'right-card');
+            card.style.display = 'none'; // Hide all cards
+            videos[index].pause(); // Pause all videos
+            videos[index].currentTime = 0; // Reset video to the beginning
+        });
+
+        // Calculate the previous and next card indices
+        let prevIndex = (currentIndex - 1 + cards.length) % cards.length;
+        let nextIndex = (currentIndex + 1) % cards.length;
+
+        // Show the previous, current, and next cards
+        cards[prevIndex].style.display = 'flex';
+        cards[prevIndex].classList.add('left-card');
+
+        cards[currentIndex].style.display = 'flex';
+        cards[currentIndex].classList.add('active-card');
+        videos[currentIndex].play(); // Play the center video
+
+        cards[nextIndex].style.display = 'flex';
+        cards[nextIndex].classList.add('right-card');
+
+        // Update the video player with the current video details
+        updateVideoPlayer();
+    }
+
+    // Move the carousel to the next or previous video
+    function moveCarousel(direction) {
+        if (direction === 'next') {
+            currentIndex = (currentIndex + 1) % cards.length;
+        } else if (direction === 'prev') {
+            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        }
+        updateCarousel();
+    }
+
+    // Add click event listeners to the left and right cards
+    cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            if (card.classList.contains('left-card')) {
+                moveCarousel('prev');
+            } else if (card.classList.contains('right-card')) {
+                moveCarousel('next');
+            }
+        });
+    });
+
+    // Add event listeners to the radio buttons
+    radios.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+            currentIndex = index;
+            updateCarousel();
+        });
+    });
+
+    // Initial setup
+    updateCarousel();
+});
