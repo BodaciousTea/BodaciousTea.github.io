@@ -1,196 +1,438 @@
 /* Font Face Definition */
 @font-face {
-    font-family: 'FuturaPTBook';
-    src: url('FuturaPTBook.otf') format('opentype');
+  font-family: "FuturaPTBook";
+  src: url("FuturaPTBook.otf") format("opentype");
 }
 
 /* Basic Setup */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: #000000;
-    font-family: 'FuturaPTBook', sans-serif;
-    font-size: 16px;
-    scroll-behavior: smooth;
-    user-select: none;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #000000;
+  font-family: "FuturaPTBook", sans-serif;
+  font-size: 16px;
+  scroll-behavior: smooth;
+  user-select: none;
 }
 
 /* Gallery Container Configuration */
 .gallery-container {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Main Image and Sidebar Styles */
-.main-images, .sidebar {
-    overflow-y: auto;
-    height: 100%;
+.main-images,
+.sidebar {
+  overflow-y: auto;
+  height: 100%;
 }
 
 /* Hides the scrollbars */
-.main-images, .sidebar {
-    overflow-y: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer + Edge */
+.main-images,
+.sidebar {
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer + Edge */
 }
 
-.main-images::-webkit-scrollbar, .sidebar::-webkit-scrollbar {
-    display: none;
+.main-images::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .main-images {
-    flex: 1;
-    max-width: 900px; /* This can remain as is to limit the container width */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 80px;
+  flex: 1;
+  max-width: 900px; /* This can remain as is to limit the container width */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
 }
 
 .main-images img {
-    width: 100%; /* Each image takes the full width of the container */
-    height: auto; /* Height adjusts automatically to maintain aspect ratio */
-    opacity: 1;
-    transition: opacity 0.2s ease;
-    margin-bottom: 15px;
+  width: 100%; /* Each image takes the full width of the container */
+  height: auto; /* Height adjusts automatically to maintain aspect ratio */
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  margin-bottom: 15px;
 }
 
 /* Sidebar Configuration */
 .sidebar {
-    width: 150px;
-    background-color: transparent;
-    padding-top: 65px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    padding-right: 10px;
-    padding-left: 0;
-    padding-top: 80px;
-    padding-bottom: 10px;
+  width: 150px;
+  background-color: transparent;
+  padding-top: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-right: 10px;
+  padding-left: 0;
+  padding-top: 80px;
+  padding-bottom: 10px;
 }
 
 .sidebar img {
-    width: 120px; /* Set the base width of the images */
-    height: auto; /* Maintain aspect ratio */
-    opacity: 0.5; /* Set base opacity */
-    border: 2px solid transparent; /* Start with a transparent border */
-    transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease; /* Smooth transition effects */
-    cursor: pointer;
-    transform-origin: center; /* Ensures scaling happens evenly from the center */
+  width: 120px; /* Set the base width of the images */
+  height: auto; /* Maintain aspect ratio */
+  opacity: 0.5; /* Set base opacity */
+  border: 2px solid transparent; /* Start with a transparent border */
+  transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease; /* Smooth transition effects */
+  cursor: pointer;
+  transform-origin: center; /* Ensures scaling happens evenly from the center */
 }
 
 .sidebar img:hover {
-    opacity: 1; /* Full opacity on hover */
-    transform: scale(1.1); /* Slightly increase size */
-    border: 2px solid white; /* White border on hover */
+  opacity: 1; /* Full opacity on hover */
+  transform: scale(1.1); /* Slightly increase size */
+  border: 2px solid white; /* White border on hover */
 }
 
 /* Responsive Adjustments for Sidebar at Smaller Screens */
 @media (max-width: 768px) {
-    .main-images {
-        padding-right: 0px;
-    }
+  .main-images {
+    padding-right: 0px;
+  }
 
-    .sidebar {
-        gap: 2px;
-        padding: 10px 2px;
-        width: 100px;
-        padding-top: 70px;
-    }
+  .sidebar {
+    gap: 2px;
+    padding: 10px 2px;
+    width: 100px;
+    padding-top: 70px;
+  }
 
-    .sidebar img {
-        width: 80px;
-        transform: scale(0.8);
-    }
+  .sidebar img {
+    width: 80px;
+    transform: scale(0.8);
+  }
 
-    .sidebar img:hover {
-        transform: scale(0.9);
-    }
+  .sidebar img:hover {
+    transform: scale(0.9);
+  }
 
-    .nav .navlinks li a {
-        font-size: 0.9rem !important;
-    }
+  .nav .navlinks li a {
+    font-size: 0.9rem !important;
+  }
 }
 
 /* Navigation Bar Styling */
 .nav {
-    width: 100%;
-    height: 65px;
-    position: fixed;
-    top: 0;
-    background-color: rgba(43, 43, 43, 0.329);
-    line-height: 65px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
+  width: 100%;
+  height: 65px;
+  position: fixed;
+  top: 0;
+  background-color: rgba(43, 43, 43, 0.329);
+  line-height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 
 .nav .navlinks {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
 }
 
 .nav .navlinks li {
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .nav .navlinks li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.7rem;
-    padding: 4px 12px;
-    border: 1px solid #fff;
-    transition: padding 0.3s ease;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.7rem;
+  padding: 4px 12px;
+  border: 1px solid #fff;
+  transition: padding 0.3s ease;
 }
 
 .nav .navlinks li a:hover {
-    padding: 8px 16px;
+  padding: 8px 16px;
 }
 
 .nav .navlinks li a.active {
-    background-color: #ffffff;
-    color: #000000;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .back-button {
-    position: fixed;
-    left: 30px;
-    bottom: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: rgba(43, 43, 43, 0.329);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.3s ease; 
+  position: fixed;
+  left: 30px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(43, 43, 43, 0.329);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .back-button img {
-    width: 20px;
-    height: 20px;
-    transform: rotate(90deg) translateY(2px); 
+  width: 20px;
+  height: 20px;
+  transform: rotate(90deg) translateY(2px);
 }
 
 .back-button:hover {
-    transform: scale(1.1); 
+  transform: scale(1.1);
+}
+
+/* Video Gallery Carousel Container */
+/* Video Gallery Carousel Container */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  max-height: 600px;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.active-video {
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.active-card .carousel-video {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.active-card .carousel-video:hover {
+  transform: scale(1.05); /* Slightly increase size */
+  cursor: pointer; /* Ensure pointer cursor on hover */
+}
+
+.active-video:hover {
+  transform: scale(1.05); /* Slightly increase size */
+  cursor: pointer;
+}
+
+/* Cards Layout */
+.cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+/* Ensure video fits within the card */
+.carousel-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.card {
+  display: none; /* Initially hide all cards */
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Radio Buttons (Hidden) */
+input[type="radio"] {
+  display: none;
+}
+
+/* Ensure that at least two cards are always visible on the sides */
+.cards label {
+  display: none; /* Hide all cards by default */
+}
+
+#item-1:checked ~ .cards #video-1,
+#item-2:checked ~ .cards #video-2,
+#item-3:checked ~ .cards #video-3,
+#item-4:checked ~ .cards #video-4,
+#item-5:checked ~ .cards #video-5,
+#item-6:checked ~ .cards #video-6,
+#item-7:checked ~ .cards #video-7 {
+  display: flex; /* Show the selected card */
+}
+
+/* Active card in the center */
+.active-card {
+  display: flex;
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Left side card */
+.left-card {
+  display: flex;
+  transform: translateX(-40%) scale(0.8);
+  opacity: 0.5;
+  z-index: 0;
+  cursor: pointer;
+}
+
+/* Right side card */
+.right-card {
+  display: flex;
+  transform: translateX(40%) scale(0.8);
+  opacity: 0.5;
+  z-index: 0;
+  cursor: pointer;
+}
+
+/* Fix for cycling back to the beginning */
+#item-7:checked ~ .cards #video-1,
+#item-6:checked ~ .cards #video-7,
+#item-5:checked ~ .cards #video-6,
+#item-4:checked ~ .cards #video-5,
+#item-3:checked ~ .cards #video-4,
+#item-2:checked ~ .cards #video-3,
+#item-1:checked ~ .cards #video-2 {
+  display: flex;
+  transform: translateX(40%) scale(0.8);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+#item-7:checked ~ .cards #video-6,
+#item-6:checked ~ .cards #video-5,
+#item-5:checked ~ .cards #video-4,
+#item-4:checked ~ .cards #video-3,
+#item-3:checked ~ .cards #video-2,
+#item-2:checked ~ .cards #video-1,
+#item-1:checked ~ .cards #video-7 {
+  display: flex;
+  transform: translateX(-40%) scale(0.8);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+/* Player Styling */
+.video-player {
+  background-color: rgba(43, 43, 43, 0.329); /* New background color */
+  border-radius: 8px;
+  min-width: 320px;
+  padding: 16px 10px;
+}
+
+/* Updated styling for video information */
+.video-info {
+  width: calc(100% - 32px);
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for both opacity and transform */
+}
+
+.video-info.hidden {
+  opacity: 0;
+  transform: translateY(20px); /* Slide the content down */
+}
+
+.video-info.visible {
+  opacity: 1;
+  transform: translateY(0); /* Reset position */
+}
+
+.video-info .title {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 24px;
+}
+
+/* Sub-line for YouTube link and duration */
+.sub-line {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.youtube-link,
+.duration {
+  font-size: 12px;
+  line-height: 16px;
+  color: #c6c5c6;
+}
+
+.youtube-link {
+  color: #a5a5a5;
+  cursor: pointer;
+}
+
+.youtube-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.duration {
+  color: #ffffff;
+  font-weight: 500;
+  margin-left: auto;
+}
+
+/* Info Area Transition */
+.info-area {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  transition: transform 0.4s ease-in;
+}
+
+#item-2:checked ~ .player #test {
+  transform: translateY(0);
+}
+
+#item-2:checked ~ .player #test {
+  transform: translateY(-40px);
+}
+
+#item-3:checked ~ .player #test {
+  transform: translateY(-80px);
+}
+
+/* Active card with glowing effect */
+.active-card .carousel-video {
+  box-shadow: 0px 0px 100px rgba(255, 255, 255, 0.2); /* Large, soft white glow */
+  transition: transform 0.3s ease-in-out, box-shadow 0.5s ease;
 }
