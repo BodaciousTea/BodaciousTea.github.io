@@ -44,7 +44,7 @@ function About() {
           <div className="flex justify-center space-x-4">
             <div>
               <a
-                href="/resume2024.pdf"
+                href="/2025_Ted_Koller_Resume_Fullstack-Software-Video-Production.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="resume-button uppercase text-sm leading-none font-normal"
