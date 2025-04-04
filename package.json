@@ -2,15 +2,15 @@
   "name": "tedkoller",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+"scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "predeploy": "cross-env NODE_ENV=production npm run build",
+    "predeploy": "cross-env NODE_ENV=production npm run build && npm run export && touch out/.nojekyll",
     "deploy": "gh-pages -d out"
-  },
+},
   "dependencies": {
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
