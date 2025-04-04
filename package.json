@@ -9,7 +9,7 @@
     "lint": "next lint",
     "export": "next export",
     "predeploy": "cross-env NODE_ENV=production npm run build && echo \"\" > out/.nojekyll",
-    "deploy": "gh-pages -d out"
+    "deploy": "gh-pages -d out -t true -a"
   },
   "dependencies": {
     "@types/node": "20.5.7",
