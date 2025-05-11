@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Main URL -->
+    <url>
+        <loc>https://tedkoller.com/</loc>
+        <lastmod>2024-01-25</lastmod>
+        <priority>1.00</priority>
+    </url>
+
+    <!-- Mobile URL -->
+    <url>
+        <loc>https://tedkoller.com/mobile</loc>
+        <lastmod>2024-01-25</lastmod>
+        <priority>0.50</priority> <!-- Lower priority -->
+    </url>
+
+    <!-- Other URLs -->
+    <url>
+        <loc>https://tedkoller.com/gallery</loc>
+        <lastmod>2024-01-25</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://tedkoller.com/resume2023.pdf</loc>
+        <lastmod>2024-01-25</lastmod>
+        <priority>0.80</priority>
+    </url>
+</urlset>

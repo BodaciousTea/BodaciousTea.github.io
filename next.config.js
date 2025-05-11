@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
-  // Output as static export
   output: 'export',
+  images: {
+    unoptimized: true, // THIS FIXES THE IMAGE ERROR
+  },
+  trailingSlash: true, // optional but helps with routing on GitHub Pages
 }
 
-module.exports = nextConfig;
+module.exports = nextConfig

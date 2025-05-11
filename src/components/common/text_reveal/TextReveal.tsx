@@ -1,11 +1,10 @@
-import React, {Fragment} from "react";
+
+import React, { Fragment } from "react";
+import { useInView } from "react-intersection-observer";
 import sx from "./text_reveal.module.css";
-import {useInView} from "react-spring";
 
 interface TextRevealProps {
-  children?:
-    | React.ReactElement<HTMLSpanElement>
-    | React.ReactElement<HTMLSpanElement>[];
+  children?: React.ReactElement<HTMLSpanElement> | React.ReactElement<HTMLSpanElement>[];
   direction?: "down" | "up";
   mode?: "in" | "out";
   leading?: number;
@@ -13,19 +12,19 @@ interface TextRevealProps {
 }
 
 function TextReveal(props: TextRevealProps) {
-  const {children, direction = "up", leading, mode = "in", style} = props;
-  const [ref, inView] = useInView();
+  const { children, direction = "up", leading, mode = "in", style } = props;
+  const { ref, inView } = useInView({ triggerOnce: true });
 
   return (
     <div ref={ref}>
       {React.Children.map(children, (child) => (
         <div
           className={inView ? sx.element : "opacity-0"}
-          style={leading ? {lineHeight: leading, ...style} : {...style}}
+          style={leading ? { lineHeight: leading, ...style } : { ...style }}
         >
           {React.isValidElement(child) &&
             React.cloneElement(child, {
-              className: `${sx.text} ${sx[mode]} ${sx[direction]} ${child.props.className}`,
+              className: `${sx.text} ${sx[mode]} ${sx[direction]} ${child.props.className || ""}`,
             })}
         </div>
       ))}

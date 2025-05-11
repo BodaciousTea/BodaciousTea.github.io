@@ -19,7 +19,7 @@ function Welcome() {
   return (
     <div className="h-screen bg-cover bg-center relative welcome-section" style={{ backgroundImage: `url("/images/Section Top 1.jpg")` }}>
       <div className="cloud-banner-container">
-        <img src="/images/cloudsBannerText.png" alt="Clouds Banner" className="cloud-banner" />
+        <img src="/images/cloudsBannerText.png" alt="Ted Koller Cloud Banner" className="cloud-banner" />
 
         <img src="/images/cloud2.png" className={`cloud cloud2 ${isScrolled ? 'move-up' : ''}`} alt="Cloud 2" />
         <img src="/images/cloud3.png" className={`cloud cloud3 ${isScrolled ? 'move-up' : ''}`} alt="Cloud 3" />

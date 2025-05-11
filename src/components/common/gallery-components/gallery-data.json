@@ -1,0 +1,91 @@
+{
+    "tiles": [
+      {
+        "id": "feed-coop-kawmix",
+        "title": "Kawmix: Feed Systems",
+        "behavior": "expand",
+        "thumbnail": "kawmixThumbnail3.mp4",
+        "thumbnailType": "video",
+        "description": "Short video doc from a feed co-op shoot.",
+        "externalLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "media": [
+          {
+            "src": "kawmix-img1.jpg",
+            "type": "image",
+            "alt": "Worker handling grain system"
+          },
+          {
+            "src": "kawmix-img2.jpg",
+            "type": "image",
+            "alt": "Overhead shot of the facility"
+          }
+        ],
+        "category": "Video",
+        "featured": false,
+        "aspectRatio": 1.78,
+        "year": "2024"
+      },          
+      {
+        "id": "Video-study",
+        "title": "Video Study",
+        "behavior": "link",
+        "externalLink": "https://www.instagram.com/p/C99B3SZMHtz/",
+        "thumbnail": "theCoupes.mp4",
+        "thumbnailType": "video",
+        "category": "Video",
+        "featured": false,
+        "aspectRatio": 0,
+        "year": "2023"
+      },
+      {
+        "id": "clouds-coffee-christmas",
+        "title": "Clouds Coffee: Christmas Frame",
+        "behavior": "expand",
+        "thumbnail": "Section 5 Frame 2 - CloudsCoffeeChristmas.webp",
+        "thumbnailType": "image",
+        "description": "Holiday product shoot for Clouds Coffee. A cozy seasonal setup featuring branding elements and lighting accents.",
+        "media": [
+          {
+            "src": "clouds-coffee-christmas.webp",
+            "type": "image",
+            "alt": "Branded coffee cup with Santa hat and lights"
+          }
+        ],
+        "category": "Photography",
+        "featured": false,
+        "aspectRatio": 1.5,
+        "year": "2022"
+      },
+      {
+        "id": "travis-scott-tour",
+        "title": "Travis Scott Tour 2023",
+        "behavior": "expand",
+        "thumbnail": "travis-scott-tour-02.webp",
+        "thumbnailType": "image",
+        "description": "Live concert photo from Travis Scott’s 2023 tour. Capturing the intensity and light design of the performance.",
+        "media": [
+          {
+            "src": "travis-scott-tour-02.webp",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          }
+        ],
+        "category": "Photography",
+        "featured": false,
+        "aspectRatio": 0.7,
+        "year": "2023"
+      },      
+      {
+        "id": "canyon-exploration",
+        "title": "Canyon Exploration",
+        "behavior": "image",
+        "thumbnail": "underground-096.webp",
+        "thumbnailType": "image",
+        "category": "Photography",
+        "featured": false,
+        "aspectRatio": 0.75,
+        "year": "2021"
+      }
+    ]
+  }
+  

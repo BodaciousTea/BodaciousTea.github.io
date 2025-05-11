@@ -1,0 +1,69 @@
+/* Normal */
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/future_pt/FuturaPTLight.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/future_pt/FuturaPTLight.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/future_pt/FuturaPTMedium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/future_pt/FuturaPTBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/future_pt/FuturaPTExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/future_pt/FuturaPTHeavy.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Italic */
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/future_pt/FuturaPTLightOblique.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/future_pt/FuturaPTDemiOblique.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/future_pt/FuturaPTMediumOblique.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/future_pt/FuturaPTExtraBoldOblique.otf") format("opentype");
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/future_pt/FuturaPTHeavyOblique.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+}

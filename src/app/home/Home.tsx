@@ -1,59 +1,95 @@
-/* eslint-disable @next/next/no-img-element */
-"use client"; // Mark the entire component as a client component
-import React, { useEffect, useState } from "react";
-import ReactPageScroller from "react-page-scroller";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import Welcome from "./Welcome";
 import About from "./About";
-import WatchHere from "./watch/WatchHere";
-import Banner from "./photography/Banner";
-import NacreousCoffee from "./nacreous/NacreousCoffee";
-import TouchMe from "./TouchMe";
-import Watch from "./watch/Watch";
-import AsideScrollbar from "./AsideScrollbar";
-import TextReveal from "@/components/common/text_reveal/TextReveal";
+import Gallery from "./Gallery";
 
 function HomePage() {
-  const [scroll, setScroll] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [disableSnap, setDisableSnap] = useState(false);
 
-  const pageHandling = () => {
-    setScroll((v) => (v === 5 ? 0 : v + 1));
+  useEffect(() => {
+    const scrollContainer = containerRef.current;
+    if (!scrollContainer) return;
+
+    const handleScroll = () => {
+      const sectionHeight = scrollContainer.clientHeight;
+      const scrollTop = scrollContainer.scrollTop;
+      const galleryStart = sectionHeight * 2;
+
+      // Once user reaches gallery section, disable snapping
+      if (scrollTop >= galleryStart - 5) {
+        setDisableSnap(true);
+      } else {
+        setDisableSnap(false);
+      }
+    };
+
+    const handleWheel = (e: WheelEvent) => {
+      const sectionHeight = scrollContainer.clientHeight;
+      const scrollTop = scrollContainer.scrollTop;
+
+      const galleryTop = sectionHeight * 2;
+      const nearTopOfGallery = scrollTop >= galleryTop - 5 && scrollTop <= galleryTop + 5;
+
+      if (nearTopOfGallery && e.deltaY < 0) {
+        e.preventDefault();
+        scrollContainer.scrollTo({
+          top: sectionHeight, // scroll to About
+          behavior: "smooth",
+        });
+      }
+    };
+
+    scrollContainer.addEventListener("scroll", handleScroll);
+    scrollContainer.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      scrollContainer.removeEventListener("scroll", handleScroll);
+      scrollContainer.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
+  const handleScrollArrow = () => {
+    const scrollContainer = containerRef.current;
+    if (scrollContainer) {
+      const sectionHeight = scrollContainer.clientHeight;
+      const currentTop = scrollContainer.scrollTop;
+      const nextTop = currentTop >= sectionHeight * 2 ? 0 : currentTop + sectionHeight;
+
+      scrollContainer.scrollTo({ top: nextTop, behavior: "smooth" });
+    }
   };
 
   return (
-    <div className="bg-slate-950">
-      {/* About Button */}
-      <span
-        onClick={() => setScroll(1)}
-        className={`text-lg [writing-mode:vertical-lr] rotate-180 absolute top-1/2 left-[2.3vw] -translate-y-1/2 font-medium z-10 duration-150 cursor-pointer ${
-          scroll >= 2 ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        About
-      </span>
-
-      <AsideScrollbar scroll={scroll} />
-      <ReactPageScroller
-        customPageNumber={scroll}
-        transitionTimingFunction="cubic-bezier(0.77, 0, 0.175, 1)"
-        pageOnChange={setScroll}
-      >
+    <div
+      ref={containerRef}
+      className={`h-screen overflow-y-scroll ${
+        disableSnap ? "" : "snap-y snap-mandatory"
+      }`}
+    >
+      <section className="h-screen snap-start">
         <Welcome />
+      </section>
+
+      <section className="h-screen snap-start">
         <About />
-        <Watch sections={[Banner]} />
-        <div className="flex items-center justify-center h-screen">
-          <WatchHere />
-        </div>
-        <Watch sections={[NacreousCoffee]} />
-        <TouchMe />
-      </ReactPageScroller>
+      </section>
+
+      {/* Gallery can grow freely */}
+      <section className="min-h-screen snap-start">
+        <Gallery />
+      </section>
 
       <div
-        className={`fixed z-10 cursor-pointer bottom-[1.8vw] flex justify-center left-0 right-0 duration-500 ${
-          scroll === 5 ? "rotate-180" : ""
-        }`}
-        onClick={pageHandling}
+        className="fixed z-10 cursor-pointer bottom-[1.8vw] left-1/2 transform -translate-x-1/2 duration-500"
+        onClick={handleScrollArrow}
       >
-        <img className="w-[1.2vw]" src="/images/Arrow 1.svg" alt="Scroll Arrow" />
+        <img
+          className="w-[1.2vw]"
+          src="/images/scroll-arrow.svg"
+          alt="Scroll arrow"
+        />
       </div>
     </div>
   );
