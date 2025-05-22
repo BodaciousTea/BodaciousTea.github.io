@@ -1,0 +1,71 @@
+/* Advanced breathing text animation */
+.breathing-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Different animation speeds */
+.breathing-slow {
+  animation-duration: 6s;
+}
+
+.breathing-medium {
+  animation-duration: 4s;
+}
+
+.breathing-fast {
+  animation-duration: 2.5s;
+}
+
+/* Different weight ranges */
+.breathing-subtle {
+  animation-name: text-breathe-subtle;
+}
+
+.breathing-normal {
+  animation-name: text-breathe;
+}
+
+.breathing-dramatic {
+  animation-name: text-breathe-dramatic;
+}
+
+/* Different weight ranges in keyframes */
+@keyframes text-breathe-subtle {
+  from,
+  to {
+    font-variation-settings: "wght" 300;
+  }
+  50% {
+    font-variation-settings: "wght" 600;
+  }
+}
+
+@keyframes text-breathe-dramatic {
+  from,
+  to {
+    font-variation-settings: "wght" 100;
+  }
+  50% {
+    font-variation-settings: "wght" 950;
+  }
+}
+
+/* Optional: Add a subtle scale effect */
+.breathing-with-scale {
+  animation: text-breathe-scale 4s ease-in-out infinite;
+}
+
+@keyframes text-breathe-scale {
+  from,
+  to {
+    font-variation-settings: "wght" 100;
+    transform: scale(1);
+  }
+  50% {
+    font-variation-settings: "wght" 900;
+    transform: scale(1.03);
+  }
+}

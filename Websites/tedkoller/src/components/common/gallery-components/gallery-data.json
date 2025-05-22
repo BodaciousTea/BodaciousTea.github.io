@@ -1,0 +1,404 @@
+{
+    "tiles": [
+      {
+        "id": "feed-coop-kawmix",
+        "title": "Kawmix Feeds",
+        "behavior": "expand",
+        "thumbnail": "kawmixThumbnail3.mp4",
+        "thumbnailType": "video",
+        "description": "Directing onsite interviews, testimonials, and educational content showcasing Kawmix feeds systems in the Bonner Springs and Kansas City area.",
+          "descriptionLinks": [
+    {
+      "href": "https://youtu.be/4F3LUfEW8jM",
+      "text": "Brad Brown - Deer"
+    },
+        {
+      "href": "https://youtu.be/eEVglFSOdMo",
+      "text": "Tommy Sanders Testimontal"
+    },
+            {
+      "href": "https://youtu.be/VXMjVQZ9324",
+      "text": "Goodrich Alpaca Farm Showcase"
+    }
+  ],
+        "category": "Video",
+        "featured": false,
+        "aspectRatio": 1.78,
+        "year": "2024"
+      },          
+      {
+        "id": "Video-study",
+        "title": "Video Study",
+        "behavior": "link",
+        "externalLink": "https://www.instagram.com/p/C99B3SZMHtz/",
+        "thumbnail": "theCoupes.mp4",
+        "thumbnailType": "video",
+        "category": "Video",
+        "featured": false,
+        "aspectRatio": 0,
+        "year": "2024"
+      },
+      {
+        "id": "clouds-coffee-christmas",
+        "title": "Clouds Coffee Christmas",
+        "behavior": "expand",
+        "thumbnail": "Section 5 Frame 2 - CloudsCoffeeChristmas.webp",
+        "thumbnailType": "image",
+        "description": "Holiday product shoot for Clouds Coffee. A cozy seasonal setup featuring branding elements and lighting accents.",
+        "media": [
+          {
+            "src": "Cloud's Coffee Company Christmas.webp",
+            "type": "image",
+            "alt": "Branded coffee cup with Santa hat and lights"
+          },
+                    {
+            "src": "clouds-coffee-christmas.webp",
+            "type": "image",
+            "alt": "Branded coffee cup with Santa hat and lights"
+          }
+        ],
+        "category": "Photography",
+        "featured": false,
+        "aspectRatio": 1.5,
+        "year": "2022"
+      },
+      {
+        "id": "travis-scott-tour",
+        "title": "Circus Maximus Tour",
+        "behavior": "expand",
+        "thumbnail": "travis-scott-tour-02.webp",
+        "thumbnailType": "image",
+        "description": "Live concert photos from Travis Scott’s 2023 Circus Maximus tour. Capturing the high intensity performance.",
+        "media": [
+          {
+            "src": "travis-scott-tour-12.webp",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          },
+                    {
+            "src": "travis-scott-tour-13.webp",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          },
+                              {
+            "src": "travis-scott-tour-27.webp",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          },                              
+          {
+            "src": "travis-scott-tour-05.webp",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          }
+        ],
+        "category": "Photography",
+        "featured": false,
+        "aspectRatio": 0.7,
+        "year": "2023"
+      },      
+      {
+        "id": "future-metro",
+        "title": "We Trust You Tour",
+        "behavior": "expand",
+        "thumbnail": "Tour-future&metroBoomin - Full.webp",
+        "thumbnailType": "image",
+        "description": "Captured the performance of Future & Metro Boomin at the T-Mobile Center amidst pyrotechnics and dramatic lighting",
+        "media": [
+          {
+            "src": "future&metroBoomin-2.webp",
+            "type": "image",
+            "alt": "Future Hendrix"
+          },
+                    {
+            "src": "Tour-future&metroBoomin.webp",
+            "type": "image",
+            "alt": "Metro Boomin performing with dramatic stage lighting"
+          }
+        ],
+        "category": "Photography",
+        "featured": false,
+        "aspectRatio": 0.7,
+        "year": "2024"
+      },     
+      {
+        "id": "Kauffman-Center",
+        "title": "Kauffman Center",
+        "behavior": "expand",
+        "thumbnail": "underground-096.webp",
+        "thumbnailType": "image",
+        "media": [
+          {
+            "src": "Theater - child-of-hope ACT2-13.webp",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          },
+                    {
+            "src": "child-of-hope ACT1-01.webp",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          },
+                              {
+            "src": "child-of-hope ACT2-45.webp",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          },
+                              {
+            "src": "child-of-hope ACT1-29.webp",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          }
+        ],
+        "category": "Photography",
+        "featured": false,
+        "aspectRatio": 0.75,
+        "year": "2024"
+      },
+{
+  "id": "bff-bpa-video",
+  "title": "Business Professionals of America",
+  "behavior": "expand",
+  "thumbnail": "bffBpa.mp4",
+  "thumbnailType": "video",
+  "description":"Worked with a team to research, film, and edit, for a video on the black footed ferret, once thought to be extint this video shares expert testimonies of its story and consveration winning the first place award in the Kansas state competition organized through the Business Professionals of America.",
+  "category": "Video",
+    "descriptionLinks": [
+        {
+      "href": "https://www.youtube.com/watch?v=pQLBevvG9u4",
+      "text": "WATCH HERE: The Black Footed Ferret"
+    }
+  ],
+  "featured": false,
+  "aspectRatio": 1.78,
+  "year": "2023"
+},
+{
+  "id": "cover-crop-spotlight",
+  "title": "Practical Farmers of Iowa",
+  "behavior": "expand",
+  "thumbnail": "coverCropThumbnail1.mp4",
+  "thumbnailType": "video",
+  "description": "This short-form piece highlights the importance of cover crops.",
+  "descriptionLinks": [
+    {
+      "href": "https://www.youtube.com/watch?v=Q82ddl7yaAQ",
+      "text": "Fencing and Corralling Options for Grazing Covers"
+    },
+    {
+      "href": "https://www.youtube.com/watch?v=vxwY7f1JwyA",
+      "text": "Seeding Rates for Drilling a Winter Wheat Cover Crop"
+    },
+      {
+      "href": "https://www.youtube.com/watch?v=sdXLfYTkhlA",
+      "text": "Winter Wheat and Benefits of Manure Injection before Corn"
+    },
+      {
+      "href": "https://www.youtube.com/watch?v=9SH_JvwSWAo",
+      "text": "Summer Cover Crops for Winter Grazing Cattle"
+    },
+      {
+      "href": "https://www.youtube.com/watch?v=JDmX9wLHBmQ",
+      "text": "Farmer-led Research: Reducing N Rates to Corn"
+    },
+        {
+      "href": "https://www.youtube.com/watch?v=aQlQDkf_qpY",
+      "text": "Getting Started with a Cover Crop Business"
+    },
+        {
+      "href": "https://www.youtube.com/watch?v=1VTh0jF-7ts&t=2s",
+      "text": "Cover Crops for Vegetable Growers"
+    }
+  ],
+  "category": "Video",
+  "featured": false,
+  "aspectRatio": 1.78,
+  "year": "2024"
+},
+      {
+        "id": "Iowa-wide",
+        "title": "Kalona, IA",
+        "behavior": "image",
+        "thumbnail": "Iowa_Full.webp",
+        "thumbnailType": "image",
+        "category": "Photography",
+        "featured": false,
+        "aspectRatio": 2.7,
+        "year": "2021"
+      },
+            {
+        "id": "mexico-night-le",
+        "title": "Chihuahua, Mexico",
+        "behavior": "image",
+        "thumbnail": "Chihuahua-Mexico-LongExposure.webp",
+        "thumbnailType": "image",
+        "category": "Photography",
+        "featured": false,
+        "aspectRatio": 0.75,
+        "year": "2024"
+      },
+                  {
+        "id": "big-bend-santa-elena",
+        "title": "Santa Elena, Texas",
+        "behavior": "image",
+        "thumbnail": "el-viaje-29.webp",
+        "thumbnailType": "image",
+        "category": "Photography",
+        "featured": false,
+        "aspectRatio": 0.55,
+        "year": "2024"
+      },
+          {
+        "id": "ojinaga-mexico",
+        "title": "Ojinaga, Mexico",
+        "behavior": "image",
+        "thumbnail": "Ojinaga-MX.webp",
+        "thumbnailType": "image",
+        "category": "Photography",
+        "featured": false,
+        "aspectRatio": 1.5,
+        "year": "2024"
+      },
+            {
+        "id": "archived-work",
+        "title": "Archived Work",
+        "behavior": "image",
+        "thumbnail": "Section-3-Frame-3.mp4",
+        "thumbnailType": "video",
+        "category": "Design",
+        "featured": false,
+        "year": "2020"
+      },
+                  {
+        "id": "2023-portraits",
+        "title": "2023 Portraits",
+        "behavior": "expand",
+        "thumbnail": "portrait-sub5.webp",
+        "thumbnailType": "image",
+        "category": "Photography",
+        "featured": false,
+        "media": [
+          {
+            "src": "portrait-sub1.webp",
+            "type": "image",
+            "alt": "vertical-potrait1"
+          },
+                    {
+            "src": "portrait-sbu3.webp",
+            "type": "image",
+            "alt": "vertical-potrait2"
+          },
+                    {
+            "src": "portrait-sub2.webp",
+            "type": "image",
+            "alt": "vertical-potrait3"
+          },
+                              {
+            "src": "portrait-sub4.webp",
+            "type": "image",
+            "alt": "horizontal-portrait"
+          }
+        ],
+        "aspectRatio": 0.75,
+        "year": "2023"
+      },
+       {
+        "id": "old-designs",
+        "title": "Athletics",
+        "behavior": "expand",
+        "thumbnail": "highschoolAthletics.webp",
+        "thumbnailType": "image",
+        "category": "Photography",
+        "featured": false,
+        "media": [
+          {
+            "src": "highschoolAthletics_Full.webp",
+            "type": "image",
+            "alt": "Boys Soccer Senior Night"
+          },
+                    {
+            "src": "highschoolAthletics (3).webp",
+            "type": "image",
+            "alt": "Homecoming Poster"
+          },
+                    {
+            "src": "highschoolAthletics (2).webp",
+            "type": "image",
+            "alt": "Pole Vault"
+          },
+                              {
+            "src": "Sarasota_Rowing-3.webp",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          },
+                                        {
+            "src": "atheltics.webp",
+            "type": "image",
+            "alt": "MNU Cheer"
+          }
+        ],
+        "aspectRatio": 0.6,
+        "year": "2022 - 2025"
+      },
+      {
+        "id": "nreous-coffee",
+        "title": "Design Rebrand",
+        "behavior": "expand",
+        "thumbnail": "Nacreous Coffee Composite_Full.webp",
+        "thumbnailType": "design",
+        "category": "Design",
+        "featured": false,
+        "media": [
+          {
+            "src": "Paradigm Label.png",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          },
+                    {
+            "src": "Zenith Label.png",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          },
+                    {
+            "src": "MAIN.png",
+            "type": "image",
+            "alt": "Travis Scott performing with dramatic stage lighting"
+          }
+        ],
+        "aspectRatio": 1.75,
+        "year": "2023"
+      },
+      {
+        "id": "wildlife",
+        "title": "Wildlife & Conservation",
+        "behavior": "expand",
+        "thumbnail": "Wildlife1.webp",
+        "thumbnailType": "image",
+        "category": "Photography",
+        "featured": false,
+        "media": [
+          {
+            "src": "animal.webp",
+            "type": "image",
+            "alt": "roadrunner in chihuahua mexico"
+          },
+                    {
+            "src": "animal-1.webp",
+            "type": "image",
+            "alt": "lizard in new mexico"
+          },
+                    {
+            "src": "wildlife2.webp",
+            "type": "image",
+            "alt": "bison/buffalo in jackson wyoming"
+          }
+        ],
+        "aspectRatio": 0.65,
+        "year": "2023"
+      }
+
+
+
+
+
+    ]
+  }
+  

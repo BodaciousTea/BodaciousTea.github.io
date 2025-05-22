@@ -1,0 +1,62 @@
+/* Global styles for gallery page */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000201;
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: "Futura_PT";
+  src: url("/fonts/futura_pt/FuturaPTBook.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Futura_PT";
+  src: url("/fonts/futura_pt/FuturaPTBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: "Futura PT", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Add others as needed (italic, light, etc.) */
+
+:root {
+  --font-futura: "Futura", sans-serif;
+}
+
+/* Variable font for breathing animation */
+@font-face {
+  font-family: "TFMixVF";
+  src: url("https://garet.typeforward.com/assets/fonts/shared/TFMixVF.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+/* Breathing animation keyframes */
+@keyframes text-breathe {
+  from,
+  to {
+    font-variation-settings: "wght" 100;
+  }
+  50% {
+    font-variation-settings: "wght" 900;
+  }
+}
+
+/* Animated title class */
+.breathing-title {
+  font-family: "TFMixVF", "Futura", "Helvetica Neue", Arial, sans-serif;
+  animation: text-breathe 4s ease-in-out infinite;
+  display: inline-block;
+  font-weight: normal; /* Let the animation handle the weight */
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1;
+}

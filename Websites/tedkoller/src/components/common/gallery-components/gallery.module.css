@@ -1,0 +1,648 @@
+/* Base Styles */
+.galleryContainer {
+  background-color: #000201;
+  color: #f0f0f0;
+  min-height: 100vh;
+  width: 100%;
+  font-family: "Futura PT", "Helvetica Neue", Arial, sans-serif;
+  padding: 0;
+  overflow-x: hidden;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Typography */
+.galleryTitle {
+  font-size: 4rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1;
+}
+
+.gallerySubtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-top: 1rem;
+  max-width: 600px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin: 0 0 2rem 0;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 2rem;
+  height: 2px;
+  background-color: #f0f0f0;
+}
+
+/* Hero Section */
+.heroSection {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bounce 2s infinite;
+  opacity: 0.7;
+}
+
+.scrollIndicator span {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Category Navigation */
+.categoryNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.categoryButton {
+  background: none;
+  border: none;
+  color: #999;
+  font-family: inherit;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.categoryButton::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #f0f0f0;
+  transition: width 0.3s ease;
+}
+
+.categoryButton:hover {
+  color: #f0f0f0;
+}
+
+.categoryButton:hover::after {
+  width: 100%;
+}
+
+.categoryButton.active {
+  color: #f0f0f0;
+}
+
+.categoryButton.active::after {
+  width: 100%;
+}
+
+/* Featured Section */
+.featuredSection {
+  padding: 4rem 2rem;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.featuredTile {
+  position: relative;
+  cursor: pointer;
+  background-color: #111;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.featuredImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.featuredImage {
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.featuredTile:hover .featuredImage,
+.featuredTile.expanded .featuredImage {
+  transform: scale(1.03);
+}
+
+.featuredOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.featuredTile:hover .featuredOverlay,
+.featuredTile.expanded .featuredOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.featuredTitle {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.projectYear {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin-top: 0.5rem;
+  opacity: 0.7;
+}
+
+.viewProject {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  display: inline-block;
+}
+
+.viewProject::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #f0f0f0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.featuredTile:hover .viewProject::after,
+.featuredTile.expanded .viewProject::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Section Break */
+.sectionBreak {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.sectionLine {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  flex-grow: 1;
+  max-width: 200px;
+}
+
+.sectionDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  margin: 0 1rem;
+}
+
+/* Main Gallery */
+.gallerySection {
+  padding: 2rem;
+}
+
+.galleryGrid {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+}
+
+.galleryColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tileContainer {
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+  background-color: #111;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.tile {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.thumbnailWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* Apply hover effect to both hover and expanded states */
+.tile:hover .thumbnail,
+.tileContainer.expanded .thumbnail {
+  transform: scale(1.05);
+}
+
+/* Improved gradient overlay that extends from bottom with solid black at bottom */
+.tileOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Make the bottom of the gradient pure black (rgba(0,0,0,1)) to match expanded content */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.8) 30%,
+    rgba(0, 0, 0, 0.5) 60%,
+    rgba(0, 0, 0, 0.2) 80%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Show overlay on both hover and expanded states */
+.tile:hover .tileOverlay,
+.tileContainer.expanded .tileOverlay {
+  opacity: 1;
+}
+
+.tileInfo {
+  padding: 1.5rem;
+  width: 100%;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+/* Apply info animation to both hover and expanded states */
+.tile:hover .tileInfo,
+.tileContainer.expanded .tileInfo {
+  transform: translateY(0);
+}
+
+.tileTitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tileYear {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 0.25rem;
+}
+
+/* Improved expand/link icons with animation */
+.expandIcon,
+.linkIcon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+/* Show icons on both hover and expanded states */
+.tile:hover .expandIcon,
+.tile:hover .linkIcon,
+.tileContainer.expanded .expandIcon,
+.tileContainer.expanded .linkIcon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Plus/minus icon animation */
+.expandIcon {
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.tileContainer.expanded .expandIcon {
+  transform: rotate(45deg);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Expanded Content - Simplified with only description */
+.expandedContent {
+  /* Match exactly the darkest part of the gradient (pure black) */
+  background-color: rgb(0, 0, 0);
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, padding 0.3s ease;
+  position: relative;
+  /* Remove any borders that might create a line */
+  border: none;
+  margin: 0;
+}
+
+.tileContainer.expanded .expandedContent {
+  padding: 1.5rem;
+  max-height: 2000px; /* Large enough to contain content */
+}
+
+.expandedFeatured {
+  /* Match exactly the darkest part of the gradient (pure black) */
+  background-color: rgb(0, 0, 0);
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, padding 0.3s ease;
+  position: relative;
+  /* Remove any borders that might create a line */
+  border: none;
+  margin: 0;
+}
+
+.featuredTile.expanded .expandedFeatured {
+  padding: 2rem;
+  max-height: 2000px;
+}
+
+/* Removed expandedHeader styles since we're not using it anymore */
+
+.expandedDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 2rem 0; /* Adjusted margin since there's no header */
+  font-weight: 300;
+  max-width: 800px;
+}
+
+.expandedMediaGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.expandedMediaItem {
+  width: 100%;
+}
+
+.expandedImageWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.expandedImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.expandedVideo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Editorial Break */
+.editorialBreak {
+  padding: 6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editorialLine {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 300px;
+}
+
+.editorialCircle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin: 0 2rem;
+}
+
+/* Footer */
+.galleryFooter {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footerText {
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .galleryTitle {
+    font-size: 5rem;
+  }
+
+  .featuredGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .expandedMediaGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .heroSection,
+  .featuredSection,
+  .gallerySection {
+    padding: 4rem;
+  }
+
+  .categoryNav {
+    padding: 2rem 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .galleryTitle {
+    font-size: 6rem;
+  }
+
+  .heroSection,
+  .featuredSection,
+  .gallerySection {
+    padding: 6rem;
+  }
+
+  .categoryNav {
+    padding: 2rem 6rem;
+  }
+}
+
+/* Add these styles to your gallery.module.css file */
+.descriptionLinks {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.descriptionLink {
+  color: #9ad7ff;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.descriptionLink:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Fix for expanded content */
+.tile.expanded + .expandedContent {
+  padding: 1.5rem;
+  max-height: 2000px; /* Large enough to contain content */
+}
+
+/* Ensure description links are visible */
+.expandedDescription a {
+  color: #9ad7ff !important;
+  text-decoration: underline !important;
+  display: inline-block !important;
+  margin: 5px 0 !important;
+}
+
+.expandedDescription a:hover {
+  color: #ffffff !important;
+}
+
+.descriptionLink {
+  color: #ffffffa9;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.descriptionLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #f0f0f0;
+  transition: width 0.3s ease;
+}
+
+.descriptionLink:hover {
+  color: #f0f0f0;
+}
+
+.descriptionLink:hover::after {
+  width: 100%;
+}
+
+.descriptionLinks {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}

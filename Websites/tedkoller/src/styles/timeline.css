@@ -1,0 +1,54 @@
+/* Global reset to prevent overflow */
+body {
+  overflow: hidden; /* Prevent horizontal overflow on body */
+}
+
+/* Ensure the timeline container does not cause horizontal overflow */
+.timeline-container {
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling within timeline container */
+  position: relative;
+}
+
+/* Timeline navigation and progress bars */
+.timeline-line,
+.timeline-progress {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 100%; /* Ensure these lines don't overflow */
+}
+
+.timeline-line {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  left: 0;
+  right: 0;
+}
+
+.timeline-progress {
+  height: 2px;
+  background: white;
+  transition: width 0.5s ease-in-out;
+  left: 0;
+  right: 0;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Prevent any horizontal overflow in snap containers */
+.snap-x {
+  scroll-snap-type: x mandatory;
+  overflow-x: hidden; /* Prevent horizontal overflow caused by snap points */
+}
+
+.snap-center {
+  scroll-snap-align: center;
+}

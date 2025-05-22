@@ -1,0 +1,694 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url("/fonts/future_pt/futura_pt.css");
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url("/fonts/future_pt/futura_pt.css");
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Futura PT", sans-serif;
+  color: white;
+}
+
+/* Link Styles */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Form Elements */
+input,
+select,
+textarea,
+button {
+  outline: none;
+  background: transparent;
+}
+
+/* Text Style with Linear Gradient */
+.text-linear {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[role="button"],
+button {
+  user-select: none;
+}
+
+/* Responsiveness for Mobile Devices */
+@media screen and (max-width: 1040px) {
+  /* Adjustments for medium screens */
+}
+
+@media screen and (max-width: 600px) {
+  /* Adjustments for small screens */
+}
+
+/* Welcome Section */
+.welcome-section {
+  background-image: url("/images/Section Top 1.jpg");
+  background-size: cover;
+  background-position: bottom;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* About Section */
+.about-section {
+  position: relative;
+  background-image: url("/images/Section Middle 1.jpg");
+  background-size: cover;
+  background-position: top;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Custom button styles */
+.resume-button {
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  border-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.resume-button:hover {
+  padding: 0.75rem 1.5rem; /* 50% increase */
+  text-decoration: none;
+}
+
+/* Medium screens */
+@media (max-width: 1200px) {
+  .resume-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 1.5rem;
+    border-width: 1.5px;
+  }
+
+  .resume-button:hover {
+    padding: 0.6rem 1.2rem; /* 50% increase */
+  }
+}
+
+/* Custom paragraph styles for different screen sizes */
+@media (max-width: 1200px) {
+  .about-section p {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-section p {
+    max-width: 40ch;
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+@keyframes moveTopLeft {
+  to {
+    transform: translate(-20%, -30%) scale(0.75);
+  }
+}
+
+@keyframes moveBottomLeft {
+  to {
+    transform: translate(-35%, 20%);
+  }
+}
+
+@keyframes moveBottomRight {
+  to {
+    transform: translate(20%, 10%);
+  }
+}
+
+@keyframes moveTopRight {
+  to {
+    transform: translate(20%, -30%);
+  }
+}
+
+/* Welcome Page Cloud Scroll */
+.move-up {
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.text-masthead {
+  font-size: 14vw;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.mountain-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/Section Middle Mask.png");
+  background-size: cover;
+  background-position: top;
+  z-index: 15;
+}
+
+/* Banner style */
+.cloud-banner-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.cloud {
+  position: absolute;
+  bottom: 0;
+}
+
+.cloud1 {
+  animation: fadeOut 1800ms ease-out forwards;
+  animation-delay: 0.3s;
+  position: absolute;
+  transform: scale(2);
+  width: 100%;
+  height: 100%;
+  top: -10%;
+  left: 0;
+}
+
+.cloud2 {
+  animation: moveTopLeft 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
+  position: absolute;
+  transform: scale(0.75);
+  top: -10%;
+  left: -20%;
+  z-index: 20;
+}
+
+.cloud3 {
+  animation: moveBottomLeft 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
+  position: absolute;
+  top: 30%;
+  left: -30%;
+  z-index: 20;
+}
+
+.cloud4 {
+  animation: moveBottomRight 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  z-index: 20;
+}
+
+.cloud5 {
+  animation: moveTopRight 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
+  position: absolute;
+  top: -20%;
+  left: 40%;
+  z-index: 20;
+}
+
+/* Banner style */
+.cloud-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 100;
+  transition: opacity 1800ms ease-out;
+  transition-delay: 750ms;
+}
+
+.button-style {
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: solid white;
+  padding: 0.2vw 0.6vw;
+}
+
+.button-style:hover {
+  padding: 0.41vw 0.82vw;
+  text-decoration: none;
+}
+
+.phone-hover img {
+  transition: transform 0.3s ease;
+}
+
+.phone-hover:hover img {
+  transform: scale(1.1);
+}
+
+.view-all-button {
+  transition: transform 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.view-all-button:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Ensure the container takes up full height and centers content */
+.card-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  color: white;
+  font-size: 5rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 37.5%;
+  z-index: 20;
+  cursor: pointer;
+  user-select: none;
+  background: unset;
+  border: unset;
+}
+
+.nav.left {
+  left: 5%;
+  transform: translateY(-50%) rotate(-90deg);
+  z-index: 30;
+}
+
+.nav.right {
+  right: 5%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-button img {
+  width: 25px;
+  height: 25px;
+}
+
+.opacity-40 {
+  opacity: 0.4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Futura PT", sans-serif;
+  color: white;
+}
+
+/* Link Styles */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Form Elements */
+input,
+select,
+textarea,
+button {
+  outline: none;
+  background: transparent;
+}
+
+/* Text Style with Linear Gradient */
+.text-linear {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[role="button"],
+button {
+  user-select: none;
+}
+
+/* Responsiveness for Mobile Devices */
+@media screen and (max-width: 1040px) {
+  /* Adjustments for medium screens */
+}
+
+@media screen and (max-width: 600px) {
+  /* Adjustments for small screens */
+}
+
+/* Welcome Section */
+.welcome-section {
+  background-image: url("/images/Section Top 1.jpg");
+  background-size: cover;
+  background-position: bottom;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* About Section */
+.about-section {
+  position: relative;
+  background-image: url("/images/Section Middle 1.jpg");
+  background-size: cover;
+  background-position: top;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Custom button styles */
+.resume-button {
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  border-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.resume-button:hover {
+  padding: 0.75rem 1.5rem; /* 50% increase */
+  text-decoration: none;
+}
+
+/* Medium screens */
+@media (max-width: 1200px) {
+  .resume-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 1.5rem;
+    border-width: 1.5px;
+  }
+
+  .resume-button:hover {
+    padding: 0.6rem 1.2rem; /* 50% increase */
+  }
+}
+
+/* Custom paragraph styles for different screen sizes */
+@media (max-width: 1200px) {
+  .about-section p {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-section p {
+    max-width: 40ch;
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+@keyframes moveTopLeft {
+  to {
+    transform: translate(-20%, -30%) scale(0.75);
+  }
+}
+
+@keyframes moveBottomLeft {
+  to {
+    transform: translate(-35%, 20%);
+  }
+}
+
+@keyframes moveBottomRight {
+  to {
+    transform: translate(20%, 10%);
+  }
+}
+
+@keyframes moveTopRight {
+  to {
+    transform: translate(20%, -30%);
+  }
+}
+
+/* Welcome Page Cloud Scroll */
+.move-up {
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.text-masthead {
+  font-size: 14vw;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.mountain-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/Section Middle Mask.png");
+  background-size: cover;
+  background-position: top;
+  z-index: 15;
+}
+
+/* Banner style */
+.cloud-banner-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.cloud {
+  position: absolute;
+  bottom: 0;
+}
+
+.cloud1 {
+  animation: fadeOut 1800ms ease-out forwards;
+  animation-delay: 0.3s;
+  position: absolute;
+  transform: scale(2);
+  width: 100%;
+  height: 100%;
+  top: -10%;
+  left: 0;
+}
+
+.cloud2 {
+  animation: moveTopLeft 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
+  position: absolute;
+  transform: scale(0.75);
+  top: -10%;
+  left: -20%;
+  z-index: 20;
+}
+
+.cloud3 {
+  animation: moveBottomLeft 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
+  position: absolute;
+  top: 30%;
+  left: -30%;
+  z-index: 20;
+}
+
+.cloud4 {
+  animation: moveBottomRight 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  z-index: 20;
+}
+
+.cloud5 {
+  animation: moveTopRight 1800ms 150ms ease-out forwards;
+  animation-delay: 0.3s;
+  position: absolute;
+  top: -20%;
+  left: 40%;
+  z-index: 20;
+}
+
+/* Banner style */
+.cloud-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 100;
+  transition: opacity 1800ms ease-out;
+  transition-delay: 750ms;
+}
+
+.button-style {
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: solid white;
+  padding: 0.2vw 0.6vw;
+}
+
+.button-style:hover {
+  padding: 0.41vw 0.82vw;
+  text-decoration: none;
+}
+
+.phone-hover img {
+  transition: transform 0.3s ease;
+}
+
+.phone-hover:hover img {
+  transform: scale(1.1);
+}
+
+.view-all-button {
+  transition: transform 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.view-all-button:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Ensure the container takes up full height and centers content */
+.card-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  color: white;
+  font-size: 5rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 37.5%;
+  z-index: 20;
+  cursor: pointer;
+  user-select: none;
+  background: unset;
+  border: unset;
+}
+
+.nav.left {
+  left: 5%;
+  transform: translateY(-50%) rotate(-90deg);
+  z-index: 30;
+}
+
+.nav.right {
+  right: 5%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-button img {
+  width: 25px;
+  height: 25px;
+}
+
+.opacity-40 {
+  opacity: 0.4;
+}
+
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  position: relative;
+}
+
+body {
+  width: 100%;
+}
+
+/* Lock scroll leaks from all descendants */
+body * {
+  max-width: 100vw;
+  overflow-x: clip; /* Stronger than hidden for internal animation overflow */
+}

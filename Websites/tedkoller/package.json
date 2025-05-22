@@ -1,0 +1,48 @@
+{
+  "name": "tedkoller",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export",
+    "predeploy": "cross-env NODE_ENV=production npm run build",
+    "deploy": "gh-pages -d out"
+  },
+  "dependencies": {
+    "@types/node": "20.5.7",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
+    "autoprefixer": "10.4.15",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.4.19",
+    "lodash": "^4.17.21",
+    "next": "13.4.19",
+    "postcss": "8.4.29",
+    "react": "18.2.0",
+    "react-custom-scrollbars-2": "^4.5.0",
+    "react-dom": "18.2.0",
+    "react-modal": "^3.16.1",
+    "react-page-scroller": "^2.3.1",
+    "react-scroll-progress-bar": "^1.1.13",
+    "react-scroll-trigger": "^0.6.14",
+    "react-scrollbars-custom": "^4.1.1",
+    "react-spring": "^9.7.2",
+    "react-transition-group": "^4.4.5",
+    "react-visibility-sensor": "^5.1.1",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.4",
+    "@types/lodash": "^4.14.198",
+    "@types/react-modal": "^3.16.1",
+    "@types/react-transition-group": "^4.4.6",
+    "cross-env": "^7.0.3",
+    "gh-pages": "^6.0.0"
+  }
+}
