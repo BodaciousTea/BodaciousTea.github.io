@@ -1,0 +1,421 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Global Styles */
+body {
+  overflow: hidden; /* Disables scrolling */
+  padding: 0;
+  margin: 0;
+  font-family: "Futura PT", sans-serif;
+  color: white;
+  box-sizing: border-box;
+}
+
+/* main.mobile.css */
+
+html.mobile .some-class {
+  font-size: 0.9rem;
+  padding: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Link Styles */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Form Elements */
+input,
+select,
+textarea,
+button {
+  outline: none;
+  background: transparent;
+}
+
+/* Text Style with Linear Gradient */
+.text-linear {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[role="button"],
+button {
+  user-select: none;
+}
+
+/* Welcome Section */
+.welcome-section {
+  background-image: url("/images/Section Top 1.jpg");
+  background-size: cover;
+  background-position: bottom;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* About Section */
+.about-section {
+  position: relative;
+  background-image: url("/images/Section Middle 1.jpg");
+  background-size: cover;
+  background-position: top;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Keyframe Animations */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(1.5);
+  } /* Only cloud1 scales */
+}
+
+@keyframes moveTopLeft {
+  to {
+    transform: translate(-70%, -130%) scale(1.8);
+  }
+}
+
+@keyframes moveBottomLeft {
+  to {
+    transform: translate(-70%, 10%) scale(2.5);
+  }
+}
+
+@keyframes moveBottomRight {
+  to {
+    opacity: 0;
+    transform: translate(28%, 60%) scale(3);
+  }
+}
+
+@keyframes moveTopRight {
+  to {
+    transform: translate(20%, -30%);
+  }
+}
+
+/* Welcome Page Cloud Scroll */
+.move-up {
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.text-center {
+  top: 4%;
+}
+
+.about-text {
+  font-size: 80px;
+  margin-bottom: -30px;
+}
+
+.ted-text {
+  font-size: 162px;
+  margin-top: 0;
+}
+
+.mountain-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/Section Middle Mask.png");
+  background-size: cover;
+  background-position: top;
+  z-index: 15;
+}
+
+/* Banner style */
+.cloud-banner-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.cloud {
+  position: absolute;
+  bottom: 0;
+}
+
+.cloud1 {
+  animation: fadeOut 1800ms ease-out forwards;
+  animation-delay: 0.3s;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -80%) scale(7);
+  max-width: 50vw; /* Adjust the width as needed */
+  max-height: 50vh; /* Adjust the height as needed */
+  object-fit: contain; /* This will ensure aspect ratio is maintained */
+}
+
+.cloud2 {
+  animation: moveTopLeft 1800ms 150ms ease-out forwards;
+  animation-delay: 0.5s;
+  position: absolute;
+  transform: scale(2) translate(-50%, -50%);
+  top: 20%;
+  left: 50%;
+  z-index: 20;
+}
+
+.cloud3 {
+  animation: moveBottomLeft 1800ms 150ms ease-out forwards;
+  animation-delay: 0.5s;
+  position: absolute;
+  transform: translate(-50%, -50%) scale(2.5);
+  top: 75%;
+  left: 5%;
+  z-index: 20;
+}
+
+.cloud4 {
+  animation: moveBottomRight 1800ms 150ms ease-out forwards;
+  animation-delay: 0.5s;
+  position: absolute;
+  transform: translate(-50%, -50%) scale(5);
+  top: 33%;
+  left: 50%;
+  z-index: 20;
+}
+
+.cloud5 {
+  animation: moveTopRight 1800ms 150ms ease-out forwards;
+  animation-delay: 0.5s;
+  position: absolute;
+  transform: translate(-50%, -50%) scale(2);
+  top: 10%;
+  left: 20%;
+  z-index: 20;
+}
+
+/* Banner style */
+.cloud-banner {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 100;
+  transition: opacity 1800ms ease-out;
+  transition-delay: 750ms;
+}
+
+.resume-button,
+.button-style {
+  font-size: 20px; /* Larger font size */
+  padding: 8px 16px; /* Larger padding */
+  border: 1px solid white; /* Adjust the thickness here */
+  text-decoration: none;
+}
+
+.watch-here-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10vw; /* Adjust as needed */
+}
+
+.phone-hover img {
+  transition: transform 0.3s ease;
+}
+
+.phone-hover:hover img {
+  transform: scale(1.1);
+}
+
+.view-all-button {
+  transition: transform 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.view-all-button:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Carousel Styles */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-text {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  text-align: left;
+  z-index: 10;
+}
+
+.carousel-title {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  font-size: 8vw;
+  font-weight: bold;
+  background: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  z-index: 5;
+}
+
+.carousel-title-container {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  text-align: left;
+  z-index: 10;
+}
+
+.carousel-content {
+  position: relative;
+}
+
+.carousel-image {
+  max-width: 80%;
+  max-height: 60vh;
+  object-fit: contain;
+  margin: auto;
+}
+
+.carousel-button-container {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  z-index: 10;
+}
+
+.carousel-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  transform: translateY(50px); /* Adjusted to move higher */
+}
+
+.carousel-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(0);
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item img {
+  max-width: 80%;
+  max-height: 60vh;
+  object-fit: contain;
+  margin: auto;
+}
+
+.card-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(calc(var(--offset) * 50deg))
+    scaleY(calc(1 + var(--abs-offset) * -0.4))
+    translateZ(calc(var(--abs-offset) * -30rem))
+    translateX(calc(var(--direction) * -5rem));
+  filter: blur(calc(var(--abs-offset) * 1rem));
+  transition: all 0.3s ease-out;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  background-color: hsl(280deg, 40%, calc(100% - var(--abs-offset) * 50%));
+  border-radius: 1rem;
+  color: #9ca3af;
+  text-align: justify;
+  transition: all 0.3s ease-out;
+}
+
+.card h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 0.7em;
+  color: #1f2937;
+}
+
+.card p,
+.card h2 {
+  transition: all 0.3s ease-out;
+  opacity: var(--active);
+}
+
+.nav {
+  color: white;
+  font-size: 5rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 37.5%;
+  z-index: 20;
+  cursor: pointer;
+  user-select: none;
+  background: unset;
+  border: unset;
+}
+
+.nav.left {
+  left: 5%;
+  transform: translateY(-90%) rotate(-90deg);
+  z-index: 30;
+}
+
+.nav.right {
+  right: 5%;
+  transform: translateY(-90%) rotate(-90deg);
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-button img {
+  width: 25px;
+  height: 25px;
+}
+
+.opacity-40 {
+  opacity: 0.4;
+}
