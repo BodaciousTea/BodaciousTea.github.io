@@ -52,22 +52,6 @@ function About() {
                 RÉSUMÉ
               </a>
             </div>
-            <div>
-              <a
-                href="./gallery/index.html"
-                className="resume-button uppercase text-sm leading-none font-normal"
-              >
-                PHOTO
-              </a>
-            </div>
-            <div>
-              <a
-                href="./gallery/video.html"
-                className="resume-button uppercase text-sm leading-none font-normal"
-              >
-                VIDEO
-              </a>
-            </div>
           </div>
         </div>
       </section>
