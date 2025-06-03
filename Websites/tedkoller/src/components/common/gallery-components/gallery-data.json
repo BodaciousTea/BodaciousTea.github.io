@@ -95,7 +95,29 @@
         "featured": false,
         "aspectRatio": 0.7,
         "year": "2023"
-      },      
+      },
+      {
+  "id": "in-plain-sight",
+  "title": "In Plain Sight",
+  "behavior": "expand",
+  "thumbnail": "inPlainSight-Thumbnail.jpg",
+  "thumbnailType": "image",
+  "description": "Collaborative project involving motion graphics, logo design, and investigative branding work for a visually immersive editorial experience.",
+  "descriptionLinks": [
+            {
+      "href": "https://nplnsght.github.io/inPlain-Site/",
+      "text": "EXPLORE the WEB DESIGN"
+    },
+    {
+      "href": "https://www.youtube.com/@nplnsght",
+      "text": "Visit the YouTube Channel"
+    }
+  ],
+  "category": "Design",
+  "featured": false,
+  "aspectRatio": 1.77,
+  "year": "2025"
+},      
       {
         "id": "future-metro",
         "title": "We Trust You Tour",
