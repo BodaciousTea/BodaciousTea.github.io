@@ -1,65 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <!-- Navigation - LEFT aligned with blur/gradient backdrop -->
-  <nav id="main-nav" class="nav">
-    <div class="nav-buttons">
-      <a href="mailto:ted@tedkoller.com" class="nav-btn">Contact</a>
-      <button class="nav-btn" disabled>Resume</button>
-    </div>
-    <div class="nav-separator"></div>
-    <div class="nav-filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="video">Video</button>
-      <button class="filter-btn" data-filter="web">Web</button>
-      <button class="filter-btn" data-filter="still">Still</button>
-    </div>
-  </nav>
-
-  <!-- Intro Overlays - Blur/Fade on top and bottom -->
-  <div id="intro-overlays" class="intro-overlays">
-    <div class="fade-overlay fade-top"></div>
-    <div class="fade-overlay fade-bottom"></div>
-  </div>
-
-
-
-  <!-- Main Container with Unified Grid -->
-  <main class="main-container">
-    <div id="unified-grid" class="unified-grid mode-horizontal"></div>
-  </main>
-
-  <!-- Lightbox Modal -->
-  <div id="lightbox" class="lightbox">
-    <button id="lightbox-close" class="lightbox-close">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-    <div class="lightbox-content">
-      <div class="lightbox-main">
-        <img id="lightbox-image" src="" alt="">
-        <video id="lightbox-video" style="display: none;" muted loop playsinline disablePictureInPicture></video>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Navigation - Centered with structure -->
+    <nav id="main-nav" class="nav">
+      <div class="nav-inner">
+        <button id="about-btn" class="nav-btn">About</button>
+        <a href="mailto:ted@tedkoller.com" class="nav-btn">Contact</a>
       </div>
-      <div class="lightbox-sidebar">
-        <div class="lightbox-info">
-          <h2 id="lightbox-title"></h2>
-          <p id="lightbox-description"></p>
-          <div id="lightbox-links" class="lightbox-links"></div>
+    </nav>
+
+    <!-- Intro Overlays - Blur/Fade on top and bottom -->
+    <div id="intro-overlays" class="intro-overlays">
+      <div class="fade-full-blur"></div>
+      <div class="fade-full-dark"></div>
+      <div class="fade-overlay fade-top"></div>
+      <div class="fade-overlay fade-bottom"></div>
+    </div>
+
+    <!-- Intro Center Content -->
+    <div id="intro-center" class="intro-center">
+      <img src="images/hero-logo.png" alt="Logo" class="intro-logo" />
+      <div class="enter-btn-wrapper">
+        <button id="enter-btn" class="enter-btn">Enter</button>
+      </div>
+    </div>
+
+    <!-- Noise/grain overlay for preface -->
+    <div id="intro-noise" class="intro-noise"></div>
+
+    <!-- Main Container with Unified Grid -->
+    <main class="main-container">
+      <div id="unified-grid" class="unified-grid mode-horizontal"></div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+      <button id="lightbox-close" class="lightbox-close">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="lightbox-content">
+        <div class="lightbox-main">
+          <img id="lightbox-image" src="" alt="" />
+          <video
+            id="lightbox-video"
+            style="display: none"
+            muted
+            loop
+            playsinline
+            disablePictureInPicture
+          ></video>
         </div>
-        <div id="lightbox-thumbnails" class="lightbox-thumbnails"></div>
+        <div class="lightbox-sidebar">
+          <div class="lightbox-info">
+            <h2 id="lightbox-title"></h2>
+            <p id="lightbox-description"></p>
+            <div id="lightbox-links" class="lightbox-links"></div>
+          </div>
+          <div id="lightbox-thumbnails" class="lightbox-thumbnails"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="js/portfolio-data.js"></script>
-  <script src="js/main.js"></script>
-</body>
+    <script src="js/portfolio-data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

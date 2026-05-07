@@ -1,8 +1,3 @@
-// Portfolio Data Configuration
-// Each item can be: "image", "video", or "text"
-// For images/videos: provide thumbnail, full images array, title, description, links
-// For text: provide just the text content
-
 const portfolioData = [
   {
     id: 1,
