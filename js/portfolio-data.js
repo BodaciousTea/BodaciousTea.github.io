@@ -3,7 +3,7 @@ const portfolioData = [
     id: 1,
     type: "image",
     category: "web",
-    thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+    thumbnail: "images/underground-096.webp",
     images: [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
       "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?w=1200&q=80",
@@ -21,7 +21,7 @@ const portfolioData = [
     id: 2,
     type: "video",
     category: "video",
-    thumbnail: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&q=80",
+    thumbnail: "images/kawmixThumbnail3.mp4",
     videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     images: [
       "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=1200&q=80"
