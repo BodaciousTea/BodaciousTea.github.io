@@ -1,7 +1,4 @@
-// Portfolio Main JavaScript - Proper horizontal to vertical masonry transition
-
 document.addEventListener('DOMContentLoaded', () => {
-  // Elements
   const unifiedGrid = document.getElementById('unified-grid');
   const introOverlays = document.getElementById('intro-overlays');
   const introCenter = document.getElementById('intro-center');
@@ -25,24 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let imagesLoaded = 0;
   let totalImages = 0;
 
-  // ============================================
-  // INITIALIZE GRID - Load images first to get aspect ratios
-  // ============================================
-  
-  function initGrid() {
-    const mediaItems = portfolioData.filter(item => item.type !== 'text');
-    
-    // Create items - more for a fuller grid
-    const itemsToShow = [];
-    while (itemsToShow.length < 40) {
-      mediaItems.forEach(item => {
-        if (itemsToShow.length < 40) {
-          itemsToShow.push({ ...item, _uniqueId: itemsToShow.length });
-        }
-      });
-    }
+  function isVideo(src) {
+    return src && src.toLowerCase().endsWith('.mp4');
+  }
 
-    // Shuffle
+  function initGrid() {
+    const itemsToShow = portfolioData.map((item, index) => ({ ...item, _uniqueId: index }));
+
     for (let i = itemsToShow.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [itemsToShow[i], itemsToShow[j]] = [itemsToShow[j], itemsToShow[i]];
@@ -50,34 +36,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
     totalImages = itemsToShow.length;
 
-    // Create grid items
     itemsToShow.forEach((item, index) => {
       const div = document.createElement('div');
       div.className = 'grid-item';
       div.dataset.id = item.id;
-      div.dataset.category = item.category;
       div.dataset.uniqueId = item._uniqueId;
       
-      if (item.type === 'video' && item.videoUrl && item.videoUrl !== '#') {
+      if (isVideo(item.thumbnail)) {
         const video = document.createElement('video');
-        video.src = item.videoUrl;
         video.muted = true;
         video.loop = true;
         video.playsInline = true;
-        video.autoplay = true;
+        video.preload = 'auto';
         video.setAttribute('disablePictureInPicture', '');
         div.appendChild(video);
         div.classList.add('video-item');
         
-        // Default aspect ratio for videos
-        div.dataset.aspectRatio = 16/9;
-        imageLoaded();
+        let metadataLoaded = false;
+        let retryCount = 0;
+        const maxRetries = 3;
+        
+        function tryLoadVideo() {
+          video.src = item.thumbnail + '?t=' + Date.now();
+          video.load();
+        }
+        
+        video.addEventListener('loadedmetadata', () => {
+          if (!metadataLoaded) {
+            metadataLoaded = true;
+            div.dataset.aspectRatio = video.videoWidth / video.videoHeight;
+            imageLoaded();
+          }
+        });
+        
+        video.addEventListener('canplay', () => {
+          video.play().catch(() => {});
+        });
+        
+        video.addEventListener('error', () => {
+          if (retryCount < maxRetries) {
+            retryCount++;
+            setTimeout(tryLoadVideo, 1000 * retryCount);
+          } else if (!metadataLoaded) {
+            metadataLoaded = true;
+            div.dataset.aspectRatio = 16/9;
+            imageLoaded();
+          }
+        });
+        
+        video.addEventListener('stalled', () => {
+          if (retryCount < maxRetries) {
+            retryCount++;
+            setTimeout(tryLoadVideo, 1000);
+          }
+        });
+        
+        setTimeout(() => {
+          if (!metadataLoaded) {
+            metadataLoaded = true;
+            div.dataset.aspectRatio = 16/9;
+            imageLoaded();
+          }
+        }, 10000);
+        
+        tryLoadVideo();
+        
       } else {
         const img = document.createElement('img');
         img.src = item.thumbnail;
         img.alt = item.title || '';
         img.onload = () => {
-          // Store natural aspect ratio once loaded
           div.dataset.aspectRatio = img.naturalWidth / img.naturalHeight;
           imageLoaded();
         };
@@ -88,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         div.appendChild(img);
       }
       
-      // Add hover overlay with title, date, and plus icon
       const hoverOverlay = document.createElement('div');
       hoverOverlay.className = 'hover-overlay';
       hoverOverlay.innerHTML = `
@@ -116,17 +143,47 @@ document.addEventListener('DOMContentLoaded', () => {
   function imageLoaded() {
     imagesLoaded++;
     if (imagesLoaded >= totalImages) {
-      // All images loaded - layout the grid and start reveal animation
       layoutGalleryGrid();
       startIntroAnimation();
+      
+      setTimeout(() => {
+        allGridItems.forEach(item => {
+          const video = item.querySelector('video');
+          if (video && (video.paused || video.readyState < 3)) {
+            video.src = video.src.split('?')[0] + '?t=' + Date.now();
+            video.load();
+            video.play().catch(() => {});
+          }
+        });
+      }, 2000);
+      
+      setTimeout(() => {
+        allGridItems.forEach(item => {
+          const video = item.querySelector('video');
+          if (video && (video.paused || video.readyState < 3)) {
+            video.src = video.src.split('?')[0] + '?t=' + Date.now();
+            video.load();
+            video.play().catch(() => {});
+          }
+        });
+      }, 5000);
+      
+      setTimeout(() => {
+        allGridItems.forEach(item => {
+          const video = item.querySelector('video');
+          if (video && (video.paused || video.readyState < 3)) {
+            video.src = video.src.split('?')[0] + '?t=' + Date.now();
+            video.load();
+            video.play().catch(() => {});
+          }
+        });
+      }, 10000);
     }
   }
   
-  // Layout the normal masonry grid from the start
   function layoutGalleryGrid() {
     const { positions } = calculateVerticalMasonryPositions();
     
-    // Position items in their final masonry positions
     allGridItems.forEach((item, i) => {
       const pos = positions[i];
       item.style.position = 'absolute';
@@ -136,25 +193,20 @@ document.addEventListener('DOMContentLoaded', () => {
       item.style.height = pos.height + 'px';
     });
     
-    // Set container height
     const containerHeight = window.innerHeight;
     unifiedGrid.style.height = containerHeight + 'px';
     unifiedGrid.style.overflow = 'hidden';
   }
   
   function startIntroAnimation() {
-    // Show enter button
     setTimeout(() => {
       introCenter.classList.add('visible');
     }, 800);
     
-    // Reveal images with stagger from center outward (fade in, unblur)
     setTimeout(() => {
-      // Calculate center of viewport
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
       
-      // Sort items by distance from center
       const itemsWithDistance = allGridItems.map(item => {
         const rect = item.getBoundingClientRect();
         const itemCenterX = rect.left + rect.width / 2;
@@ -166,12 +218,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return { item, distance };
       });
       
-      // Sort by distance (center items first)
       itemsWithDistance.sort((a, b) => a.distance - b.distance);
       
-      // Reveal with stagger based on distance from center
       itemsWithDistance.forEach(({ item }, i) => {
-        const delay = i * 40; // 40ms between each item
+        const delay = i * 40;
         setTimeout(() => {
           item.classList.add('revealed');
         }, delay);
@@ -179,11 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400);
   }
 
-  // ============================================
-  // VERTICAL MASONRY LAYOUT (columns)
-  // Returns target positions for animation
-  // ============================================
-  
   function calculateVerticalMasonryPositions() {
     const gap = 8;
     const topPadding = 80;
@@ -193,7 +238,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth <= 900) columnCount = 2;
     if (window.innerWidth <= 500) columnCount = 1;
     
-    // Calculate column width (max 400px each)
     const columnWidth = Math.min(maxColumnWidth, (window.innerWidth - 24 - (gap * (columnCount - 1))) / columnCount);
     const totalGridWidth = (columnWidth * columnCount) + (gap * (columnCount - 1));
     const sideMargin = (window.innerWidth - totalGridWidth) / 2;
@@ -202,7 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const positions = [];
     
     allGridItems.forEach((item) => {
-      // Find shortest column
       let shortestCol = 0;
       let shortestHeight = columnHeights[0];
       for (let c = 1; c < columnCount; c++) {
@@ -215,7 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const left = sideMargin + (shortestCol * (columnWidth + gap));
       const top = columnHeights[shortestCol];
       
-      // Get aspect ratio - height based on aspect ratio
       const aspectRatio = parseFloat(item.dataset.aspectRatio) || 1.5;
       const height = columnWidth / aspectRatio;
       
@@ -229,78 +271,59 @@ document.addEventListener('DOMContentLoaded', () => {
       columnHeights[shortestCol] += height + gap;
     });
     
-    // Return positions and total height
     const totalHeight = Math.max(...columnHeights) + 60;
     return { positions, totalHeight };
   }
 
-  // ============================================
-  // TRANSITION TO GALLERY
-  // Already in gallery layout, just remove overlays and enable scrolling
-  // ============================================
-
   function transitionToGallery() {
-    if (isGalleryMode) return; // Prevent multiple triggers
+    if (isGalleryMode) return;
     isGalleryMode = true;
     
-    // Slight delay before effects dissipate
     setTimeout(() => {
-      // Calculate full gallery height
       const { totalHeight } = calculateVerticalMasonryPositions();
       
-      // Hide intro elements with animation
       introCenter.classList.add('hidden');
       introOverlays.classList.add('hidden');
       introNoise.classList.add('hidden');
       mainNav.classList.add('visible');
       document.body.classList.add('scrollable');
       
-      // Enable scrolling and set full height
       unifiedGrid.style.height = totalHeight + 'px';
       unifiedGrid.style.overflow = 'visible';
       
-      // Enable gallery mode on all items (makes them hoverable/clickable)
       allGridItems.forEach((item) => {
         item.classList.add('gallery-mode');
       });
     }, 150);
   }
   
-  // Show intro/about overlay again
   function showIntro() {
     isGalleryMode = false;
     
-    // Reset scroll first
     window.scrollTo(0, 0);
     
-    // Hide nav first
     mainNav.classList.remove('visible');
     
-    // Disable gallery mode on items
     allGridItems.forEach((item) => {
       item.classList.remove('gallery-mode');
     });
     
-    // Show intro elements with slight delay for smoothness
     setTimeout(() => {
       introOverlays.classList.remove('hidden');
       introNoise.classList.remove('hidden');
       introCenter.classList.remove('hidden');
       document.body.classList.remove('scrollable');
       
-      // Reset container
       unifiedGrid.style.height = window.innerHeight + 'px';
       unifiedGrid.style.overflow = 'hidden';
     }, 50);
   }
 
-  // ============================================
-  // LIGHTBOX
-  // ============================================
-
   function openLightbox(item) {
     currentItem = item;
     currentImageIndex = 0;
+    
+    const allImages = [item.thumbnail, ...(item.images || [])];
 
     lightboxTitle.textContent = item.title || '';
     lightboxDescription.textContent = item.description || '';
@@ -317,28 +340,29 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    if (item.type === 'video' && item.videoUrl && item.videoUrl !== '#') {
+    if (isVideo(item.thumbnail)) {
       lightboxImage.style.display = 'none';
       lightboxVideo.style.display = 'block';
-      lightboxVideo.src = item.videoUrl;
+      lightboxVideo.src = item.thumbnail;
       lightboxVideo.play();
     } else {
       lightboxVideo.style.display = 'none';
       lightboxVideo.pause();
       lightboxVideo.src = '';
       lightboxImage.style.display = 'block';
-      updateMainImage(0);
+      lightboxImage.src = allImages[0];
     }
 
     lightboxThumbnails.innerHTML = '';
-    if (item.images && item.images.length > 1) {
-      item.images.forEach((imgSrc, index) => {
+    if (allImages.length > 1 && !isVideo(item.thumbnail)) {
+      allImages.forEach((imgSrc, index) => {
         const thumb = document.createElement('img');
         thumb.className = `lightbox-thumb ${index === 0 ? 'active' : ''}`;
         thumb.src = imgSrc;
         thumb.alt = '';
         thumb.addEventListener('click', () => {
-          updateMainImage(index);
+          currentImageIndex = index;
+          lightboxImage.src = allImages[index];
           document.querySelectorAll('.lightbox-thumb').forEach((t, i) => {
             t.classList.toggle('active', i === index);
           });
@@ -351,13 +375,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
   }
 
-  function updateMainImage(index) {
-    if (currentItem && currentItem.images) {
-      currentImageIndex = index;
-      lightboxImage.src = currentItem.images[index];
-    }
-  }
-
   function closeLightbox() {
     lightbox.classList.remove('visible');
     lightboxVideo.pause();
@@ -366,45 +383,6 @@ document.addEventListener('DOMContentLoaded', () => {
     currentItem = null;
   }
 
-  // ============================================
-  // FILTERING - Animate visible items
-  // ============================================
-
-  function filterGallery(category) {
-    // First fade out items that will be hidden
-    allGridItems.forEach(item => {
-      const shouldShow = category === 'all' || item.dataset.category === category;
-      if (!shouldShow) {
-        item.style.transition = 'opacity 0.3s ease';
-        item.style.opacity = '0';
-      }
-    });
-    
-    // After fade out, recalculate layout
-    setTimeout(() => {
-      const visibleItems = allGridItems.filter(item => {
-        const shouldShow = category === 'all' || item.dataset.category === category;
-        if (!shouldShow) {
-          item.style.display = 'none';
-        } else {
-          item.style.display = '';
-        }
-        return shouldShow;
-      });
-      
-      // Recalculate positions for visible items only
-      relayoutVisibleItems(visibleItems);
-      
-      // Fade in
-      setTimeout(() => {
-        visibleItems.forEach(item => {
-          item.style.transition = 'opacity 0.3s ease';
-          item.style.opacity = '1';
-        });
-      }, 50);
-    }, 300);
-  }
-  
   function relayoutVisibleItems(visibleItems) {
     const gap = 8;
     const topPadding = 80;
@@ -445,11 +423,6 @@ document.addEventListener('DOMContentLoaded', () => {
     unifiedGrid.style.height = (Math.max(...columnHeights) + 60) + 'px';
   }
 
-  // ============================================
-  // EVENT LISTENERS
-  // ============================================
-
-  // Enter button and Enter key trigger gallery transition
   enterBtn.addEventListener('click', transitionToGallery);
   
   document.addEventListener('keydown', (e) => {
@@ -472,23 +445,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // About button shows intro again
   aboutBtn.addEventListener('click', showIntro);
 
-  // Handle resize - instant re-layout
   window.addEventListener('resize', () => {
     const visibleItems = allGridItems.filter(item => item.style.display !== 'none');
     relayoutVisibleItems(visibleItems);
     
-    // Update container height
     if (!isGalleryMode) {
       unifiedGrid.style.height = window.innerHeight + 'px';
     }
   });
-
-  // ============================================
-  // INIT
-  // ============================================
 
   initGrid();
 });
