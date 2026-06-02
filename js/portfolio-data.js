@@ -9,7 +9,7 @@ const portfolioData = [
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/elviaje_2--05.webp",
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Ojinaga-MX.webp"
     ],
-    title: "El Viaje",
+    title: "MX / TX",
     date: "",
     description: "",
     links: []
