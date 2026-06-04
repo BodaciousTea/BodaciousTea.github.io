@@ -13,6 +13,12 @@
   font-style: normal;
 }
 
+/* Text selection */
+::selection {
+  background: #555;
+  color: #fff;
+}
+
 /* Reset & Base */
 *,
 *::before,
