@@ -1,13 +1,13 @@
 const portfolioData = [
   {
     id: 1,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/el-viaje-19.webp",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/el-viaje-19.webp",
     images: [
-      "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/el-viaje-21.jpg",
-      "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/el-viaje-23.webp",
-      "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/el-viaje-29.webp",
-      "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/elviaje_2--05.webp",
-      "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/Ojinaga-MX.webp"
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/el-viaje-21.jpg",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/el-viaje-23.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/el-viaje-29.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/elviaje_2--05.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Ojinaga-MX.webp"
     ],
     title: "MX / TX",
     date: "",
@@ -16,10 +16,10 @@ const portfolioData = [
   },
   {
     id: 2,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/Tour-future%26metroBoomin.webp",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Tour-future%26metroBoomin.webp",
     images: [
-      "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/Tour-future%26metroBoomin%20-%20Full.webp",
-      "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/future%26metroBoomin-8.webp"
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Tour-future%26metroBoomin%20-%20Full.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/future%26metroBoomin-8.webp"
     ],
     title: "Future & Metro Boomin Tour",
     date: "",
@@ -28,9 +28,9 @@ const portfolioData = [
   },
   {
     id: 3,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/travis-scott-tour-02.webp",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/travis-scott-tour-02.webp",
     images: [
-      "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/travis-scott-tour-05.webp"
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/travis-scott-tour-05.webp"
     ],
     title: "Travis Scott Tour",
     date: "",
@@ -39,10 +39,10 @@ const portfolioData = [
   },
   {
     id: 4,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/Nacreous%20Coffee%20Composite_Full.webp",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Nacreous%20Coffee%20Composite_Full.webp",
     images: [
-      "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/Section%205%20Frame%202%20-%20CloudsCoffeeChristmas.webp",
-      "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/Section%205%20Frame%204%20-%20CloudsCoffeePeppermint.webp"
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Section%205%20Frame%202%20-%20CloudsCoffeeChristmas.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Section%205%20Frame%204%20-%20CloudsCoffeePeppermint.webp"
     ],
     title: "Nacreous Coffee",
     date: "",
@@ -51,7 +51,7 @@ const portfolioData = [
   },
   {
     id: 5,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/kawmixThumbnail3.mp4",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/kawmixThumbnail3.mp4",
     images: [],
     title: "Kawmix",
     date: "",
@@ -60,7 +60,7 @@ const portfolioData = [
   },
   {
     id: 6,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/coverCropThumbnail1.mp4",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/coverCropThumbnail1.mp4",
     images: [],
     title: "Cover Crop",
     date: "",
@@ -69,7 +69,7 @@ const portfolioData = [
   },
   {
     id: 7,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/green_pastures_farm_preview.mp4",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/green_pastures_farm_preview.mp4",
     images: [],
     title: "Green Pastures Farm",
     date: "",
@@ -78,7 +78,7 @@ const portfolioData = [
   },
   {
     id: 8,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/theCoupes.mp4",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/theCoupes.mp4",
     images: [],
     title: "The Coupes",
     date: "",
@@ -87,9 +87,9 @@ const portfolioData = [
   },
   {
     id: 9,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/underground-096.webp",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/underground-096.webp",
     images: [
-      "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/child-of-hope%20ACT2-13.webp"
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/child-of-hope%20ACT2-13.webp"
     ],
     title: "Underground",
     date: "",
@@ -98,7 +98,7 @@ const portfolioData = [
   },
   {
     id: 10,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/Iowa_Full.webp",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Iowa_Full.webp",
     images: [],
     title: "Iowa",
     date: "",
@@ -107,7 +107,7 @@ const portfolioData = [
   },
   {
     id: 11,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/Publiceye.png",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Publiceye.png",
     images: [],
     title: "Public Eye",
     date: "",
@@ -116,7 +116,7 @@ const portfolioData = [
   },
   {
     id: 12,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/SNY02887.jpg",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/SNY02887.jpg",
     images: [],
     title: "SNY02887",
     date: "",
@@ -125,7 +125,7 @@ const portfolioData = [
   },
   {
     id: 13,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/Wildlife1.webp",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Wildlife1.webp",
     images: [],
     title: "Wildlife",
     date: "",
@@ -134,7 +134,7 @@ const portfolioData = [
   },
   {
     id: 14,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/tomatoes_jonah_nelson_preview.mp4",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/tomatoes_jonah_nelson_preview.mp4",
     images: [],
     title: "Family Tree Nursery",
     date: "",
@@ -143,7 +143,7 @@ const portfolioData = [
   },
   {
     id: 15,
-    thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/internal_training_jonah_nelson_preview.mp4",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/internal_training_jonah_nelson_preview.mp4",
     images: [],
     title: "Internal Corporate Training",
     date: "",
