@@ -140,5 +140,14 @@ const portfolioData = [
     date: "",
     description: "",
     links: []
+  },
+  {
+  id: 15,
+  thumbnail: "https://cdn.jsdelivr.net/gh/BodaciousTea/public-images@main/internal_training_jonah_nelson_preview.mp4",
+  images: [],
+  title: "Internal Corporate Training",
+  date: "",
+  description: "",
+  links: []
   }
 ];
