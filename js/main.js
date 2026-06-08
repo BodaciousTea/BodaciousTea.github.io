@@ -47,59 +47,43 @@ document.addEventListener('DOMContentLoaded', () => {
         video.muted = true;
         video.loop = true;
         video.playsInline = true;
-        video.preload = 'auto';
+        video.preload = 'metadata';       
         video.setAttribute('disablePictureInPicture', '');
         div.appendChild(video);
         div.classList.add('video-item');
         
         let metadataLoaded = false;
-        let retryCount = 0;
-        const maxRetries = 3;
-        
-        function tryLoadVideo() {
-          video.src = item.thumbnail + '?t=' + Date.now();
-          video.load();
-        }
-        
-        video.addEventListener('loadedmetadata', () => {
-          if (!metadataLoaded) {
-            metadataLoaded = true;
-            div.dataset.aspectRatio = video.videoWidth / video.videoHeight;
-            imageLoaded();
-          }
-        });
-        
-        video.addEventListener('canplay', () => {
-          video.play().catch(() => {});
-        });
-        
-        video.addEventListener('error', () => {
-          if (retryCount < maxRetries) {
-            retryCount++;
-            setTimeout(tryLoadVideo, 1000 * retryCount);
-          } else if (!metadataLoaded) {
-            metadataLoaded = true;
-            div.dataset.aspectRatio = 16/9;
-            imageLoaded();
-          }
-        });
-        
-        video.addEventListener('stalled', () => {
-          if (retryCount < maxRetries) {
-            retryCount++;
-            setTimeout(tryLoadVideo, 1000);
-          }
-        });
-        
-        setTimeout(() => {
-          if (!metadataLoaded) {
-            metadataLoaded = true;
-            div.dataset.aspectRatio = 16/9;
-            imageLoaded();
-          }
-        }, 10000);
-        
-        tryLoadVideo();
+
+video.preload = 'metadata';
+video.src = item.thumbnail;
+
+video.addEventListener('loadedmetadata', () => {
+  if (!metadataLoaded) {
+    metadataLoaded = true;
+    div.dataset.aspectRatio = video.videoWidth / video.videoHeight;
+    imageLoaded();
+  }
+});
+
+video.addEventListener('canplay', () => {
+  video.play().catch(() => {});
+});
+
+video.addEventListener('error', () => {
+  if (!metadataLoaded) {
+    metadataLoaded = true;
+    div.dataset.aspectRatio = 16 / 9;
+    imageLoaded();
+  }
+});
+
+setTimeout(() => {
+  if (!metadataLoaded) {
+    metadataLoaded = true;
+    div.dataset.aspectRatio = 16 / 9;
+    imageLoaded();
+  }
+}, 5000);
         
       } else {
         const img = document.createElement('img');
