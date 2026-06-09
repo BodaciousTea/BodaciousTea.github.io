@@ -116,9 +116,9 @@ const portfolioData = [
   },
   {
     id: 12,
-    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/SNY02887.jpg",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/grand_tetons_compressed.jpg",
     images: [],
-    title: "SNY02887",
+    title: "Grand Tetons",
     date: "",
     description: "",
     links: []
