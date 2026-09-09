@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#030706" />
+    <meta name="theme-color" content="#000403" />
     <meta
       name="description"
       content="Ted Koller is a director of photography working across narrative, documentary, commercial, and music projects."
@@ -11,39 +11,88 @@
     <meta property="og:title" content="Ted Koller — Director of Photography" />
     <meta property="og:description" content="Selected cinematography by Ted Koller." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ted-koller-cinematography.sure-plum-0886.chatgpt.site/" />
-    <meta property="og:image" content="https://ted-koller-cinematography.sure-plum-0886.chatgpt.site/images/og.png" />
+    <meta property="og:url" content="https://tedkoller.com/" />
+    <meta property="og:image" content="https://tedkoller.com/images/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Ted Koller — Director of Photography" />
     <meta name="twitter:description" content="Selected cinematography by Ted Koller." />
-    <meta name="twitter:image" content="https://ted-koller-cinematography.sure-plum-0886.chatgpt.site/images/og.png" />
+    <meta name="twitter:image" content="https://tedkoller.com/images/og.png" />
     <title>Ted Koller — Director of Photography</title>
     <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
     <link
       rel="preload"
-      href="fonts/Futura-Book.woff"
+      href="fonts/Kabel-Book.woff2"
       as="font"
-      type="font/woff"
+      type="font/woff2"
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#work">Skip to work</a>
+    <a class="skip-link" href="#showcase">Skip to work</a>
 
     <header class="site-header">
-      <div class="site-header__inner">
-        <a class="brand" href="#work" aria-label="Ted Koller, home">Ted Koller</a>
-        <p class="role">Director of Photography</p>
-        <button class="text-button" id="about-open" type="button">About</button>
-      </div>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a class="brand" href="#showcase" aria-label="Ted Koller, Showcase">Ted Koller</a>
+
+        <div class="nav-menu" data-menu>
+          <button
+            class="nav-menu__trigger"
+            id="work-menu-trigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="work-menu"
+          >
+            <span id="work-menu-label">Cinematography</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav-menu__options" id="work-menu" role="menu" hidden>
+            <button type="button" role="menuitemradio" aria-checked="true" data-work="cinematography">
+              Cinematography
+            </button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-work="web">
+              Web
+            </button>
+          </div>
+        </div>
+
+        <div class="nav-menu" data-menu>
+          <button
+            class="nav-menu__trigger"
+            id="view-menu-trigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="view-menu"
+          >
+            <span id="view-menu-label">Showcase</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav-menu__options nav-menu__options--right" id="view-menu" role="menu" hidden>
+            <button type="button" role="menuitemradio" aria-checked="true" data-view="showcase">
+              Showcase
+            </button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-view="about">
+              About
+            </button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-view="resume">
+              Resume
+            </button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-view="contact">
+              Contact
+            </button>
+          </div>
+        </div>
+      </nav>
     </header>
 
-    <main id="work">
-      <h1 class="visually-hidden">Selected cinematography by Ted Koller</h1>
-      <section class="gallery" id="gallery" aria-label="Selected work"></section>
+    <main class="site-main" id="showcase">
+      <h1 class="visually-hidden">Selected work by Ted Koller</h1>
+      <div class="gallery-frame">
+        <section class="gallery" id="gallery" aria-label="Selected cinematography"></section>
+        <p class="empty-state" id="empty-state" hidden>No projects in this collection yet.</p>
+      </div>
     </main>
 
     <footer class="site-footer">
@@ -51,45 +100,44 @@
       <a href="mailto:ted@tedkoller.com">ted@tedkoller.com</a>
     </footer>
 
-    <div class="about" id="about" aria-hidden="true">
+    <div class="info-view" id="info-view" aria-hidden="true">
       <button
-        class="about__backdrop"
-        id="about-backdrop"
+        class="info-view__backdrop"
+        id="info-backdrop"
         type="button"
         tabindex="-1"
-        aria-label="Close About"
+        aria-label="Return to Showcase"
       ></button>
-      <section
-        class="about__content"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="about-title"
-      >
-        <button class="close-button" id="about-close" type="button" aria-label="Close About"></button>
+
+      <section class="info-panel" id="about-panel" data-panel="about" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>
         <p class="eyebrow">About</p>
         <h2 id="about-title">Ted Koller</h2>
-        <p class="about__role">Director of Photography</p>
-        <p class="about__copy">
+        <p class="info-panel__role">Director of Photography</p>
+        <p class="info-panel__copy">
           Cinematography across narrative, documentary, commercial, and music projects.
         </p>
-        <a class="about__contact" href="mailto:ted@tedkoller.com">Get in touch</a>
+        <a class="text-link" href="mailto:ted@tedkoller.com">Get in touch</a>
+      </section>
+
+      <section class="info-panel" id="resume-panel" data-panel="resume" role="dialog" aria-modal="true" aria-labelledby="resume-title" hidden>
+        <p class="eyebrow">Experience</p>
+        <h2 id="resume-title">Resume</h2>
+        <p class="info-panel__copy">
+          Director of Photography working across narrative, documentary, commercial, live performance, and music projects.
+        </p>
+        <a class="text-link" href="mailto:ted@tedkoller.com?subject=Resume%20request">Request full resume</a>
+      </section>
+
+      <section class="info-panel" id="contact-panel" data-panel="contact" role="dialog" aria-modal="true" aria-labelledby="contact-title" hidden>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Let’s work<br />together.</h2>
+        <a class="contact-email" href="mailto:ted@tedkoller.com">ted@tedkoller.com</a>
       </section>
     </div>
 
     <div class="lightbox" id="lightbox" aria-hidden="true">
-      <button
-        class="lightbox__backdrop"
-        id="lightbox-backdrop"
-        type="button"
-        tabindex="-1"
-        aria-label="Close project"
-      ></button>
-      <section
-        class="lightbox__dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="lightbox-title"
-      >
+      <button class="lightbox__backdrop" id="lightbox-backdrop" type="button" tabindex="-1" aria-label="Close project"></button>
+      <section class="lightbox__dialog" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
         <button class="close-button" id="lightbox-close" type="button" aria-label="Close project"></button>
         <div class="lightbox__stage" id="lightbox-stage"></div>
         <aside class="lightbox__details">

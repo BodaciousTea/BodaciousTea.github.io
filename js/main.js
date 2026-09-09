@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   const gallery = document.getElementById("gallery");
-  const about = document.getElementById("about");
-  const aboutOpen = document.getElementById("about-open");
-  const aboutClose = document.getElementById("about-close");
-  const aboutBackdrop = document.getElementById("about-backdrop");
+  const emptyState = document.getElementById("empty-state");
+  const infoView = document.getElementById("info-view");
+  const infoBackdrop = document.getElementById("info-backdrop");
+  const infoPanels = [...document.querySelectorAll("[data-panel]")];
+  const workLabel = document.getElementById("work-menu-label");
+  const viewLabel = document.getElementById("view-menu-label");
+  const workOptions = [...document.querySelectorAll("[data-work]")];
+  const viewOptions = [...document.querySelectorAll("[data-view]")];
+  const dropdowns = [...document.querySelectorAll("[data-menu]")];
+  const brand = document.querySelector(".brand");
   const lightbox = document.getElementById("lightbox");
   const lightboxClose = document.getElementById("lightbox-close");
   const lightboxBackdrop = document.getElementById("lightbox-backdrop");
@@ -13,17 +19,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxLinks = document.getElementById("lightbox-links");
   const lightboxThumbnails = document.getElementById("lightbox-thumbnails");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const projectElements = [];
+  let activeWork = "cinematography";
+  let activeView = "showcase";
   let lastFocusedElement = null;
 
   const isVideo = (src = "") => /\.mp4(?:$|\?)/i.test(src);
+  const displayName = (value) => value.charAt(0).toUpperCase() + value.slice(1);
 
   function createGallery() {
     const fragment = document.createDocumentFragment();
     let featuredMotionAssigned = false;
 
     portfolioData.forEach((item, index) => {
+      const categories = item.id === 11 ? ["cinematography", "web"] : ["cinematography"];
       const article = document.createElement("article");
       article.className = "project";
+      article.dataset.categories = categories.join(" ");
 
       const button = document.createElement("button");
       button.className = "project__button";
@@ -68,10 +80,12 @@ document.addEventListener("DOMContentLoaded", () => {
       button.addEventListener("click", () => openProject(item, button));
       article.appendChild(button);
       fragment.appendChild(article);
+      projectElements.push(article);
     });
 
     gallery.appendChild(fragment);
     observeVideos();
+    filterGallery(activeWork);
   }
 
   function observeVideos() {
@@ -86,10 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target;
-
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !video.closest(".project").hidden) {
             loadVideo(video);
-            if (video.dataset.motion === "featured" && !reduceMotion) {
+            if (video.dataset.motion === "featured" && !reduceMotion && activeView === "showcase") {
               video.play().catch(() => {});
             }
           } else if (!video.paused) {
@@ -97,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { rootMargin: "280px 0px", threshold: 0.15 },
+      { rootMargin: "220px 0px", threshold: 0.15 },
     );
 
     videos.forEach((video) => observer.observe(video));
@@ -105,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadVideo(video) {
     if (video.src || !video.dataset.src) return;
-
     video.src = video.dataset.src;
     video.preload = video.dataset.motion === "featured" ? "auto" : "metadata";
     const revealVideo = () => {
@@ -115,6 +127,118 @@ document.addEventListener("DOMContentLoaded", () => {
     video.addEventListener("error", revealVideo, { once: true });
     video.load();
   }
+
+  function filterGallery(category) {
+    activeWork = category;
+    let visibleCount = 0;
+
+    projectElements.forEach((project) => {
+      const visible = project.dataset.categories.split(" ").includes(category);
+      project.hidden = !visible;
+      if (visible) visibleCount += 1;
+      else project.querySelector("video")?.pause();
+    });
+
+    gallery.setAttribute("aria-label", `Selected ${category}`);
+    emptyState.hidden = visibleCount > 0;
+    workLabel.textContent = displayName(category);
+    workOptions.forEach((option) => {
+      option.setAttribute("aria-checked", String(option.dataset.work === category));
+    });
+  }
+
+  function selectView(view, restoreFocus = false) {
+    activeView = view;
+    viewLabel.textContent = displayName(view);
+    viewOptions.forEach((option) => {
+      option.setAttribute("aria-checked", String(option.dataset.view === view));
+    });
+
+    if (view === "showcase") {
+      infoView.classList.remove("is-open");
+      infoView.setAttribute("aria-hidden", "true");
+      infoPanels.forEach((panel) => {
+        panel.hidden = true;
+      });
+      document.body.classList.remove("modal-open");
+      resumeFeaturedVideo();
+      if (restoreFocus) document.getElementById("view-menu-trigger").focus();
+      return;
+    }
+
+    document.querySelectorAll(".project video").forEach((video) => video.pause());
+    infoPanels.forEach((panel) => {
+      panel.hidden = panel.dataset.panel !== view;
+    });
+    infoView.classList.add("is-open");
+    infoView.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+
+    const activePanel = infoPanels.find((panel) => panel.dataset.panel === view);
+    if (activePanel) {
+      activePanel.tabIndex = -1;
+      requestAnimationFrame(() => activePanel.focus());
+    }
+  }
+
+  function resumeFeaturedVideo() {
+    const video = document.querySelector('.lazy-video[data-motion="featured"]');
+    if (!video || reduceMotion || video.closest(".project").hidden) return;
+    const rect = video.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) video.play().catch(() => {});
+  }
+
+  function closeMenus(except = null) {
+    dropdowns.forEach((dropdown) => {
+      if (dropdown === except) return;
+      const trigger = dropdown.querySelector(".nav-menu__trigger");
+      const menu = dropdown.querySelector(".nav-menu__options");
+      trigger.setAttribute("aria-expanded", "false");
+      menu.hidden = true;
+    });
+  }
+
+  dropdowns.forEach((dropdown) => {
+    const trigger = dropdown.querySelector(".nav-menu__trigger");
+    const menu = dropdown.querySelector(".nav-menu__options");
+    trigger.addEventListener("click", () => {
+      const willOpen = trigger.getAttribute("aria-expanded") !== "true";
+      closeMenus(willOpen ? dropdown : null);
+      trigger.setAttribute("aria-expanded", String(willOpen));
+      menu.hidden = !willOpen;
+      if (willOpen) requestAnimationFrame(() => menu.querySelector("button")?.focus());
+    });
+  });
+
+  workOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      filterGallery(option.dataset.work);
+      selectView("showcase");
+      closeMenus();
+      document.getElementById("work-menu-trigger").focus();
+    });
+  });
+
+  viewOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      lastFocusedElement = document.getElementById("view-menu-trigger");
+      selectView(option.dataset.view);
+      closeMenus();
+      if (option.dataset.view === "showcase") lastFocusedElement.focus();
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest("[data-menu]")) closeMenus();
+  });
+
+  brand.addEventListener("click", () => {
+    filterGallery("cinematography");
+    selectView("showcase");
+    closeMenus();
+  });
+
+  infoBackdrop.addEventListener("click", () => selectView("showcase", true));
 
   function openModal(element, trigger) {
     lastFocusedElement = trigger || document.activeElement;
@@ -168,9 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
         thumb.appendChild(image);
 
         thumb.addEventListener("click", () => {
-          lightboxThumbnails
-            .querySelectorAll(".lightbox__thumbnail")
-            .forEach((node) => node.classList.remove("is-active"));
+          lightboxThumbnails.querySelectorAll(".lightbox__thumbnail").forEach((node) => node.classList.remove("is-active"));
           thumb.classList.add("is-active");
           showProjectMedia(src, item.title);
         });
@@ -205,16 +327,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  aboutOpen.addEventListener("click", () => openModal(about, aboutOpen));
-  aboutClose.addEventListener("click", () => closeModal(about));
-  aboutBackdrop.addEventListener("click", () => closeModal(about));
   lightboxClose.addEventListener("click", () => closeModal(lightbox));
   lightboxBackdrop.addEventListener("click", () => closeModal(lightbox));
 
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
-    if (lightbox.classList.contains("is-open")) closeModal(lightbox);
-    else if (about.classList.contains("is-open")) closeModal(about);
+    const openDropdown = dropdowns.find((dropdown) => dropdown.querySelector('.nav-menu__trigger[aria-expanded="true"]'));
+    if (openDropdown) {
+      const trigger = openDropdown.querySelector(".nav-menu__trigger");
+      closeMenus();
+      trigger.focus();
+    } else if (lightbox.classList.contains("is-open")) {
+      closeModal(lightbox);
+    } else if (infoView.classList.contains("is-open")) {
+      selectView("showcase", true);
+    }
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
