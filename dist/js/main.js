@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let activeView = "showcase";
   let lastFocusedElement = null;
   let videoObserver = null;
+  let gallerySwitchTimer = null;
 
   const isVideo = (src = "") => /\.mp4(?:$|\?)/i.test(src);
   const displayName = (value) => value.charAt(0).toUpperCase() + value.slice(1);
@@ -89,6 +90,13 @@ document.addEventListener("DOMContentLoaded", () => {
         mediaGrid.appendChild(tile);
       });
 
+      for (let placeholderIndex = mediaSources.length; placeholderIndex < 3; placeholderIndex += 1) {
+        const placeholder = document.createElement("span");
+        placeholder.className = "project project--placeholder";
+        placeholder.setAttribute("aria-hidden", "true");
+        mediaGrid.appendChild(placeholder);
+      }
+
       const preview = document.createElement("span");
       preview.className = "row-preview";
       preview.setAttribute("aria-hidden", "true");
@@ -148,16 +156,32 @@ document.addEventListener("DOMContentLoaded", () => {
     video.load();
   }
 
-  function filterGallery(category) {
+  function filterGallery(category, animate = true) {
     if (lightbox.classList.contains("is-open")) closeModal(lightbox, false);
     activeWork = category;
-    renderGallery(category);
     workLabel.textContent = displayName(category);
     workOptions.forEach((option) => {
       const selected = option.dataset.work === category;
       option.setAttribute("aria-checked", String(selected));
       option.hidden = selected;
     });
+
+    window.clearTimeout(gallerySwitchTimer);
+    if (!animate || reduceMotion || !gallery.childElementCount) {
+      gallery.classList.remove("is-switching");
+      renderGallery(category);
+      return;
+    }
+
+    document.querySelectorAll(".project video").forEach((video) => video.pause());
+    gallery.classList.add("is-switching");
+    gallerySwitchTimer = window.setTimeout(() => {
+      renderGallery(category);
+      requestAnimationFrame(() => {
+        gallery.classList.remove("is-switching");
+      });
+      gallerySwitchTimer = null;
+    }, 240);
   }
 
   function selectView(view, restoreFocus = false) {
@@ -368,6 +392,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
-  filterGallery(activeWork);
+  filterGallery(activeWork, false);
   selectView(activeView);
 });

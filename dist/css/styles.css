@@ -135,12 +135,34 @@ video {
   position: absolute;
   z-index: -1;
   inset: 0;
-  height: 145px;
-  background: linear-gradient(to bottom, rgba(0, 4, 3, 0.96) 0%, rgba(0, 4, 3, 0.68) 56%, transparent 100%);
-  -webkit-backdrop-filter: blur(14px) saturate(0.7);
-  backdrop-filter: blur(14px) saturate(0.7);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+  height: 190px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 4, 3, 0.98) 0%,
+    rgba(0, 4, 3, 0.92) 24%,
+    rgba(0, 4, 3, 0.76) 45%,
+    rgba(0, 4, 3, 0.5) 64%,
+    rgba(0, 4, 3, 0.22) 82%,
+    transparent 100%
+  );
+  -webkit-backdrop-filter: blur(16px) saturate(0.72);
+  backdrop-filter: blur(16px) saturate(0.72);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgba(0, 0, 0, 0.96) 35%,
+    rgba(0, 0, 0, 0.76) 58%,
+    rgba(0, 0, 0, 0.4) 78%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgba(0, 0, 0, 0.96) 35%,
+    rgba(0, 0, 0, 0.76) 58%,
+    rgba(0, 0, 0, 0.4) 78%,
+    transparent 100%
+  );
   content: "";
   pointer-events: none;
 }
@@ -268,6 +290,14 @@ video {
   display: flex;
   flex-direction: column;
   gap: var(--grid-gap);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 240ms ease, transform 360ms var(--ease);
+}
+
+.gallery.is-switching {
+  opacity: 0;
+  transform: translateY(5px);
 }
 
 .gallery-row {
@@ -294,14 +324,6 @@ video {
   gap: var(--grid-gap);
 }
 
-.project-set__media[data-count="1"] {
-  grid-template-columns: 1fr;
-}
-
-.project-set__media[data-count="2"] {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .project {
   position: relative;
   min-width: 0;
@@ -310,6 +332,11 @@ video {
   aspect-ratio: 16 / 9;
   content-visibility: auto;
   contain-intrinsic-size: auto 138px;
+}
+
+.project--placeholder {
+  border: 1px solid rgba(255, 255, 255, 0.025);
+  background: linear-gradient(135deg, #030605 0%, #0a0d0c 52%, #040706 100%);
 }
 
 .project__media {
@@ -469,7 +496,8 @@ video {
 }
 
 .info-view {
-  transition: visibility 0s linear 560ms, opacity 520ms ease;
+  opacity: 1;
+  transition: visibility 0s linear 760ms;
 }
 
 .info-view.is-open {
@@ -494,22 +522,21 @@ video {
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.94) 0%,
-    rgba(0, 4, 3, 0.3) 24%,
-    rgba(0, 4, 3, 0.3) 74%,
+    rgba(0, 3, 2, 0.78) 12%,
+    rgba(0, 4, 3, 0.58) 27%,
+    rgba(0, 4, 3, 0.4) 42%,
+    rgba(0, 4, 3, 0.34) 56%,
+    rgba(0, 4, 3, 0.43) 70%,
+    rgba(0, 3, 2, 0.66) 84%,
     rgba(0, 0, 0, 0.96) 100%
   );
-  -webkit-backdrop-filter: blur(0) saturate(1);
-  backdrop-filter: blur(0) saturate(1);
+  -webkit-backdrop-filter: blur(24px) saturate(0.68);
+  backdrop-filter: blur(24px) saturate(0.68);
   opacity: 0;
-  transition:
-    opacity 520ms ease,
-    -webkit-backdrop-filter 560ms var(--ease),
-    backdrop-filter 560ms var(--ease);
+  transition: opacity 720ms var(--ease);
 }
 
 .info-view.is-open .info-view__backdrop {
-  -webkit-backdrop-filter: blur(23px) saturate(0.65);
-  backdrop-filter: blur(23px) saturate(0.65);
   opacity: 1;
 }
 
@@ -521,14 +548,14 @@ video {
   padding: clamp(24px, 5vw, 52px);
   overflow-y: auto;
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 360ms ease, transform 500ms var(--ease);
+  transform: translateY(18px);
+  transition: opacity 560ms ease, transform 720ms var(--ease);
 }
 
 .info-view.is-open .info-panel {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 100ms;
+  transition-delay: 140ms;
 }
 
 .info-panel[hidden] {
@@ -752,14 +779,6 @@ video {
     padding-top: 125px;
   }
 
-  .project-set__media {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .project-set__media[data-count="1"] {
-    grid-template-columns: 1fr;
-  }
-
   .lightbox__thumbnails {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -801,11 +820,6 @@ video {
 
   .site-main {
     padding-inline: 10px;
-  }
-
-  .project-set__media,
-  .project-set__media[data-count="2"] {
-    grid-template-columns: 1fr;
   }
 
   .lightbox__dialog {
