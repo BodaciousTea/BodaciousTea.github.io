@@ -633,11 +633,13 @@ video {
 }
 
 .lightbox__backdrop {
-  display: none;
+  display: block;
+  background: transparent;
 }
 
 .lightbox__dialog {
   position: relative;
+  z-index: 1;
   width: min(calc(100% - 36px), var(--gallery-width));
   min-height: 100%;
   margin: 0 auto;
@@ -645,40 +647,25 @@ video {
   background: var(--ground);
 }
 
-.close-button {
+.back-button {
   position: fixed;
   top: calc(var(--header-height) + 14px);
-  right: 22px;
+  left: max(18px, calc(50% - (var(--gallery-width) / 2)));
   z-index: 190;
   width: 38px;
   height: 38px;
   padding: 0;
   border: 0;
   background: transparent;
+  color: var(--ink);
   cursor: pointer;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
 }
 
-.close-button::before,
-.close-button::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 18px;
-  height: 1px;
-  background: var(--ink);
-  content: "";
-}
-
-.close-button::before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.close-button::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.close-button:hover,
-.close-button:focus-visible {
+.back-button:hover,
+.back-button:focus-visible {
   opacity: 0.6;
   outline: none;
 }
@@ -718,10 +705,10 @@ video {
 }
 
 .lightbox__details h2 {
-  font-size: clamp(20px, 2.2vw, 30px);
+  font-size: clamp(14px, 1.4vw, 16px);
   font-weight: 400;
-  letter-spacing: -0.012em;
-  line-height: 1.15;
+  letter-spacing: 0;
+  line-height: 1.2;
   text-transform: none;
 }
 
@@ -729,7 +716,7 @@ video {
   max-width: 72ch;
   margin: 13px 0 0;
   color: #cfceca;
-  font-size: clamp(14px, 1.6vw, 17px);
+  font-size: clamp(14px, 1.4vw, 16px);
   font-weight: 400;
   line-height: 1.5;
 }
@@ -807,8 +794,8 @@ video {
     padding-top: 125px;
   }
 
-  .close-button {
-    right: 12px;
+  .back-button {
+    left: 12px;
   }
 }
 

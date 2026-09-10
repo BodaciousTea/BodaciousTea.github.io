@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropdowns = [...document.querySelectorAll("[data-menu]")];
   const brand = document.querySelector(".brand");
   const lightbox = document.getElementById("lightbox");
-  const lightboxClose = document.getElementById("lightbox-close");
+  const lightboxBack = document.getElementById("lightbox-back");
   const lightboxBackdrop = document.getElementById("lightbox-backdrop");
   const lightboxStage = document.getElementById("lightbox-stage");
   const lightboxTitle = document.getElementById("lightbox-title");
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let activeWork = "cinematography";
   let activeView = "showcase";
   let lastFocusedElement = null;
-  let videoObserver = null;
+  let mediaObserver = null;
   let gallerySwitchTimer = null;
 
   function setPageScrollLock(locked) {
@@ -46,12 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function projectsFor(category) {
-    return portfolioData.filter((item) => category === "cinematography" || item.id === 11);
+    return portfolioData.filter((item) => (item.category || "cinematography") === category);
   }
 
   function renderGallery(category) {
-    videoObserver?.disconnect();
-    videoObserver = null;
+    mediaObserver?.disconnect();
+    mediaObserver = null;
     gallery.replaceChildren();
 
     const projects = projectsFor(category);
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let media;
         if (isVideo(src)) {
           media = document.createElement("video");
-          media.className = "project__media lazy-video";
+          media.className = "project__media lazy-media lazy-video";
           media.muted = true;
           media.loop = true;
           media.playsInline = true;
@@ -95,11 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         } else {
           media = document.createElement("img");
-          media.className = "project__media";
-          media.src = src;
+          media.className = "project__media lazy-media lazy-image";
           media.alt = "";
           media.decoding = "async";
-          media.loading = projectIndex === 0 ? "eager" : "lazy";
+          media.loading = "lazy";
+          media.dataset.src = src;
+          media.dataset.loading = "true";
           if (projectIndex === 0 && mediaIndex === 0) media.fetchPriority = "high";
         }
 
@@ -130,35 +131,51 @@ document.addEventListener("DOMContentLoaded", () => {
     gallery.appendChild(fragment);
     gallery.setAttribute("aria-label", `Selected ${category}`);
     emptyState.hidden = projects.length > 0;
-    observeVideos();
+    observeGalleryMedia();
   }
 
-  function observeVideos() {
-    const videos = document.querySelectorAll(".lazy-video");
+  function observeGalleryMedia() {
+    mediaObserver?.disconnect();
+    const mediaItems = document.querySelectorAll(".lazy-media");
 
     if (!("IntersectionObserver" in window)) {
-      videos.forEach(loadVideo);
+      mediaItems.forEach(loadGalleryMedia);
       return;
     }
 
-    videoObserver = new IntersectionObserver(
+    mediaObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const video = entry.target;
+          const media = entry.target;
           if (entry.isIntersecting) {
-            loadVideo(video);
-            if (video.dataset.motion === "featured" && !reduceMotion && activeView === "showcase") {
-              video.play().catch(() => {});
+            loadGalleryMedia(media);
+            if (media.matches("video") && media.dataset.motion === "featured" && !reduceMotion && activeView === "showcase") {
+              media.play().catch(() => {});
             }
-          } else if (!video.paused) {
-            video.pause();
+          } else if (media.matches("video")) {
+            unloadVideo(media);
           }
         });
       },
-      { rootMargin: "220px 0px", threshold: 0.15 },
+      { rootMargin: "180px 0px", threshold: 0.1 },
     );
 
-    videos.forEach((video) => videoObserver.observe(video));
+    mediaItems.forEach((media) => mediaObserver.observe(media));
+  }
+
+  function loadGalleryMedia(media) {
+    if (media.matches("video")) {
+      loadVideo(media);
+      return;
+    }
+
+    if (media.src || !media.dataset.src) return;
+    media.src = media.dataset.src;
+    const revealImage = () => {
+      media.dataset.loading = "false";
+    };
+    media.addEventListener("load", revealImage, { once: true });
+    media.addEventListener("error", revealImage, { once: true });
   }
 
   function loadVideo(video) {
@@ -170,6 +187,14 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     video.addEventListener("loadedmetadata", revealVideo, { once: true });
     video.addEventListener("error", revealVideo, { once: true });
+    video.load();
+  }
+
+  function unloadVideo(video) {
+    if (!video.getAttribute("src")) return;
+    video.pause();
+    video.removeAttribute("src");
+    video.dataset.loading = "true";
     video.load();
   }
 
@@ -307,7 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
     element.setAttribute("aria-hidden", "false");
     setPageScrollLock(true);
     if (element === lightbox) element.scrollTop = 0;
-    requestAnimationFrame(() => element.querySelector(".close-button")?.focus());
+    requestAnimationFrame(() => element.querySelector(".back-button")?.focus());
   }
 
   function closeModal(element, restoreFocus = true) {
@@ -417,7 +442,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  lightboxClose.addEventListener("click", () => closeModal(lightbox));
+  lightboxBack.addEventListener("click", () => closeModal(lightbox));
   lightboxBackdrop.addEventListener("click", () => closeModal(lightbox));
 
   document.addEventListener("keydown", (event) => {

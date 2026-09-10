@@ -107,6 +107,7 @@ const portfolioData = [
   },
   {
     id: 11,
+    category: "web",
     thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Publiceye.png",
     images: [],
     title: "Public Eye",
