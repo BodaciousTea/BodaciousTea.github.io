@@ -26,7 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let gallerySwitchTimer = null;
 
   const isVideo = (src = "") => /\.mp4(?:$|\?)/i.test(src);
+  const isVimeo = (src = "") => /(?:player\.)?vimeo\.com/i.test(src);
   const displayName = (value) => value.charAt(0).toUpperCase() + value.slice(1);
+
+  function projectMedia(item) {
+    return [...new Set([item.thumbnail, ...(item.images || [])].filter(Boolean))];
+  }
 
   function projectsFor(category) {
     return portfolioData.filter((item) => category === "cinematography" || item.id === 11);
@@ -43,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     projects.forEach((item, projectIndex) => {
       const row = document.createElement("article");
       row.className = "gallery-row";
-      const mediaSources = [...new Set([item.thumbnail, ...(item.images || [])].filter(Boolean))].slice(0, 3);
+      const mediaSources = projectMedia(item).slice(0, 3);
       let rowMotionAssigned = false;
 
       const button = document.createElement("button");
@@ -297,8 +302,8 @@ document.addEventListener("DOMContentLoaded", () => {
     element.classList.remove("is-open");
     element.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
-    const activeVideo = element.querySelector("video");
-    if (activeVideo) activeVideo.pause();
+    element.querySelectorAll("video").forEach((video) => video.pause());
+    element.querySelector("iframe")?.contentWindow?.postMessage('{"method":"pause"}', "*");
     if (restoreFocus) lastFocusedElement?.focus();
     if (element === lightbox && activeView === "showcase") resumeFeaturedVideos();
   }
@@ -320,31 +325,38 @@ document.addEventListener("DOMContentLoaded", () => {
       lightboxLinks.appendChild(anchor);
     });
 
-    const media = [item.thumbnail, ...(item.images || [])];
-    showProjectMedia(media[0], item.title);
+    const media = projectMedia(item);
+    showProjectMedia(item.vimeo || item.video || media[0], item.title);
 
-    if (media.length > 1) {
-      media.slice(1).forEach((src, index) => {
-        if (isVideo(src)) return;
-        const thumb = document.createElement("button");
-        thumb.className = "lightbox__thumbnail";
-        thumb.type = "button";
-        thumb.setAttribute("aria-label", `Show additional image ${index + 1} of ${media.length - 1}`);
+    media.slice(0, 3).forEach((src) => {
+      const tile = document.createElement("span");
+      tile.className = "project-detail__tile";
 
+      if (isVideo(src)) {
+        const video = document.createElement("video");
+        video.src = src;
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = "metadata";
+        video.setAttribute("aria-hidden", "true");
+        tile.appendChild(video);
+      } else {
         const image = document.createElement("img");
         image.src = src;
         image.alt = "";
         image.loading = "lazy";
         image.decoding = "async";
-        thumb.appendChild(image);
+        tile.appendChild(image);
+      }
 
-        thumb.addEventListener("click", () => {
-          lightboxThumbnails.querySelectorAll(".lightbox__thumbnail").forEach((node) => node.classList.remove("is-active"));
-          thumb.classList.add("is-active");
-          showProjectMedia(src, item.title);
-        });
-        lightboxThumbnails.appendChild(thumb);
-      });
+      lightboxThumbnails.appendChild(tile);
+    });
+
+    for (let placeholderIndex = media.length; placeholderIndex < 3; placeholderIndex += 1) {
+      const placeholder = document.createElement("span");
+      placeholder.className = "project-detail__tile project-detail__tile--placeholder";
+      placeholder.setAttribute("aria-hidden", "true");
+      lightboxThumbnails.appendChild(placeholder);
     }
 
     openModal(lightbox, trigger);
@@ -355,11 +367,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentVideo) currentVideo.pause();
     lightboxStage.replaceChildren();
 
-    if (isVideo(src)) {
+    if (isVimeo(src)) {
+      const videoId = src.match(/(?:video\/|vimeo\.com\/)(\d+)/)?.[1];
+      if (!videoId) return;
+
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://player.vimeo.com/video/${videoId}?autoplay=0&title=0&byline=0&portrait=0`;
+      iframe.title = title || "Project video";
+      iframe.loading = "eager";
+      iframe.allow = "fullscreen; picture-in-picture";
+      iframe.setAttribute("allowfullscreen", "");
+      lightboxStage.appendChild(iframe);
+    } else if (isVideo(src)) {
       const video = document.createElement("video");
       video.src = src;
       video.controls = true;
-      video.autoplay = !reduceMotion;
+      video.autoplay = false;
       video.loop = true;
       video.playsInline = true;
       video.preload = "metadata";
