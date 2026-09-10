@@ -19,73 +19,108 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxLinks = document.getElementById("lightbox-links");
   const lightboxThumbnails = document.getElementById("lightbox-thumbnails");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const projectElements = [];
   let activeWork = "cinematography";
   let activeView = "showcase";
   let lastFocusedElement = null;
+  let videoObserver = null;
 
   const isVideo = (src = "") => /\.mp4(?:$|\?)/i.test(src);
   const displayName = (value) => value.charAt(0).toUpperCase() + value.slice(1);
 
-  function createGallery() {
+  function projectsFor(category) {
+    return portfolioData.filter((item) => category === "cinematography" || item.id === 11);
+  }
+
+  function showRowPreview(row, item) {
+    const preview = row.querySelector(".row-preview");
+    preview.querySelector(".row-preview__title").textContent = item.title || "Untitled";
+    preview.querySelector(".row-preview__meta").textContent = item.date || item.description || "";
+    preview.setAttribute("aria-hidden", "false");
+    row.classList.add("has-preview");
+  }
+
+  function clearRowPreview(row) {
+    row.querySelector(".row-preview").setAttribute("aria-hidden", "true");
+    row.classList.remove("has-preview");
+  }
+
+  function renderGallery(category) {
+    videoObserver?.disconnect();
+    videoObserver = null;
+    gallery.replaceChildren();
+
+    const projects = projectsFor(category);
     const fragment = document.createDocumentFragment();
-    let featuredMotionAssigned = false;
 
-    portfolioData.forEach((item, index) => {
-      const categories = item.id === 11 ? ["cinematography", "web"] : ["cinematography"];
-      const article = document.createElement("article");
-      article.className = "project";
-      article.dataset.categories = categories.join(" ");
+    for (let rowIndex = 0; rowIndex < projects.length; rowIndex += 3) {
+      const row = document.createElement("section");
+      row.className = "gallery-row";
+      row.setAttribute("aria-label", `Project row ${Math.floor(rowIndex / 3) + 1}`);
+      let rowMotionAssigned = false;
 
-      const button = document.createElement("button");
-      button.className = "project__button";
-      button.type = "button";
-      button.setAttribute("aria-label", `View ${item.title || "project"}`);
+      projects.slice(rowIndex, rowIndex + 3).forEach((item, itemIndex) => {
+        const article = document.createElement("article");
+        article.className = "project";
 
-      let media;
-      if (isVideo(item.thumbnail)) {
-        media = document.createElement("video");
-        media.className = "project__media lazy-video";
-        media.muted = true;
-        media.loop = true;
-        media.playsInline = true;
-        media.preload = "none";
-        media.dataset.src = item.thumbnail;
-        media.dataset.loading = "true";
-        media.setAttribute("disablePictureInPicture", "");
-        media.setAttribute("aria-hidden", "true");
+        const button = document.createElement("button");
+        button.className = "project__button";
+        button.type = "button";
+        button.setAttribute("aria-label", `View ${item.title || "project"}`);
 
-        if (!featuredMotionAssigned) {
-          media.dataset.motion = "featured";
-          featuredMotionAssigned = true;
+        let media;
+        if (isVideo(item.thumbnail)) {
+          media = document.createElement("video");
+          media.className = "project__media lazy-video";
+          media.muted = true;
+          media.loop = true;
+          media.playsInline = true;
+          media.preload = "none";
+          media.dataset.src = item.thumbnail;
+          media.dataset.loading = "true";
+          media.setAttribute("disablePictureInPicture", "");
+          media.setAttribute("aria-hidden", "true");
+
+          if (!rowMotionAssigned) {
+            media.dataset.motion = "featured";
+            rowMotionAssigned = true;
+          }
+        } else {
+          media = document.createElement("img");
+          media.className = "project__media";
+          media.src = item.thumbnail;
+          media.alt = "";
+          media.decoding = "async";
+          media.loading = rowIndex === 0 ? "eager" : "lazy";
+          if (rowIndex === 0 && itemIndex === 0) media.fetchPriority = "high";
         }
-      } else {
-        media = document.createElement("img");
-        media.className = "project__media";
-        media.src = item.thumbnail;
-        media.alt = "";
-        media.decoding = "async";
-        media.loading = index < 3 ? "eager" : "lazy";
-        if (index === 0) media.fetchPriority = "high";
-      }
 
-      const caption = document.createElement("span");
-      caption.className = "project__caption";
-      caption.innerHTML = `<span class="project__title"></span>${
-        isVideo(item.thumbnail) ? '<span class="project__motion">Motion</span>' : ""
-      }`;
-      caption.querySelector(".project__title").textContent = item.title || "Untitled";
+        button.appendChild(media);
+        button.addEventListener("mouseenter", () => showRowPreview(row, item));
+        button.addEventListener("focus", () => showRowPreview(row, item));
+        button.addEventListener("click", () => openProject(item, button));
+        article.appendChild(button);
+        row.appendChild(article);
+      });
 
-      button.append(media, caption);
-      button.addEventListener("click", () => openProject(item, button));
-      article.appendChild(button);
-      fragment.appendChild(article);
-      projectElements.push(article);
-    });
+      const preview = document.createElement("div");
+      preview.className = "row-preview";
+      preview.setAttribute("aria-live", "polite");
+      preview.setAttribute("aria-hidden", "true");
+      preview.innerHTML = '<div><h2 class="row-preview__title"></h2><p class="row-preview__meta"></p></div>';
+      row.appendChild(preview);
+      row.addEventListener("mouseleave", () => clearRowPreview(row));
+      row.addEventListener("focusout", () => {
+        requestAnimationFrame(() => {
+          if (!row.contains(document.activeElement)) clearRowPreview(row);
+        });
+      });
+      fragment.appendChild(row);
+    }
 
     gallery.appendChild(fragment);
+    gallery.setAttribute("aria-label", `Selected ${category}`);
+    emptyState.hidden = projects.length > 0;
     observeVideos();
-    filterGallery(activeWork);
   }
 
   function observeVideos() {
@@ -96,11 +131,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const observer = new IntersectionObserver(
+    videoObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target;
-          if (entry.isIntersecting && !video.closest(".project").hidden) {
+          if (entry.isIntersecting) {
             loadVideo(video);
             if (video.dataset.motion === "featured" && !reduceMotion && activeView === "showcase") {
               video.play().catch(() => {});
@@ -113,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { rootMargin: "220px 0px", threshold: 0.15 },
     );
 
-    videos.forEach((video) => observer.observe(video));
+    videos.forEach((video) => videoObserver.observe(video));
   }
 
   function loadVideo(video) {
@@ -130,20 +165,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function filterGallery(category) {
     activeWork = category;
-    let visibleCount = 0;
-
-    projectElements.forEach((project) => {
-      const visible = project.dataset.categories.split(" ").includes(category);
-      project.hidden = !visible;
-      if (visible) visibleCount += 1;
-      else project.querySelector("video")?.pause();
-    });
-
-    gallery.setAttribute("aria-label", `Selected ${category}`);
-    emptyState.hidden = visibleCount > 0;
+    renderGallery(category);
     workLabel.textContent = displayName(category);
     workOptions.forEach((option) => {
-      option.setAttribute("aria-checked", String(option.dataset.work === category));
+      const selected = option.dataset.work === category;
+      option.setAttribute("aria-checked", String(selected));
+      option.hidden = selected;
     });
   }
 
@@ -151,7 +178,9 @@ document.addEventListener("DOMContentLoaded", () => {
     activeView = view;
     viewLabel.textContent = displayName(view);
     viewOptions.forEach((option) => {
-      option.setAttribute("aria-checked", String(option.dataset.view === view));
+      const selected = option.dataset.view === view;
+      option.setAttribute("aria-checked", String(selected));
+      option.hidden = selected;
     });
 
     if (view === "showcase") {
@@ -161,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
         panel.hidden = true;
       });
       document.body.classList.remove("modal-open");
-      resumeFeaturedVideo();
+      resumeFeaturedVideos();
       if (restoreFocus) document.getElementById("view-menu-trigger").focus();
       return;
     }
@@ -181,11 +210,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function resumeFeaturedVideo() {
-    const video = document.querySelector('.lazy-video[data-motion="featured"]');
-    if (!video || reduceMotion || video.closest(".project").hidden) return;
-    const rect = video.getBoundingClientRect();
-    if (rect.bottom > 0 && rect.top < window.innerHeight) video.play().catch(() => {});
+  function resumeFeaturedVideos() {
+    if (reduceMotion) return;
+    document.querySelectorAll('.lazy-video[data-motion="featured"]').forEach((video) => {
+      const rect = video.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        loadVideo(video);
+        video.play().catch(() => {});
+      }
+    });
   }
 
   function closeMenus(except = null) {
@@ -206,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
       closeMenus(willOpen ? dropdown : null);
       trigger.setAttribute("aria-expanded", String(willOpen));
       menu.hidden = !willOpen;
-      if (willOpen) requestAnimationFrame(() => menu.querySelector("button")?.focus());
+      if (willOpen) requestAnimationFrame(() => menu.querySelector("button:not([hidden])")?.focus());
     });
   });
 
@@ -345,5 +378,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
-  createGallery();
+  filterGallery(activeWork);
+  selectView(activeView);
 });
