@@ -271,6 +271,7 @@ video {
 }
 
 .gallery-row {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--grid-gap);
@@ -318,30 +319,25 @@ video {
 }
 
 .row-preview {
-  grid-column: 1 / -1;
+  position: absolute;
+  z-index: 2;
+  inset: 0;
   display: grid;
-  max-height: 0;
-  margin-top: calc(var(--grid-gap) * -1);
-  padding: 0 24px;
-  overflow: hidden;
+  padding: 24px;
   place-items: center;
-  border: 0 solid var(--line);
+  border: 1px solid var(--line);
+  background: rgba(0, 4, 3, 0.97);
   opacity: 0;
   text-align: center;
-  transition:
-    max-height 420ms var(--ease),
-    margin-top 420ms var(--ease),
-    padding 420ms var(--ease),
-    border-width 160ms ease,
-    opacity 240ms ease;
+  visibility: hidden;
+  transition: opacity 240ms ease, visibility 0s linear 240ms;
+  pointer-events: none;
 }
 
 .gallery-row.has-preview .row-preview {
-  max-height: 210px;
-  margin-top: 12px;
-  padding: 58px 24px;
-  border-width: 1px;
   opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 .row-preview__title {
@@ -459,6 +455,14 @@ video {
   transition-delay: 0s;
 }
 
+.info-view {
+  transition: visibility 0s linear 560ms, opacity 520ms ease;
+}
+
+.info-view.is-open {
+  transition-delay: 0s;
+}
+
 .info-view__backdrop,
 .lightbox__backdrop {
   position: absolute;
@@ -473,6 +477,29 @@ video {
   cursor: default;
 }
 
+.info-view__backdrop {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 4, 3, 0.3) 24%,
+    rgba(0, 4, 3, 0.3) 74%,
+    rgba(0, 0, 0, 0.96) 100%
+  );
+  -webkit-backdrop-filter: blur(0) saturate(1);
+  backdrop-filter: blur(0) saturate(1);
+  opacity: 0;
+  transition:
+    opacity 520ms ease,
+    -webkit-backdrop-filter 560ms var(--ease),
+    backdrop-filter 560ms var(--ease);
+}
+
+.info-view.is-open .info-view__backdrop {
+  -webkit-backdrop-filter: blur(23px) saturate(0.65);
+  backdrop-filter: blur(23px) saturate(0.65);
+  opacity: 1;
+}
+
 .info-panel {
   position: relative;
   place-self: center;
@@ -480,12 +507,15 @@ video {
   max-height: calc(100vh - 180px);
   padding: clamp(24px, 5vw, 52px);
   overflow-y: auto;
+  opacity: 0;
   transform: translateY(14px);
-  transition: transform 450ms var(--ease);
+  transition: opacity 360ms ease, transform 500ms var(--ease);
 }
 
 .info-view.is-open .info-panel {
+  opacity: 1;
   transform: translateY(0);
+  transition-delay: 100ms;
 }
 
 .info-panel[hidden] {
@@ -760,10 +790,6 @@ video {
 
   .gallery-row {
     grid-template-columns: 1fr;
-  }
-
-  .gallery-row.has-preview .row-preview {
-    padding-block: 42px;
   }
 
   .site-footer {
