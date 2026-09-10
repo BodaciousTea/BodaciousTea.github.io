@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropdowns = [...document.querySelectorAll("[data-menu]")];
   const brand = document.querySelector(".brand");
   const lightbox = document.getElementById("lightbox");
-  const lightboxBack = document.getElementById("lightbox-back");
   const lightboxBackdrop = document.getElementById("lightbox-backdrop");
   const lightboxStage = document.getElementById("lightbox-stage");
   const lightboxTitle = document.getElementById("lightbox-title");
@@ -332,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
     element.setAttribute("aria-hidden", "false");
     setPageScrollLock(true);
     if (element === lightbox) element.scrollTop = 0;
-    requestAnimationFrame(() => element.querySelector(".back-button")?.focus());
+    requestAnimationFrame(() => element.querySelector(".lightbox__dialog")?.focus());
   }
 
   function closeModal(element, restoreFocus = true) {
@@ -442,7 +441,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  lightboxBack.addEventListener("click", () => closeModal(lightbox));
   lightboxBackdrop.addEventListener("click", () => closeModal(lightbox));
 
   document.addEventListener("keydown", (event) => {
