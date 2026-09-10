@@ -31,19 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return portfolioData.filter((item) => category === "cinematography" || item.id === 11);
   }
 
-  function showRowPreview(row, item) {
-    const preview = row.querySelector(".row-preview");
-    preview.querySelector(".row-preview__title").textContent = item.title || "Untitled";
-    preview.querySelector(".row-preview__meta").textContent = item.date || item.description || "";
-    preview.setAttribute("aria-hidden", "false");
-    row.classList.add("has-preview");
-  }
-
-  function clearRowPreview(row) {
-    row.querySelector(".row-preview").setAttribute("aria-hidden", "true");
-    row.classList.remove("has-preview");
-  }
-
   function renderGallery(category) {
     videoObserver?.disconnect();
     videoObserver = null;
@@ -52,30 +39,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const projects = projectsFor(category);
     const fragment = document.createDocumentFragment();
 
-    for (let rowIndex = 0; rowIndex < projects.length; rowIndex += 3) {
-      const row = document.createElement("section");
+    projects.forEach((item, projectIndex) => {
+      const row = document.createElement("article");
       row.className = "gallery-row";
-      row.setAttribute("aria-label", `Project row ${Math.floor(rowIndex / 3) + 1}`);
+      const mediaSources = [...new Set([item.thumbnail, ...(item.images || [])].filter(Boolean))].slice(0, 3);
       let rowMotionAssigned = false;
 
-      projects.slice(rowIndex, rowIndex + 3).forEach((item, itemIndex) => {
-        const article = document.createElement("article");
-        article.className = "project";
+      const button = document.createElement("button");
+      button.className = "project-set__button";
+      button.type = "button";
+      button.setAttribute("aria-label", `Open ${item.title || "project"}`);
 
-        const button = document.createElement("button");
-        button.className = "project__button";
-        button.type = "button";
-        button.setAttribute("aria-label", `View ${item.title || "project"}`);
+      const mediaGrid = document.createElement("span");
+      mediaGrid.className = "project-set__media";
+      mediaGrid.dataset.count = String(mediaSources.length);
+
+      mediaSources.forEach((src, mediaIndex) => {
+        const tile = document.createElement("span");
+        tile.className = "project";
 
         let media;
-        if (isVideo(item.thumbnail)) {
+        if (isVideo(src)) {
           media = document.createElement("video");
           media.className = "project__media lazy-video";
           media.muted = true;
           media.loop = true;
           media.playsInline = true;
           media.preload = "none";
-          media.dataset.src = item.thumbnail;
+          media.dataset.src = src;
           media.dataset.loading = "true";
           media.setAttribute("disablePictureInPicture", "");
           media.setAttribute("aria-hidden", "true");
@@ -87,35 +78,29 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           media = document.createElement("img");
           media.className = "project__media";
-          media.src = item.thumbnail;
+          media.src = src;
           media.alt = "";
           media.decoding = "async";
-          media.loading = rowIndex === 0 ? "eager" : "lazy";
-          if (rowIndex === 0 && itemIndex === 0) media.fetchPriority = "high";
+          media.loading = projectIndex === 0 ? "eager" : "lazy";
+          if (projectIndex === 0 && mediaIndex === 0) media.fetchPriority = "high";
         }
 
-        button.appendChild(media);
-        button.addEventListener("mouseenter", () => showRowPreview(row, item));
-        button.addEventListener("focus", () => showRowPreview(row, item));
-        button.addEventListener("click", () => openProject(item, button));
-        article.appendChild(button);
-        row.appendChild(article);
+        tile.appendChild(media);
+        mediaGrid.appendChild(tile);
       });
 
-      const preview = document.createElement("div");
+      const preview = document.createElement("span");
       preview.className = "row-preview";
-      preview.setAttribute("aria-live", "polite");
       preview.setAttribute("aria-hidden", "true");
-      preview.innerHTML = '<div><h2 class="row-preview__title"></h2><p class="row-preview__meta"></p></div>';
-      row.appendChild(preview);
-      row.addEventListener("mouseleave", () => clearRowPreview(row));
-      row.addEventListener("focusout", () => {
-        requestAnimationFrame(() => {
-          if (!row.contains(document.activeElement)) clearRowPreview(row);
-        });
-      });
+      preview.innerHTML = '<span><span class="row-preview__title"></span><span class="row-preview__meta"></span></span>';
+      preview.querySelector(".row-preview__title").textContent = item.title || "Untitled";
+      preview.querySelector(".row-preview__meta").textContent = item.date || item.description || "";
+
+      button.append(mediaGrid, preview);
+      button.addEventListener("click", () => openProject(item, button));
+      row.appendChild(button);
       fragment.appendChild(row);
-    }
+    });
 
     gallery.appendChild(fragment);
     gallery.setAttribute("aria-label", `Selected ${category}`);
@@ -164,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function filterGallery(category) {
+    if (lightbox.classList.contains("is-open")) closeModal(lightbox, false);
     activeWork = category;
     renderGallery(category);
     workLabel.textContent = displayName(category);
@@ -175,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function selectView(view, restoreFocus = false) {
+    if (lightbox.classList.contains("is-open")) closeModal(lightbox, false);
     activeView = view;
     viewLabel.textContent = displayName(view);
     viewOptions.forEach((option) => {
@@ -278,19 +265,22 @@ document.addEventListener("DOMContentLoaded", () => {
     element.classList.add("is-open");
     element.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
+    if (element === lightbox) element.scrollTop = 0;
     requestAnimationFrame(() => element.querySelector(".close-button")?.focus());
   }
 
-  function closeModal(element) {
+  function closeModal(element, restoreFocus = true) {
     element.classList.remove("is-open");
     element.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
     const activeVideo = element.querySelector("video");
     if (activeVideo) activeVideo.pause();
-    lastFocusedElement?.focus();
+    if (restoreFocus) lastFocusedElement?.focus();
+    if (element === lightbox && activeView === "showcase") resumeFeaturedVideos();
   }
 
   function openProject(item, trigger) {
+    document.querySelectorAll(".project video").forEach((video) => video.pause());
     lightboxTitle.textContent = item.title || "Untitled";
     lightboxDescription.textContent = item.description || "";
     lightboxDescription.hidden = !item.description;
@@ -310,12 +300,12 @@ document.addEventListener("DOMContentLoaded", () => {
     showProjectMedia(media[0], item.title);
 
     if (media.length > 1) {
-      media.forEach((src, index) => {
+      media.slice(1).forEach((src, index) => {
         if (isVideo(src)) return;
         const thumb = document.createElement("button");
-        thumb.className = `lightbox__thumbnail${index === 0 ? " is-active" : ""}`;
+        thumb.className = "lightbox__thumbnail";
         thumb.type = "button";
-        thumb.setAttribute("aria-label", `Show image ${index + 1} of ${media.length}`);
+        thumb.setAttribute("aria-label", `Show additional image ${index + 1} of ${media.length - 1}`);
 
         const image = document.createElement("img");
         image.src = src;
