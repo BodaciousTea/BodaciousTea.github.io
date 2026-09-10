@@ -69,6 +69,15 @@ body {
 
 body.modal-open {
   overflow: hidden;
+  padding-right: var(--scrollbar-width, 0px);
+}
+
+/* Keep fixed and overlay content aligned with the gallery when scroll locking
+   removes the browser scrollbar. The value is measured before the lock. */
+body.modal-open .site-header,
+body.modal-open .lightbox,
+body.modal-open .info-view {
+  padding-right: var(--scrollbar-width, 0px);
 }
 
 button,

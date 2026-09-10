@@ -25,6 +25,18 @@ document.addEventListener("DOMContentLoaded", () => {
   let videoObserver = null;
   let gallerySwitchTimer = null;
 
+  function setPageScrollLock(locked) {
+    if (locked) {
+      const scrollbarWidth = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
+      document.documentElement.style.setProperty("--scrollbar-width", `${scrollbarWidth}px`);
+      document.body.classList.add("modal-open");
+      return;
+    }
+
+    document.body.classList.remove("modal-open");
+    document.documentElement.style.removeProperty("--scrollbar-width");
+  }
+
   const isVideo = (src = "") => /\.mp4(?:$|\?)/i.test(src);
   const isVimeo = (src = "") => /(?:player\.)?vimeo\.com/i.test(src);
   const displayName = (value) => value.charAt(0).toUpperCase() + value.slice(1);
@@ -205,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
       infoPanels.forEach((panel) => {
         panel.hidden = true;
       });
-      document.body.classList.remove("modal-open");
+      setPageScrollLock(false);
       resumeFeaturedVideos();
       if (restoreFocus) document.getElementById("view-menu-trigger").focus();
       return;
@@ -217,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     infoView.classList.add("is-open");
     infoView.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
+    setPageScrollLock(true);
 
     const activePanel = infoPanels.find((panel) => panel.dataset.panel === view);
     if (activePanel) {
@@ -293,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
     lastFocusedElement = trigger || document.activeElement;
     element.classList.add("is-open");
     element.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
+    setPageScrollLock(true);
     if (element === lightbox) element.scrollTop = 0;
     requestAnimationFrame(() => element.querySelector(".close-button")?.focus());
   }
@@ -301,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeModal(element, restoreFocus = true) {
     element.classList.remove("is-open");
     element.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
+    setPageScrollLock(false);
     element.querySelectorAll("video").forEach((video) => video.pause());
     element.querySelector("iframe")?.contentWindow?.postMessage('{"method":"pause"}', "*");
     if (restoreFocus) lastFocusedElement?.focus();
