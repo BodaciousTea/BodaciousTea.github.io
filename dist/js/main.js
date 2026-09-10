@@ -359,6 +359,14 @@ document.addEventListener("DOMContentLoaded", () => {
       lightboxThumbnails.appendChild(placeholder);
     }
 
+    const preview = document.createElement("span");
+    preview.className = "row-preview project-detail__preview";
+    preview.setAttribute("aria-hidden", "true");
+    preview.innerHTML = '<span><span class="row-preview__title"></span><span class="row-preview__meta"></span></span>';
+    preview.querySelector(".row-preview__title").textContent = item.title || "Untitled";
+    preview.querySelector(".row-preview__meta").textContent = item.date || item.description || "";
+    lightboxThumbnails.appendChild(preview);
+
     openModal(lightbox, trigger);
   }
 

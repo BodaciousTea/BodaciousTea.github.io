@@ -38,7 +38,7 @@
   --ground: #000403;
   --surface: #090c0b;
   --line: rgba(255, 255, 255, 0.12);
-  --gallery-width: 750px;
+  --gallery-width: 920px;
   --grid-gap: 8px;
   --header-height: 120px;
   --ease: cubic-bezier(0.2, 0.65, 0.3, 1);
@@ -629,7 +629,7 @@ video {
 
 .lightbox__dialog {
   position: relative;
-  width: min(calc(100% - 36px), 1100px);
+  width: min(calc(100% - 36px), var(--gallery-width));
   min-height: 100%;
   margin: 0 auto;
   padding: calc(var(--header-height) + 30px) 0 80px;
@@ -703,21 +703,26 @@ video {
 
 .lightbox__details {
   position: relative;
-  min-height: clamp(200px, 23vw, 290px);
-  padding: 30px 0 54px;
+  min-height: clamp(180px, 20vw, 250px);
+  padding: 28px 0 44px;
   overflow: visible;
 }
 
 .lightbox__details h2 {
-  font-size: clamp(26px, 3vw, 44px);
-  line-height: 1;
+  font-size: clamp(20px, 2.2vw, 30px);
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1.15;
+  text-transform: none;
 }
 
 .lightbox__details > p:not(.eyebrow) {
-  margin: 20px 0 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
+  max-width: 72ch;
+  margin: 13px 0 0;
+  color: #cfceca;
+  font-size: clamp(14px, 1.6vw, 17px);
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .lightbox__links {
@@ -737,10 +742,12 @@ video {
 }
 
 .project-detail__media-row {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--grid-gap);
   margin-top: 0;
+  cursor: default;
 }
 
 .project-detail__tile {
@@ -761,6 +768,12 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.project-detail__media-row:hover .project-detail__preview {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 @media (max-width: 820px) {
