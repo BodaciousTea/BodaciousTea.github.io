@@ -39,12 +39,12 @@ const portfolioData = [
   },
   {
     id: 4,
-    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Nacreous%20Coffee%20Composite_Full.webp",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/clouds_coffee_l.webp",
     images: [
-      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Section%205%20Frame%202%20-%20CloudsCoffeeChristmas.webp",
-      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/Section%205%20Frame%204%20-%20CloudsCoffeePeppermint.webp"
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/clouds_coffee_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/clouds_coffee_r.webp"
     ],
-    title: "Nacreous Coffee",
+    title: "Clouds Coffee",
     date: "",
     description: "",
     links: []
@@ -78,8 +78,11 @@ const portfolioData = [
   },
   {
     id: 8,
-    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/theCoupes.mp4",
-    images: [],
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/coupes_L.mp4",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/coupes_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/coupes_r.webp"
+    ],
     title: "The Coupes",
     date: "",
     description: "",
@@ -147,6 +150,42 @@ const portfolioData = [
     thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/internal_training_jonah_nelson_preview.mp4",
     images: [],
     title: "Internal Corporate Training",
+    date: "",
+    description: "",
+    links: []
+  },
+  {
+    id: 16,
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/circus_maximus_tour_l.webp",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/circus_maximus_tour_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/circus_maximus_tour_r.webp"
+    ],
+    title: "Circus Maximus Tour",
+    date: "",
+    description: "",
+    links: []
+  },
+  {
+    id: 17,
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/culturehouse_l.webp",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/culturehouse_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/culturehouse_r.webp"
+    ],
+    title: "Culturehouse",
+    date: "",
+    description: "",
+    links: []
+  },
+  {
+    id: 18,
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/we_trust_you_tour_l.mp4",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/we_trust_you_tour_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/we_trust_you_tour_r.webp"
+    ],
+    title: "We Trust You Tour",
     date: "",
     description: "",
     links: []
