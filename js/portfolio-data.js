@@ -58,5 +58,29 @@ const portfolioData = [
     date: "",
     description: "",
     links: []
+  },
+  {
+    id: 6,
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/kawmix_l.webp",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/kawmox_c.mp4",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/kawmix_r.webp"
+    ],
+    title: "Kawmix",
+    date: "",
+    description: "",
+    links: []
+  },
+  {
+    id: 7,
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/lincoln_mercury_l.webp",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/lincoln_mercury_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/lincoln_mercury_r.mp4"
+    ],
+    title: "Lincoln Mercury",
+    date: "",
+    description: "",
+    links: []
   }
 ];
