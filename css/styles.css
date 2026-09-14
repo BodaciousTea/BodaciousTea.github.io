@@ -54,6 +54,15 @@
 html {
   scroll-behavior: smooth;
   background: var(--ground);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.lightbox::-webkit-scrollbar,
+.info-panel::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -66,6 +75,8 @@ body {
   font-family: "Kabel", sans-serif;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 body.modal-open {
@@ -557,6 +568,8 @@ video {
   max-height: calc(100vh - 180px);
   padding: clamp(24px, 5vw, 52px);
   overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 560ms ease, transform 720ms var(--ease);
@@ -630,6 +643,8 @@ video {
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   background: var(--ground);
 }
 
