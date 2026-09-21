@@ -82,5 +82,18 @@ const portfolioData = [
     date: "",
     description: "",
     links: []
+  },
+  {
+    id: 8,
+    category: "design",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/tedkoller_v1_l.webp",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/tedkoller_v1_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/tedkoller_v1_r.webp"
+    ],
+    title: "tedkoller.com",
+    date: "",
+    description: "",
+    links: []
   }
 ];
