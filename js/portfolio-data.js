@@ -85,6 +85,19 @@ const portfolioData = [
   },
   {
     id: 8,
+    category: "cinematography",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/jathan_oxbow_l.webp",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/jathan_oxbow_c.mp4",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/jathan_oxbow_r.webp"
+    ],
+    title: "Native Tallgrass Prairie Restoration",
+    date: "",
+    description: "",
+    links: []
+  },
+  {
+    id: 9,
     category: "design",
     thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/tedkoller_v1_l.webp",
     images: [
