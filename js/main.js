@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const workOptions = [...document.querySelectorAll("[data-work]")];
   const viewOptions = [...document.querySelectorAll("[data-view]")];
   const dropdowns = [...document.querySelectorAll("[data-menu]")];
+  const siteHeader = document.querySelector(".site-header");
   const brand = document.querySelector(".brand");
   const lightbox = document.getElementById("lightbox");
   const lightboxBackdrop = document.getElementById("lightbox-backdrop");
@@ -88,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
           media.setAttribute("disablePictureInPicture", "");
           media.setAttribute("aria-hidden", "true");
 
-          if (!rowMotionAssigned) {
+          if (item.autoplayAllVideos || !rowMotionAssigned) {
             media.dataset.motion = "featured";
             rowMotionAssigned = true;
           }
@@ -317,13 +318,26 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!event.target.closest("[data-menu]")) closeMenus();
   });
 
-  brand.addEventListener("click", () => {
-    filterGallery("cinematography");
-    selectView("showcase");
-    closeMenus();
+  siteHeader.addEventListener("click", (event) => {
+    if (event.target.closest(".nav-menu")) return;
+    dismissFocusedView();
+  });
+
+  brand.addEventListener("click", (event) => {
+    event.preventDefault();
+    dismissFocusedView();
   });
 
   infoBackdrop.addEventListener("click", () => selectView("showcase", true));
+
+  function dismissFocusedView() {
+    if (lightbox.classList.contains("is-open")) {
+      closeModal(lightbox, false);
+    } else if (activeView !== "showcase") {
+      selectView("showcase");
+    }
+    closeMenus();
+  }
 
   function openModal(element, trigger) {
     lastFocusedElement = trigger || document.activeElement;

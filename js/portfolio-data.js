@@ -108,5 +108,19 @@ const portfolioData = [
     date: "",
     description: "",
     links: []
+  },
+  {
+    id: 10,
+    category: "design",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/ftn_design_l.mp4",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/ftn_design_c.mp4",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/ftn_design_r.webp"
+    ],
+    title: "FTN Design",
+    autoplayAllVideos: true,
+    date: "",
+    description: "",
+    links: []
   }
 ];
