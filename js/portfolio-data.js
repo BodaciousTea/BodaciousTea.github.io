@@ -122,5 +122,31 @@ const portfolioData = [
     date: "",
     description: "",
     links: []
+  },
+  {
+    id: 11,
+    category: "cinematography",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/ftn_internal_l.mp4",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/ftn_internal_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/ftn_internal_r.webp"
+    ],
+    title: "Family Tree Nursery",
+    date: "",
+    description: "",
+    links: []
+  },
+  {
+    id: 12,
+    category: "cinematography",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/golden_hour_l.webp",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/golden_hour_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/golden_hour_r.mp4"
+    ],
+    title: "The Gathering at Golden Hour",
+    date: "",
+    description: "",
+    links: []
   }
 ];
