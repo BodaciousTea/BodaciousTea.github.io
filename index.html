@@ -6,21 +6,31 @@
     <meta name="theme-color" content="#000403" />
     <meta
       name="description"
-      content="Ted Koller is a director of photography working across narrative, documentary, commercial, and music projects."
+      content="Ted Koller is a director of photography working across documentary, commercial, and narrative projects."
     />
     <meta property="og:title" content="Ted Koller — Director of Photography" />
-    <meta property="og:description" content="Selected cinematography by Ted Koller." />
+    <meta
+      property="og:description"
+      content="Selected cinematography by Ted Koller."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tedkoller.com/" />
-    <meta property="og:image" content="https://tedkoller.com/images/og.png" />
+    <meta property="og:image" content="https://tedkoller.com/public/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Ted Koller — Director of Photography" />
-    <meta name="twitter:description" content="Selected cinematography by Ted Koller." />
-    <meta name="twitter:image" content="https://tedkoller.com/images/og.png" />
+    <meta
+      name="twitter:description"
+      content="Selected cinematography by Ted Koller."
+    />
+    <meta name="twitter:image" content="https://tedkoller.com/public/og-image.jpg" />
     <title>Ted Koller Cinematographer</title>
-    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://raw.githubusercontent.com"
+      crossorigin
+    />
     <link
       rel="preload"
       href="fonts/Kabel-Book.woff2"
@@ -29,13 +39,16 @@
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/png" href="/public/favicon.png" />
   </head>
   <body>
     <a class="skip-link" href="#showcase">Skip to work</a>
 
     <header class="site-header">
       <nav class="primary-nav" aria-label="Primary navigation">
-        <a class="brand" href="#showcase" aria-label="Ted Koller, Showcase">Ted Koller</a>
+        <a class="brand" href="#showcase" aria-label="Ted Koller, Showcase"
+          >Ted Koller</a
+        >
 
         <div class="nav-menu" data-menu>
           <button
@@ -49,10 +62,20 @@
             <span class="chevron" aria-hidden="true"></span>
           </button>
           <div class="nav-menu__options" id="work-menu" role="menu" hidden>
-            <button type="button" role="menuitemradio" aria-checked="true" data-work="cinematography">
+            <button
+              type="button"
+              role="menuitemradio"
+              aria-checked="true"
+              data-work="cinematography"
+            >
               Cinematography
             </button>
-            <button type="button" role="menuitemradio" aria-checked="false" data-work="design">
+            <button
+              type="button"
+              role="menuitemradio"
+              aria-checked="false"
+              data-work="design"
+            >
               Design
             </button>
           </div>
@@ -69,17 +92,42 @@
             <span id="view-menu-label">Showcase</span>
             <span class="chevron" aria-hidden="true"></span>
           </button>
-          <div class="nav-menu__options nav-menu__options--right" id="view-menu" role="menu" hidden>
-            <button type="button" role="menuitemradio" aria-checked="true" data-view="showcase">
+          <div
+            class="nav-menu__options nav-menu__options--right"
+            id="view-menu"
+            role="menu"
+            hidden
+          >
+            <button
+              type="button"
+              role="menuitemradio"
+              aria-checked="true"
+              data-view="showcase"
+            >
               Showcase
             </button>
-            <button type="button" role="menuitemradio" aria-checked="false" data-view="about">
+            <button
+              type="button"
+              role="menuitemradio"
+              aria-checked="false"
+              data-view="about"
+            >
               About
             </button>
-            <button type="button" role="menuitemradio" aria-checked="false" data-view="resume">
+            <button
+              type="button"
+              role="menuitemradio"
+              aria-checked="false"
+              data-view="resume"
+            >
               Resume
             </button>
-            <button type="button" role="menuitemradio" aria-checked="false" data-view="contact">
+            <button
+              type="button"
+              role="menuitemradio"
+              aria-checked="false"
+              data-view="contact"
+            >
               Contact
             </button>
           </div>
@@ -90,8 +138,14 @@
     <main class="site-main" id="showcase">
       <h1 class="visually-hidden">Selected work by Ted Koller</h1>
       <div class="gallery-frame">
-        <section class="gallery" id="gallery" aria-label="Selected cinematography"></section>
-        <p class="empty-state" id="empty-state" hidden>No projects in this collection yet.</p>
+        <section
+          class="gallery"
+          id="gallery"
+          aria-label="Selected cinematography"
+        ></section>
+        <p class="empty-state" id="empty-state" hidden>
+          No projects in this collection yet.
+        </p>
       </div>
     </main>
 
@@ -101,7 +155,11 @@
     </footer>
 
     <aside class="compression-note" aria-label="Image quality note">
-      <span class="compression-note__text" id="compression-note-text" role="tooltip">
+      <span
+        class="compression-note__text"
+        id="compression-note-text"
+        role="tooltip"
+      >
         Images are compressed for web performance.
       </span>
       <span
@@ -110,7 +168,8 @@
         role="img"
         aria-label="Image quality information"
         aria-describedby="compression-note-text"
-      >i</span>
+        >i</span
+      >
     </aside>
 
     <div class="info-view" id="info-view" aria-hidden="true">
@@ -122,39 +181,86 @@
         aria-label="Return to Showcase"
       ></button>
 
-      <section class="info-panel" id="about-panel" data-panel="about" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>
+      <section
+        class="info-panel"
+        id="about-panel"
+        data-panel="about"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="about-title"
+        hidden
+      >
         <h2 id="about-title">Ted Koller</h2>
         <p class="info-panel__role">Director of Photography</p>
         <p class="info-panel__copy">
-          Cinematography across narrative, documentary, commercial, and music projects.
+          Cinematography across narrative, documentary, commercial, and music
+          projects.
         </p>
         <a class="text-link" href="mailto:ted@tedkoller.com">Get in touch</a>
       </section>
 
-      <section class="info-panel" id="resume-panel" data-panel="resume" role="dialog" aria-modal="true" aria-labelledby="resume-title" hidden>
+      <section
+        class="info-panel"
+        id="resume-panel"
+        data-panel="resume"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resume-title"
+        hidden
+      >
         <h2 id="resume-title">Resume</h2>
         <p class="info-panel__copy">
-          Director of Photography working across narrative, documentary, commercial, live performance, and music projects.
+          Director of Photography working across narrative, documentary,
+          commercial, live performance, and music projects.
         </p>
-        <a class="text-link" href="mailto:ted@tedkoller.com?subject=Resume%20request">Request full resume</a>
+        <a
+          class="text-link"
+          href="mailto:ted@tedkoller.com?subject=Resume%20request"
+          >Request full resume</a
+        >
       </section>
 
-      <section class="info-panel" id="contact-panel" data-panel="contact" role="dialog" aria-modal="true" aria-labelledby="contact-title" hidden>
+      <section
+        class="info-panel"
+        id="contact-panel"
+        data-panel="contact"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contact-title"
+        hidden
+      >
         <h2 id="contact-title">Let’s work<br />together.</h2>
-        <a class="contact-email" href="mailto:ted@tedkoller.com">ted@tedkoller.com</a>
+        <a class="contact-email" href="mailto:ted@tedkoller.com"
+          >ted@tedkoller.com</a
+        >
       </section>
     </div>
 
     <div class="lightbox" id="lightbox" aria-hidden="true">
-      <button class="lightbox__backdrop" id="lightbox-backdrop" type="button" tabindex="-1" aria-label="Close project"></button>
-      <section class="lightbox__dialog" role="region" aria-labelledby="lightbox-title" tabindex="-1">
+      <button
+        class="lightbox__backdrop"
+        id="lightbox-backdrop"
+        type="button"
+        tabindex="-1"
+        aria-label="Close project"
+      ></button>
+      <section
+        class="lightbox__dialog"
+        role="region"
+        aria-labelledby="lightbox-title"
+        tabindex="-1"
+      >
         <div class="lightbox__stage" id="lightbox-stage"></div>
         <aside class="lightbox__details">
           <h2 id="lightbox-title"></h2>
           <p id="lightbox-description"></p>
           <div class="lightbox__links" id="lightbox-links"></div>
         </aside>
-        <div class="project-detail__media-row" id="lightbox-thumbnails" aria-label="Project media"></div>
+        <div
+          class="project-detail__media-row"
+          id="lightbox-thumbnails"
+          aria-label="Project media"
+        ></div>
       </section>
     </div>
 
