@@ -12,13 +12,26 @@ const portfolioData = [
     links: []
   },
   {
-    id: 2,
-    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/clouds_coffee_l.webp",
+    id: 7,
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/lincoln_mercury_l.webp",
     images: [
-      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/clouds_coffee_c.webp",
-      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/clouds_coffee_r.webp"
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/lincoln_mercury_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/lincoln_mercury_r.mp4"
     ],
-    title: "Clouds Coffee",
+    title: "Lincoln Mercury",
+    date: "",
+    description: "",
+    links: []
+  },
+  {
+    id: 8,
+    category: "cinematography",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/jathan_oxbow_l.webp",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/jathan_oxbow_c.mp4",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/jathan_oxbow_r.webp"
+    ],
+    title: "Native Tallgrass Prairie Restoration",
     date: "",
     description: "",
     links: []
@@ -31,18 +44,6 @@ const portfolioData = [
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/coupes_r.webp"
     ],
     title: "The Coupes",
-    date: "",
-    description: "",
-    links: []
-  },
-  {
-    id: 4,
-    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/culturehouse_l.webp",
-    images: [
-      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/culturehouse_c.webp",
-      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/culturehouse_r.webp"
-    ],
-    title: "Culturehouse",
     date: "",
     description: "",
     links: []
@@ -67,31 +68,6 @@ const portfolioData = [
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/kawmix_r.webp"
     ],
     title: "Kawmix",
-    date: "",
-    description: "",
-    links: []
-  },
-  {
-    id: 7,
-    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/lincoln_mercury_l.webp",
-    images: [
-      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/lincoln_mercury_c.webp",
-      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/lincoln_mercury_r.mp4"
-    ],
-    title: "Lincoln Mercury",
-    date: "",
-    description: "",
-    links: []
-  },
-  {
-    id: 8,
-    category: "cinematography",
-    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/jathan_oxbow_l.webp",
-    images: [
-      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/jathan_oxbow_c.mp4",
-      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/jathan_oxbow_r.webp"
-    ],
-    title: "Native Tallgrass Prairie Restoration",
     date: "",
     description: "",
     links: []
@@ -145,6 +121,30 @@ const portfolioData = [
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/golden_hour_r.mp4"
     ],
     title: "The Gathering at Golden Hour",
+    date: "",
+    description: "",
+    links: []
+  },
+  {
+    id: 4,
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/culturehouse_l.webp",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/culturehouse_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/culturehouse_r.webp"
+    ],
+    title: "Culturehouse",
+    date: "",
+    description: "",
+    links: []
+  },
+  {
+    id: 2,
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/clouds_coffee_l.webp",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/clouds_coffee_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/clouds_coffee_r.webp"
+    ],
+    title: "Clouds Coffee",
     date: "",
     description: "",
     links: []
