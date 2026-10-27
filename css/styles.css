@@ -150,7 +150,7 @@ video {
 
 .site-header::before {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
   height: 190px;
   background: linear-gradient(
@@ -194,6 +194,8 @@ video {
   margin: 0 auto;
   padding-top: 49px;
   pointer-events: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .brand {
@@ -874,7 +876,10 @@ video {
   }
 
   .primary-nav {
+    display: grid;
+    grid-template-columns: 130px 134px 80px;
     gap: 19px;
+    width: min(calc(100% - 32px), 382px);
     padding-top: 36px;
   }
 
@@ -894,6 +899,15 @@ video {
     min-width: 80px;
   }
 
+  .nav-menu__options {
+    min-width: 134px;
+    z-index: 2;
+  }
+
+  .nav-menu__options--right {
+    min-width: 80px;
+  }
+
   .site-main {
     padding-top: 125px;
   }
@@ -908,12 +922,13 @@ video {
 
   .primary-nav {
     align-items: center;
+    grid-template-columns: minmax(0, 1fr) 106px 70px;
     gap: 12px;
     width: calc(100% - 28px);
   }
 
   .brand {
-    margin-right: auto;
+    margin-right: 0;
     font-size: 18px;
   }
 
@@ -923,11 +938,19 @@ video {
   }
 
   #work-menu-trigger {
-    min-width: 112px;
+    min-width: 106px;
   }
 
   #view-menu-trigger {
-    min-width: 72px;
+    min-width: 70px;
+  }
+
+  .nav-menu__options {
+    min-width: 106px;
+  }
+
+  .nav-menu__options--right {
+    min-width: 70px;
   }
 
   .nav-menu__options button {

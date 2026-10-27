@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { rootMargin: "180px 0px", threshold: 0.1 },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.01 },
     );
 
     mediaItems.forEach((media) => mediaObserver.observe(media));
