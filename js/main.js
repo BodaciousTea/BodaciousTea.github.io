@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastFocusedElement = null;
   let mediaObserver = null;
   let gallerySwitchTimer = null;
+  let infoCloseTimer = null;
 
   function setPageScrollLock(locked) {
     if (locked) {
@@ -226,6 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function selectView(view, restoreFocus = false) {
     if (lightbox.classList.contains("is-open")) closeModal(lightbox, false);
+    window.clearTimeout(infoCloseTimer);
     activeView = view;
     viewLabel.textContent = displayName(view);
     viewOptions.forEach((option) => {
@@ -239,12 +241,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (view === "showcase") {
       infoView.classList.remove("is-open");
       infoView.setAttribute("aria-hidden", "true");
-      infoPanels.forEach((panel) => {
-        panel.hidden = true;
-      });
-      setPageScrollLock(false);
-      resumeFeaturedVideos();
       if (restoreFocus) document.getElementById("view-menu-trigger").focus();
+
+      infoCloseTimer = window.setTimeout(() => {
+        infoPanels.forEach((panel) => {
+          panel.hidden = true;
+        });
+        setPageScrollLock(false);
+        resumeFeaturedVideos();
+        infoCloseTimer = null;
+      }, reduceMotion ? 0 : 500);
       return;
     }
 

@@ -522,7 +522,7 @@ video {
 
 .info-view {
   opacity: 1;
-  transition: visibility 0s linear 760ms;
+  transition: visibility 0s linear 500ms;
 }
 
 .info-view.is-open {
@@ -549,11 +549,12 @@ video {
   backdrop-filter: none;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 720ms var(--ease);
+  transition: opacity 280ms var(--ease) 220ms;
 }
 
 .info-view.is-open .info-view__backdrop {
   opacity: 1;
+  transition-delay: 0s;
 }
 
 .info-panel {
@@ -567,13 +568,13 @@ video {
   scrollbar-width: none;
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 560ms ease, transform 720ms var(--ease);
+  transition: opacity 220ms ease, transform 220ms var(--ease);
 }
 
 .info-view.is-open .info-panel {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 140ms;
+  transition-delay: 300ms;
 }
 
 .info-panel[hidden] {
