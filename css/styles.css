@@ -357,6 +357,15 @@ video {
   aspect-ratio: 16 / 9;
   content-visibility: auto;
   contain-intrinsic-size: auto 138px;
+  opacity: 0;
+  transform: scale(0.965);
+  transition: opacity 360ms ease var(--tile-reveal-delay, 0ms),
+    transform 460ms var(--ease) var(--tile-reveal-delay, 0ms);
+}
+
+.gallery.is-revealed .project {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .project--placeholder {
