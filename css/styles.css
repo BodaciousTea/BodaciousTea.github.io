@@ -570,9 +570,8 @@ video {
   transition: opacity 180ms ease;
 }
 
-.info-view.is-open .info-panel {
+.info-view.is-ready .info-panel {
   opacity: 1;
-  transition-delay: 180ms;
 }
 
 .info-panel[hidden] {
