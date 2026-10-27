@@ -2,15 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const gallery = document.getElementById("gallery");
   const emptyState = document.getElementById("empty-state");
   const infoView = document.getElementById("info-view");
-  const infoBackdrop = document.getElementById("info-backdrop");
   const infoPanels = [...document.querySelectorAll("[data-panel]")];
   const workLabel = document.getElementById("work-menu-label");
+  const workMenuTrigger = document.getElementById("work-menu-trigger");
   const viewLabel = document.getElementById("view-menu-label");
   const workOptions = [...document.querySelectorAll("[data-work]")];
   const viewOptions = [...document.querySelectorAll("[data-view]")];
   const dropdowns = [...document.querySelectorAll("[data-menu]")];
-  const siteHeader = document.querySelector(".site-header");
-  const brand = document.querySelector(".brand");
   const lightbox = document.getElementById("lightbox");
   const lightboxBackdrop = document.getElementById("lightbox-backdrop");
   const lightboxStage = document.getElementById("lightbox-stage");
@@ -235,6 +233,8 @@ document.addEventListener("DOMContentLoaded", () => {
       option.setAttribute("aria-checked", String(selected));
       option.hidden = selected;
     });
+    workMenuTrigger.disabled = view !== "showcase";
+    workMenuTrigger.setAttribute("aria-disabled", String(view !== "showcase"));
 
     if (view === "showcase") {
       infoView.classList.remove("is-open");
@@ -317,27 +317,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", (event) => {
     if (!event.target.closest("[data-menu]")) closeMenus();
   });
-
-  siteHeader.addEventListener("click", (event) => {
-    if (event.target.closest(".nav-menu")) return;
-    dismissFocusedView();
-  });
-
-  brand.addEventListener("click", (event) => {
-    event.preventDefault();
-    dismissFocusedView();
-  });
-
-  infoBackdrop.addEventListener("click", () => selectView("showcase", true));
-
-  function dismissFocusedView() {
-    if (lightbox.classList.contains("is-open")) {
-      closeModal(lightbox, false);
-    } else if (activeView !== "showcase") {
-      selectView("showcase");
-    }
-    closeMenus();
-  }
 
   function openModal(element, trigger) {
     lastFocusedElement = trigger || document.activeElement;
@@ -466,8 +445,6 @@ document.addEventListener("DOMContentLoaded", () => {
       trigger.focus();
     } else if (lightbox.classList.contains("is-open")) {
       closeModal(lightbox);
-    } else if (infoView.classList.contains("is-open")) {
-      selectView("showcase", true);
     }
   });
 
