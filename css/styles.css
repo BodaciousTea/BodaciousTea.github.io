@@ -53,6 +53,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
   background: var(--ground);
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -81,15 +82,6 @@ body {
 
 body.modal-open {
   overflow: hidden;
-  padding-right: var(--scrollbar-width, 0px);
-}
-
-/* Keep fixed and overlay content aligned with the gallery when scroll locking
-   removes the browser scrollbar. The value is measured before the lock. */
-body.modal-open .site-header,
-body.modal-open .lightbox,
-body.modal-open .info-view {
-  padding-right: var(--scrollbar-width, 0px);
 }
 
 body.modal-open .site-header {
@@ -231,6 +223,16 @@ video {
   font-size: var(--nav-copy-size);
   line-height: 1;
   transition: color 160ms ease;
+}
+
+#work-menu-trigger {
+  min-width: 152px;
+  justify-content: flex-start;
+}
+
+#view-menu-trigger {
+  min-width: 88px;
+  justify-content: flex-start;
 }
 
 .nav-menu__trigger:hover,
@@ -893,6 +895,14 @@ video {
     font-size: 14px;
   }
 
+  #work-menu-trigger {
+    min-width: 134px;
+  }
+
+  #view-menu-trigger {
+    min-width: 80px;
+  }
+
   .site-main {
     padding-top: 125px;
   }
@@ -919,6 +929,14 @@ video {
   .nav-menu__trigger {
     gap: 5px;
     font-size: 12px;
+  }
+
+  #work-menu-trigger {
+    min-width: 112px;
+  }
+
+  #view-menu-trigger {
+    min-width: 72px;
   }
 
   .nav-menu__options button {

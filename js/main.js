@@ -22,20 +22,17 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastFocusedElement = null;
   let mediaObserver = null;
   let gallerySwitchTimer = null;
-  let galleryRevealFrame = null;
+  let galleryRevealTimer = null;
   let infoCloseTimer = null;
   let infoOpenTimer = null;
 
   function setPageScrollLock(locked) {
     if (locked) {
-      const scrollbarWidth = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
-      document.documentElement.style.setProperty("--scrollbar-width", `${scrollbarWidth}px`);
       document.body.classList.add("modal-open");
       return;
     }
 
     document.body.classList.remove("modal-open");
-    document.documentElement.style.removeProperty("--scrollbar-width");
   }
 
   const isVideo = (src = "") => /\.mp4(?:$|\?)/i.test(src);
@@ -53,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderGallery(category) {
     mediaObserver?.disconnect();
     mediaObserver = null;
-    window.cancelAnimationFrame(galleryRevealFrame);
+    window.clearTimeout(galleryRevealTimer);
     gallery.classList.remove("is-revealed");
     gallery.replaceChildren();
 
@@ -78,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       mediaSources.forEach((src, mediaIndex) => {
         const tile = document.createElement("span");
         tile.className = "project";
-        tile.style.setProperty("--tile-reveal-delay", `${Math.min((projectIndex * 3 + mediaIndex) * 42, 630)}ms`);
+        tile.style.setProperty("--tile-reveal-delay", `${Math.min((projectIndex * 3 + mediaIndex) * 72, 900)}ms`);
 
         let media;
         if (isVideo(src)) {
@@ -115,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let placeholderIndex = mediaSources.length; placeholderIndex < 3; placeholderIndex += 1) {
         const placeholder = document.createElement("span");
         placeholder.className = "project project--placeholder";
-        placeholder.style.setProperty("--tile-reveal-delay", `${Math.min((projectIndex * 3 + placeholderIndex) * 42, 630)}ms`);
+        placeholder.style.setProperty("--tile-reveal-delay", `${Math.min((projectIndex * 3 + placeholderIndex) * 72, 900)}ms`);
         placeholder.setAttribute("aria-hidden", "true");
         mediaGrid.appendChild(placeholder);
       }
@@ -137,10 +134,10 @@ document.addEventListener("DOMContentLoaded", () => {
     gallery.setAttribute("aria-label", `Selected ${category}`);
     emptyState.hidden = projects.length > 0;
     observeGalleryMedia();
-    galleryRevealFrame = requestAnimationFrame(() => {
+    galleryRevealTimer = window.setTimeout(() => {
       gallery.classList.add("is-revealed");
-      galleryRevealFrame = null;
-    });
+      galleryRevealTimer = null;
+    }, reduceMotion ? 0 : 80);
   }
 
   function observeGalleryMedia() {
