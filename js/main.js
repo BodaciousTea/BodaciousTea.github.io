@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setPageScrollLock(false);
         resumeFeaturedVideos();
         infoCloseTimer = null;
-      }, reduceMotion ? 0 : 500);
+      }, reduceMotion ? 0 : 340);
       return;
     }
 
