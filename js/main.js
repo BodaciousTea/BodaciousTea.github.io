@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let activeView = "showcase";
   let lastFocusedElement = null;
   let mediaObserver = null;
-  let gallerySwitchTimer = null;
   let infoCloseTimer = null;
   let infoOpenTimer = null;
 
@@ -154,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.01 },
+      { rootMargin: "0px", threshold: 0.12 },
     );
 
     mediaItems.forEach((media) => mediaObserver.observe(media));
@@ -167,24 +166,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (media.src || !media.dataset.src) return;
-    media.src = media.dataset.src;
+    let revealed = false;
     const revealImage = () => {
-      media.dataset.loading = "false";
+      if (revealed) return;
+      revealed = true;
+      revealMedia(media);
     };
     media.addEventListener("load", revealImage, { once: true });
     media.addEventListener("error", revealImage, { once: true });
+    media.src = media.dataset.src;
+
+    if (media.complete) revealImage();
   }
 
   function loadVideo(video) {
     if (video.src || !video.dataset.src) return;
+    let revealed = false;
+    const revealVideo = () => {
+      if (revealed) return;
+      revealed = true;
+      revealMedia(video);
+    };
+    video.addEventListener("loadeddata", revealVideo, { once: true });
+    video.addEventListener("error", revealVideo, { once: true });
     video.src = video.dataset.src;
     video.preload = video.dataset.motion === "featured" ? "auto" : "metadata";
-    const revealVideo = () => {
-      video.dataset.loading = "false";
-    };
-    video.addEventListener("loadedmetadata", revealVideo, { once: true });
-    video.addEventListener("error", revealVideo, { once: true });
     video.load();
+  }
+
+  function revealMedia(media) {
+    if (reduceMotion) {
+      media.dataset.loading = "false";
+      return;
+    }
+
+    // Leave the hidden state on screen for a frame before changing opacity.
+    // This also makes already-cached files fade instead of appearing abruptly.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        media.dataset.loading = "false";
+      });
+    });
   }
 
   function unloadVideo(video) {
@@ -195,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
     video.load();
   }
 
-  function filterGallery(category, animate = true) {
+  function filterGallery(category) {
     if (lightbox.classList.contains("is-open")) closeModal(lightbox, false);
     activeWork = category;
     workLabel.textContent = displayName(category);
@@ -205,22 +227,8 @@ document.addEventListener("DOMContentLoaded", () => {
       option.hidden = selected;
     });
 
-    window.clearTimeout(gallerySwitchTimer);
-    if (!animate || reduceMotion || !gallery.childElementCount) {
-      gallery.classList.remove("is-switching");
-      renderGallery(category);
-      return;
-    }
-
     document.querySelectorAll(".project video").forEach((video) => video.pause());
-    gallery.classList.add("is-switching");
-    gallerySwitchTimer = window.setTimeout(() => {
-      renderGallery(category);
-      requestAnimationFrame(() => {
-        gallery.classList.remove("is-switching");
-      });
-      gallerySwitchTimer = null;
-    }, 240);
+    renderGallery(category);
   }
 
   function selectView(view, restoreFocus = false) {
@@ -459,6 +467,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
-  filterGallery(activeWork, false);
+  filterGallery(activeWork);
   selectView(activeView);
 });
