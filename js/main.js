@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastFocusedElement = null;
   let mediaObserver = null;
   let gallerySwitchTimer = null;
-  let galleryRevealTimer = null;
   let infoCloseTimer = null;
   let infoOpenTimer = null;
 
@@ -50,8 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderGallery(category) {
     mediaObserver?.disconnect();
     mediaObserver = null;
-    window.clearTimeout(galleryRevealTimer);
-    gallery.classList.remove("is-revealed");
     gallery.replaceChildren();
 
     const projects = projectsFor(category);
@@ -75,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
       mediaSources.forEach((src, mediaIndex) => {
         const tile = document.createElement("span");
         tile.className = "project";
-        tile.style.setProperty("--tile-reveal-delay", `${Math.min((projectIndex * 3 + mediaIndex) * 72, 900)}ms`);
 
         let media;
         if (isVideo(src)) {
@@ -112,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let placeholderIndex = mediaSources.length; placeholderIndex < 3; placeholderIndex += 1) {
         const placeholder = document.createElement("span");
         placeholder.className = "project project--placeholder";
-        placeholder.style.setProperty("--tile-reveal-delay", `${Math.min((projectIndex * 3 + placeholderIndex) * 72, 900)}ms`);
         placeholder.setAttribute("aria-hidden", "true");
         mediaGrid.appendChild(placeholder);
       }
@@ -134,10 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
     gallery.setAttribute("aria-label", `Selected ${category}`);
     emptyState.hidden = projects.length > 0;
     observeGalleryMedia();
-    galleryRevealTimer = window.setTimeout(() => {
-      gallery.classList.add("is-revealed");
-      galleryRevealTimer = null;
-    }, reduceMotion ? 0 : 80);
   }
 
   function observeGalleryMedia() {
