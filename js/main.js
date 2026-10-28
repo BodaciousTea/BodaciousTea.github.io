@@ -365,10 +365,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     (item.links || []).forEach((link) => {
       const anchor = document.createElement("a");
+      const arrow = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      const arrowPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
       anchor.href = link.url;
-      anchor.textContent = link.label;
+      anchor.className = "action-link";
       anchor.target = "_blank";
       anchor.rel = "noopener noreferrer";
+      anchor.append(document.createTextNode(link.label));
+      arrow.classList.add("about-panel__arrow");
+      arrow.setAttribute("aria-hidden", "true");
+      arrow.setAttribute("viewBox", "0 0 24 24");
+      arrowPath.setAttribute("d", "M5 19 19 5M9 5h10v10");
+      arrow.appendChild(arrowPath);
+      anchor.appendChild(arrow);
       lightboxLinks.appendChild(anchor);
     });
 

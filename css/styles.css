@@ -651,8 +651,7 @@ video {
   border-bottom: 1px solid rgba(255, 255, 255, 0.28);
 }
 
-.about-panel__link,
-.about-panel__email {
+.action-link {
   position: relative;
   width: fit-content;
   padding-bottom: 0;
@@ -663,8 +662,7 @@ video {
   text-decoration: none;
 }
 
-.about-panel__link::before,
-.about-panel__email::before {
+.action-link::before {
   position: absolute;
   right: 0;
   bottom: -5px;
@@ -699,17 +697,13 @@ video {
   opacity: 0.38;
 }
 
-.about-panel__link:hover,
-.about-panel__link:focus-visible,
-.about-panel__email:hover,
-.about-panel__email:focus-visible {
+.action-link:hover,
+.action-link:focus-visible {
   color: var(--muted);
 }
 
-.about-panel__link:hover::before,
-.about-panel__link:focus-visible::before,
-.about-panel__email:hover::before,
-.about-panel__email:focus-visible::before {
+.action-link:hover::before,
+.action-link:focus-visible::before {
   transform: scaleX(1);
   transform-origin: left;
 }
@@ -817,14 +811,6 @@ video {
   margin-top: 24px;
 }
 
-.lightbox__links a {
-  padding-bottom: 3px;
-  border-bottom: 1px solid currentColor;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-decoration: none;
-  text-transform: uppercase;
-}
 
 .project-detail__media-row {
   position: relative;
