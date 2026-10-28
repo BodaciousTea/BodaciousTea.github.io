@@ -18,7 +18,7 @@ const portfolioData = [
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/lincoln_mercury_c.webp",
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/lincoln_mercury_r.mp4"
     ],
-    title: "Lincoln Mercury",
+    title: "Lincoln/Mercury '86",
     date: "",
     description: "",
     links: []
