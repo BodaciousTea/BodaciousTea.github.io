@@ -145,7 +145,7 @@ video {
   z-index: 220;
   height: var(--header-height);
   isolation: isolate;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .site-header::before {

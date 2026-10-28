@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const workLabel = document.getElementById("work-menu-label");
   const workMenuTrigger = document.getElementById("work-menu-trigger");
   const viewLabel = document.getElementById("view-menu-label");
+  const siteHeader = document.querySelector(".site-header");
   const workOptions = [...document.querySelectorAll("[data-work]")];
   const viewOptions = [...document.querySelectorAll("[data-view]")];
   const dropdowns = [...document.querySelectorAll("[data-menu]")];
@@ -334,6 +335,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("click", (event) => {
     if (!event.target.closest("[data-menu]")) closeMenus();
+  });
+
+  siteHeader.addEventListener("click", (event) => {
+    if (event.target.closest("[data-menu]")) return;
+    if (activeView !== "showcase" || !lightbox.classList.contains("is-open")) return;
+    closeModal(lightbox);
   });
 
   function openModal(element, trigger) {
