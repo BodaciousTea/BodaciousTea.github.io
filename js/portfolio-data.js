@@ -67,6 +67,36 @@ const portfolioData = [
     ]
   },
   {
+    id: 14,
+    category: "cinematography",
+    thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/greg_judy_l.webp",
+    images: [
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/greg_judy_c.webp",
+      "https://raw.githubusercontent.com/BodaciousTea/public-images/main/greg_judy_r.mp4"
+    ],
+    title: "Greg & Jan Judy",
+    date: "",
+    description: "",
+    links: [
+      {
+        label: "Eastern Gamagrass",
+        url: "https://www.youtube.com/watch?v=RY50qcentqs"
+      },
+      {
+        label: "Grass System Cow Herd",
+        url: "https://www.youtube.com/watch?v=m54b4s_iIZs"
+      },
+      {
+        label: "Winter Grazing",
+        url: "https://www.youtube.com/watch?v=JIv81mX6TRU"
+      },
+      {
+        label: "Green Pastures Farm",
+        url: "https://greenpasturesfarm.net/"
+      }
+    ]
+  },
+  {
     id: 5,
     thumbnail: "https://raw.githubusercontent.com/BodaciousTea/public-images/main/we_trust_you_tour_l.mp4",
     images: [
@@ -138,7 +168,7 @@ const portfolioData = [
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/golden_hour_c.webp",
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/golden_hour_r.mp4"
     ],
-    title: "The Gathering at Golden Hour",
+    title: "Gathering at Golden Hour",
     date: "",
     description: "",
     links: []
@@ -150,7 +180,7 @@ const portfolioData = [
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/culturehouse_c.webp",
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/culturehouse_r.webp"
     ],
-    title: "Culturehouse",
+    title: "The Culture House",
     date: "",
     description: "",
     links: []
@@ -162,7 +192,7 @@ const portfolioData = [
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/clouds_coffee_c.webp",
       "https://raw.githubusercontent.com/BodaciousTea/public-images/main/clouds_coffee_r.webp"
     ],
-    title: "Clouds Coffee",
+    title: "Cloud's Coffee",
     date: "",
     description: "",
     links: []
