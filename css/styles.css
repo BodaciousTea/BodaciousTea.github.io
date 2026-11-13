@@ -744,6 +744,7 @@ video {
 }
 
 .lightbox__dialog {
+  outline: none;
   position: relative;
   z-index: 1;
   width: min(calc(100% - 36px), var(--gallery-width));
