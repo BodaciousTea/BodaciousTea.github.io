@@ -1,0 +1,28 @@
+.site-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  width: min(calc(100% - 36px), calc(var(--gallery-width) + 24px));
+  margin: 0 auto;
+  padding: 64px 0 30px;
+  color: var(--muted);
+  font-family: "Kabel", sans-serif;
+  font-size: var(--nav-copy-size);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.42;
+  text-transform: none;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: var(--ink);
+}
