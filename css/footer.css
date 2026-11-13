@@ -26,3 +26,20 @@
 .site-footer a:focus-visible {
   color: var(--ink);
 }
+
+.site-footer .footer__update {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5em;
+  min-width: 0;
+}
+
+.site-footer .action-link {
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+.site-footer time { white-space: nowrap; }
