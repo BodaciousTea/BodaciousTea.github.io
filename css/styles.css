@@ -980,7 +980,7 @@ video {
   }
 }
 
-.nav-menu__options .nav-menu__external {
+.nav-menu__options a.nav-menu__external {
   display: inline-block;
   color: var(--muted);
   font-size: var(--nav-copy-size);
@@ -989,7 +989,6 @@ video {
   white-space: nowrap;
 }
 
-.nav-menu__options .nav-menu__external:hover,
-.nav-menu__options .nav-menu__external:focus-visible {
+.nav-menu__options a.nav-menu__external:hover {
   color: var(--ink);
 }
