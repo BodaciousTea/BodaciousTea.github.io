@@ -979,3 +979,17 @@ video {
     transition-duration: 0.01ms !important;
   }
 }
+
+.nav-menu__options .nav-menu__external {
+  display: inline-block;
+  color: var(--muted);
+  font-size: var(--nav-copy-size);
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nav-menu__options .nav-menu__external:hover,
+.nav-menu__options .nav-menu__external:focus-visible {
+  color: var(--ink);
+}
