@@ -1,0 +1,33 @@
+.escape-control {
+  position: absolute;
+  top: 41px;
+  left: 18px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 44px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.escape-control[hidden] { display: none; }
+.escape-control.is-visible,
+.escape-control:focus-visible { opacity: 0.7; pointer-events: auto; }
+.escape-control:hover,
+.escape-control:focus-visible { opacity: 1; }
+.escape-control:focus-visible { outline: 1px solid var(--muted); outline-offset: 2px; }
+.escape-control img { display: block; width: 100%; height: auto; -webkit-user-drag: none; user-select: none; }
+
+@media (max-width: 820px) {
+  .escape-control { top: 24px; left: 8px; width: 50px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .escape-control { transition: none; }
+}

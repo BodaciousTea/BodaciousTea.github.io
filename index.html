@@ -40,11 +40,13 @@
     />
     <link rel="stylesheet" href="css/styles.css?v=20261113-lab-nav" />
     <link rel="icon" type="image/png" href="/public/favicon.png" />
+    <link rel="stylesheet" href="/css/escape-control.css?v=20261113" />
   </head>
   <body>
     <a class="skip-link" href="#showcase">Skip to work</a>
 
     <header class="site-header">
+      <button class="escape-control" type="button" data-escape-control data-escape-modal="lightbox" data-escape-close="lightbox-backdrop" aria-label="Close project and return to showcase" aria-keyshortcuts="Escape" hidden><img src="/public/esc_icon.svg" width="61" height="38" alt="" draggable="false" /></button>
       <nav class="primary-nav" aria-label="Primary navigation">
         <span class="brand">Ted Koller</span>
 
@@ -234,5 +236,6 @@
 
     <script src="js/portfolio-data.js"></script>
     <script src="js/main.js?v=20261028-shared-links"></script>
+    <script src="/js/escape-control.js?v=20261113"></script>
   </body>
 </html>
