@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Departure Mono";
+  src: url("../fonts/departure-mono/DepartureMono-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 .site-footer {
   display: flex;
   flex-direction: row;
@@ -27,11 +35,12 @@
   color: var(--ink);
 }
 
-.site-footer .footer__update {
+.site-footer .footer__links {
   display: flex;
+  flex: 1;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.5em;
+  gap: 0.5em 1.25em;
   min-width: 0;
 }
 
@@ -42,4 +51,19 @@
   line-height: inherit;
 }
 
-.site-footer time { white-space: nowrap; }
+.site-footer .footer__copyright {
+  margin-inline: -0.75em;
+}
+
+.site-footer .about-panel__arrow {
+  margin-left: 0.2em;
+}
+
+.site-footer time {
+  flex-shrink: 0;
+  margin-left: auto;
+  font-family: "Departure Mono", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+}
