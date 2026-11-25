@@ -21,3 +21,9 @@ Open http://localhost:8000. No package installation or build step is required.
 - `css/footer.css`: footer styling, also used by lab.tedkoller.com.
 - `favicon.svg`: adaptive favicon; `favicon.ico` provides a fallback.
 - `CNAME`: custom domain configuration.
+
+## Updating portfolio entries
+
+Edit `js/portfolio-data.js` to add or update a project. Use a unique `id`, a descriptive `title`, a `thumbnail` URL, and an `images` array for additional media. Entries without a `category` default to `cinematography`. The gallery combines the thumbnail with the additional media and removes duplicate URLs.
+
+After editing, preview the site and check the project thumbnail, title, category selection, and each image or video in its lightbox. Test narrow and wide browser windows before publishing. Remote media needs an internet connection during local preview.
